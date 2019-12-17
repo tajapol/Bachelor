@@ -1,0 +1,43 @@
+* {
+  box-sizing: content-box;
+  display: block;
+  margin: auto; }
+
+html {
+  font-family: sans-serif;
+  font-size: 18px; }
+
+body {
+  background-image: url("../background.png");
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+img {
+  margin: 1.5rem auto 2rem auto;
+  width: 17%; }
+
+p {
+  padding: 1rem;
+  font-size: 1.3rem; }
+
+div {
+  display: grid;
+  grid-template-rows: 0.08fr 0.03fr 0.08fr;
+  width: 70%;
+  border-radius: 2rem;
+  background-color: rgba(255, 255, 255, 0.4); }
+
+div div {
+  text-align: center;
+  grid-row-start: 2;
+  width: 90%;
+  background-color: white; }
+
+button {
+  margin-top: 6.5%;
+  width: 20%;
+  height: 35%;
+  background-color: #034b5f;
+  color: white;
+  font-size: 1.5rem;
+  border-radius: 2rem; }
