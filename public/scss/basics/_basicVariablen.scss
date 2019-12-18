@@ -1,0 +1,19 @@
+// *
+$base-box-sizing: content-box;
+$base-display: block;
+
+// html
+$base-margin: auto;
+$base-font-family: sans-serif;
+$base-font-size: 18px;
+
+// body
+$base-background-image: url("../background.png");
+$base-background-repeat: no-repeat;
+$base-background-size: cover;
+
+// color
+$petrol: rgba(3, 75, 95, 1);
+$blass: rgba(255, 255, 255, 0.4);
+$white: lighten($petrol, 100%);
+$black: darken($petrol, 100%);

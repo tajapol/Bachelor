@@ -1,0 +1,33 @@
+@import "basics/basicVariablen";
+@import "basics/main";
+
+// "CSS base template"
+@mixin base-all-selektor() {
+  box-sizing: $base-box-sizing;
+  display: $base-display;
+  margin: $base-margin;
+}
+
+@mixin base-html() {
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+}
+
+@mixin base-body() {
+  background-image: $base-background-image;
+  background-repeat: $base-background-repeat;
+  background-size: $base-background-size;
+}
+
+@mixin base-main() {
+  display: $main-display;
+  grid-template-columns: $main-grid-template-columns;
+  grid-template-rows: $main-grid-template-rows;
+}
+
+@mixin base-main-img() {
+  grid-column-start: $main-img-grid-column-start;
+  margin: $main-img-margin;
+  width: $main-img-width;
+  cursor: $main-img-cursor;
+}

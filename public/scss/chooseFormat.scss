@@ -1,0 +1,50 @@
+@import "basics/basicVariablen";
+@import "basics/basicMixins";
+
+* {
+  @include base-all-selektor;
+}
+
+html {
+  @include base-html;
+}
+
+body {
+  @include base-body;
+}
+
+h1 {
+  font-size: 5.6rem;
+  color: $white;
+  margin-top: 6.5rem;
+}
+
+p {
+  font-size: 3.6rem;
+  color: rgba(255, 255, 255, 1);
+}
+
+main {
+  @include base-main;
+}
+
+main img {
+  @include base-main-img;
+}
+
+div {
+  display: flex;
+  grid-row-start: 3;
+  grid-row-end: 8;
+  margin: 20% 0 0 25%;
+  width: 50%;
+}
+
+div img {
+  width: 100%;
+  margin: 0 40% 0 40%;
+}
+
+div img:first-of-type {
+  margin-right: 19%;
+}

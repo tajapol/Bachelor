@@ -1,20 +1,16 @@
-@import "basics/basics";
+@import "basics/basicVariablen";
+@import "basics/basicMixins";
 
 * {
-  box-sizing: content-box;
-  display: block;
-  margin: auto;
+  @include base-all-selektor;
 }
 
 html {
-  font-family: sans-serif;
-  font-size: 18px;
+  @include base-html;
 }
 
 body {
-  background-image: url("../background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+  @include base-body;
 }
 
 img {

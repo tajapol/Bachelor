@@ -1,0 +1,10 @@
+// main
+$main-display: grid;
+$main-grid-template-columns: 2fr 2fr 2fr;
+$main-grid-template-rows: 0.1fr 0.1fr 0.1fr 1fr 2fr 2fr 1fr;
+
+// main img
+$main-img-grid-column-start: 4;
+$main-img-margin: 1rem;
+$main-img-width: 3.5rem;
+$main-img-cursor: pointer;
