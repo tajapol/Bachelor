@@ -1,0 +1,53 @@
+@import "basics/basicVariablen";
+@import "basics/basicMixins";
+
+* {
+  @include base-all-selektor;
+}
+
+title {
+  @include title;
+}
+
+html {
+  @include base-html;
+}
+
+body {
+  @include base-body;
+}
+
+h1 {
+  display: none;
+}
+
+h2 {
+  @include base-h2;
+}
+
+main section {
+  @include base-main;
+}
+
+main img {
+  @include base-main-img;
+}
+
+div {
+  display: block;
+  justify-content: center;
+}
+
+div div {
+  display: flex;
+  margin-top: 4%;
+}
+
+div h2 {
+  margin: auto;
+}
+
+div img {
+  width: 15%;
+  margin: 0 7% 0 7%;
+}

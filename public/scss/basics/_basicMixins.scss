@@ -23,6 +23,13 @@
   background-size: $base-background-size;
 }
 
+@mixin base-h2() {
+  font-size: $h2-font-size;
+  color: $h2-color;
+  font-family: $h2-font-family;
+  font-weight: $h2-font-weight;
+}
+
 @mixin base-main() {
   display: $main-display;
   grid-template-columns: $main-grid-template-columns;
