@@ -5,6 +5,10 @@
   @include base-all-selektor;
 }
 
+title {
+  @include title;
+}
+
 html {
   @include base-html;
 }

@@ -2,6 +2,9 @@
 $base-box-sizing: content-box;
 $base-display: block;
 
+// title
+$title-display: none;
+
 // html
 $base-margin: auto;
 $base-font-family: sans-serif;
@@ -10,7 +13,7 @@ $base-font-size: 18px;
 // body
 $base-background-image: url("../background.png");
 $base-background-repeat: no-repeat;
-$base-background-size: cover;
+$base-background-size: 100%;
 
 // color
 $petrol: rgba(3, 75, 95, 1);

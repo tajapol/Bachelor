@@ -8,6 +8,10 @@
   margin: $base-margin;
 }
 
+@mixin title {
+  display: $title-display;
+}
+
 @mixin base-html() {
   font-family: $base-font-family;
   font-size: $base-font-size;
