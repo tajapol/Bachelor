@@ -25,6 +25,7 @@ const uploadRoutes = require("./routes/uploads");
 //serve static files
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "assets")));
+app.use(express.static(path.join(__dirname, "js")));
 
 //own middlewares
 app.use(formatRoutes);
