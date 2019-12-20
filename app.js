@@ -6,7 +6,14 @@ const expressHbs = require("express-handlebars");
 const app = express();
 
 //register templating engine
-app.engine("hbs", expressHbs());
+app.engine(
+  "hbs",
+  expressHbs({
+    layoutsDir: "views",
+    defaultLayout: "",
+    extname: "hbs"
+  })
+);
 app.set("view engine", "hbs");
 app.set("views", "views");
 
@@ -28,7 +35,6 @@ app.use(uploadRoutes);
 
 //setting 404 status
 app.use((req, res, next) => {
-  // res.sendFile(path.join(__dirname, "views", "404.html"));
   res.status(404).render("404", { pageTitle: "Page not found" });
 });
 
