@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{{pageTitle}}</title>
-    <link rel="stylesheet" href="/css/uploads.css" />
+    <link rel="stylesheet" href="/css/presets.css" />
 </head>
 
 <body>
@@ -33,6 +33,7 @@
         </section>
 
         <div>
+            {{#if hasChoosen}}
             <div>
                 <h2>Choose your upload for {{version}} version</h2>
             </div>
@@ -41,6 +42,21 @@
 
                 <img src="icons/file.png" alt="fileUpload" />
                 <img src="icons/keyboard.png" alt="keyboardUpload" />
+
+                {{else}}
+                <div>
+                    <h2>Choose your format</h2>
+                </div>
+
+                <div>
+                    <img src="icons/mobile.png" alt="mobileButton" />
+                    <img src="icons/Both.png" alt="bothButton" />
+                    <img src="icons/desktopBig.png" alt="desktopButton" />
+                </div>
+
+
+                {{/if}}
+
 
             </div>
         </div>
