@@ -5,7 +5,7 @@ const uploadController = require("../controllers/uploadController");
 
 const router = express.Router();
 
-router.get("/upload/mobile", uploadController.getMobileFormat);
+router.get("/mobile", uploadController.getMobileFormat);
 router.get("/desktop", uploadController.getDesktopFormat);
 router.get("/mobileAndDesktop", uploadController.getMobileANdDesktopFormat);
 

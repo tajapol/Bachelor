@@ -29,11 +29,12 @@ const uploadRoutes = require("./routes/upload");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(express.static(path.join(__dirname, "js")));
+app.use(express.static(path.join(__dirname, "background.png")));
 
 //own middlewares
 app.use(formatRoutes);
 app.use(indexRoutes);
-app.use(uploadRoutes);
+app.use("/upload", uploadRoutes);
 
 //setting 404 status
 app.use(errorController.get404);
