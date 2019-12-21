@@ -3,6 +3,9 @@ const path = require("path");
 const express = require("express");
 const expressHbs = require("express-handlebars");
 
+// import error controller
+const errorController = require("./controllers/error");
+
 const app = express();
 
 //register templating engine
@@ -18,9 +21,9 @@ app.set("view engine", "hbs");
 app.set("views", "views");
 
 //own files imports
-const formatRoutes = require("./routes/formats");
+const formatRoutes = require("./routes/format");
 const indexRoutes = require("./routes/index");
-const uploadRoutes = require("./routes/presets");
+const uploadRoutes = require("./routes/upload");
 
 //serve static files
 app.use(express.static(path.join(__dirname, "public")));
@@ -32,11 +35,7 @@ app.use(formatRoutes);
 app.use(indexRoutes);
 app.use(uploadRoutes);
 
-// app.use("/presets", uploadRoutes);
-
 //setting 404 status
-app.use((req, res, next) => {
-  res.status(404).render("404", { pageTitle: "Page not found" });
-});
+app.use(errorController.get404);
 
 app.listen(3001);

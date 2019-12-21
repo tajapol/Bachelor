@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/main.css" />
+    <script src="/js/mainClient.js"></script>
+</head>
+
+<body>
+    <main>
+        <section>
+            {{#if formatNotChoosen}}
+            <h1>icons right</h1>
+            <img class="home" src="icons/home.png" alt="homeButton" />
+
+            {{else}}
+            <h1>icons right</h1>
+            <img class="home" src="icons/home.png" alt="homeButton" />
+
+            {{#if mobile}}
+            <img class="both" src="icons/both.png" alt="bothButton" />
+            <img class="desktop" src="icons/desktopSmall.png" alt="desktopButton" />
+
+            {{else if desktop}}
+            <img class="mobile" src="icons/mobile.png" alt="desktopButton" />
+            <img class="both" src="icons/both.png" alt="bothButton" />
+
+            {{else}}
+            <img class="mobile" src="icons/mobile.png" alt="desktopButton" />
+            <img class="desktop" src="icons/desktopSmall.png" alt="desktopButton" />
+
+
+            {{/if}}
+            {{/if}}
+
+
+
+        </section>
+
+        <div>
+            {{#if uploadNotChoosen}}
+            <div>
+                <h2>Choose your upload for {{version}} version</h2>
+            </div>
+
+            <div>
+
+                <img src="icons/file.png" alt="fileUpload" />
+                <img src="icons/keyboard.png" alt="keyboardUpload" />
+
+                {{else}}
+                <div>
+                    <h2>Choose your format</h2>
+                </div>
+
+                <div>
+                    <img class="mobile" src="icons/mobile.png" alt="mobileButton" />
+                    <img class="both" src="icons/Both.png" alt="bothButton" />
+                    <img class="desktop" src="icons/desktopBig.png" alt="desktopButton" />
+                </div>
+
+
+                {{/if}}
+
+
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

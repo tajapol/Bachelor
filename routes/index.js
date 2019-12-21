@@ -1,12 +1,8 @@
-const path = require("path");
-
 const express = require("express");
 
+const indexController = require("../controllers/indexController");
+
 const router = express.Router();
-const rootDir = require("../util/path");
 
-router.get("/", (req, res, next) => {
-  res.render("index", { pageTitle: "landingPage" });
-});
-
+router.get("/", indexController.getLandingPage);
 module.exports = router;
