@@ -24,12 +24,12 @@ h2 {
   font-family: "Marion";
   font-weight: 200; }
 
-main section {
+section section {
   display: grid;
   grid-template-columns: 2fr 2fr 2fr;
   grid-template-rows: 0.1fr 0.1fr 0.1fr 0.1fr; }
 
-main img {
+section img {
   grid-column-start: 4;
   margin: 1rem;
   width: 3.5rem;

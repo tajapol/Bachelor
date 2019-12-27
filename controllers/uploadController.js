@@ -1,5 +1,5 @@
 exports.getMobileFormat = (req, res, next) => {
-  res.render("main", { pageTitle: "choose your upload", uploads: true, version: "uploads", uploadNotChoosen: true });
+  res.render("main", { pageTitle: "choose your upload", mobile: true, version: "mobile", uploadNotChoosen: true });
 };
 
 exports.getDesktopFormat = (req, res, next) => {
@@ -7,7 +7,7 @@ exports.getDesktopFormat = (req, res, next) => {
 };
 
 exports.getMobileANdDesktopFormat = (req, res, next) => {
-  res.render("main", { pageTitle: "choose your upload", both: true, version: "uploads and desktop", uploadNotChoosen: true });
+  res.render("main", { pageTitle: "choose your upload", both: true, version: "mobile and desktop", uploadNotChoosen: true });
 };
 
 exports.postDummy = (req, res, next) => {
