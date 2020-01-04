@@ -4,6 +4,11 @@
   window.addEventListener("DOMContentLoaded", init, false);
 
   function init() {
+    // document.getElementById("back").addEventListener("click", () => {
+    //   console.log("hello");
+    //   window.history.back();
+    // });
+
     const mobileButtons = Array.from(document.getElementsByClassName("mobile"));
     mobileButtons.forEach(function(elem) {
       elem.addEventListener("click", () => {
@@ -25,9 +30,15 @@
       });
     });
 
+    const backButtons = Array.from(document.getElementsByClassName("back"));
+    backButtons.forEach(function(elem) {
+      elem.addEventListener("click", () => {
+        window.history.back();
+      });
+    });
+
     document.getElementById("start").addEventListener("click", () => {
       window.location = "/formats";
-      console.log("pressed");
     });
   }
 })();
