@@ -105,8 +105,28 @@
                 </div>
 
                 <div>
-                    <img src="../assets/icons/file.png" alt="fileUpload" />
-                    <img src="../assets/icons/keyboard.png" alt="keyboardUpload" />
+                    <img class="file" src="../assets/icons/file.png" alt="fileUpload" />
+                    <img class="input" src="../assets/icons/keyboard.png" alt="keyboardUpload" />
+
+                    {{else if uploadChoosen}}
+                    {{#if fileUpload}}
+                    <div class="chooseFormatDiv">
+                        <h2>Upload your file</h2>
+                    </div>
+
+                    <div>
+                        blabla
+                    </div>
+                    {{else}}
+                    <div class="chooseFormatDiv">
+                        <h2>Put your shit in </h2>
+                    </div>
+
+                    <div>
+                        blabla
+                    </div>
+
+                    {{/if}}
 
                     {{else}}
                     <div class="chooseFormatDiv">

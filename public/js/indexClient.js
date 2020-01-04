@@ -4,10 +4,12 @@
   window.addEventListener("DOMContentLoaded", init, false);
 
   function init() {
-    // document.getElementById("back").addEventListener("click", () => {
-    //   console.log("hello");
-    //   window.history.back();
-    // });
+    const backButtons = Array.from(document.getElementsByClassName("back"));
+    backButtons.forEach(function(elem) {
+      elem.addEventListener("click", () => {
+        window.history.back();
+      });
+    });
 
     const mobileButtons = Array.from(document.getElementsByClassName("mobile"));
     mobileButtons.forEach(function(elem) {
@@ -30,10 +32,17 @@
       });
     });
 
-    const backButtons = Array.from(document.getElementsByClassName("back"));
-    backButtons.forEach(function(elem) {
+    const fileButtons = Array.from(document.getElementsByClassName("file"));
+    fileButtons.forEach(function(elem) {
       elem.addEventListener("click", () => {
-        window.history.back();
+        window.location = "/fileUpload";
+      });
+    });
+
+    const inputButtons = Array.from(document.getElementsByClassName("input"));
+    inputButtons.forEach(function(elem) {
+      elem.addEventListener("click", () => {
+        window.location = "/directInput";
       });
     });
 
