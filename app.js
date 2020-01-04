@@ -21,9 +21,9 @@ app.set("view engine", "hbs");
 app.set("views", "views");
 
 //own files imports
-const formatRoutes = require("./routes/format");
+const formatRoutes = require("./routes/chooseFormat");
 const lpRoutes = require("./routes/lp");
-const uploadRoutes = require("./routes/upload");
+const uploadRoutes = require("./routes/chooseUpload");
 
 //serve static files
 app.use(express.static(path.join(__dirname, "public")));
@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, "js")));
 //own middlewares
 app.use(formatRoutes);
 app.use(lpRoutes);
-app.use("/upload", uploadRoutes);
+app.use("/chooseUpload", uploadRoutes);
 
 //setting 404 status
 app.use(errorController.get404);

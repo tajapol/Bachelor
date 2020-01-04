@@ -12,21 +12,21 @@
     const mobileButtons = Array.from(document.getElementsByClassName("mobile"));
     mobileButtons.forEach(function(elem) {
       elem.addEventListener("click", () => {
-        window.location = "/upload/mobile";
+        window.location = "/chooseUpload/mobile";
       });
     });
 
     const bothButtons = Array.from(document.getElementsByClassName("both"));
     bothButtons.forEach(function(elem) {
       elem.addEventListener("click", () => {
-        window.location = "/upload/mobileAndDesktop";
+        window.location = "/chooseUpload/mobileAndDesktop";
       });
     });
 
     const desktopButtons = Array.from(document.getElementsByClassName("desktop"));
     desktopButtons.forEach(function(elem) {
       elem.addEventListener("click", () => {
-        window.location = "/upload/desktop";
+        window.location = "/chooseUpload/desktop";
       });
     });
 
@@ -38,7 +38,7 @@
     });
 
     document.getElementById("start").addEventListener("click", () => {
-      window.location = "/formats";
+      window.location = "/chooseFormat";
     });
   }
 })();

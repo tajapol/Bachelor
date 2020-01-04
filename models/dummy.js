@@ -1,6 +1,6 @@
-// product class
-
-const products = [];
+// upload class
+const fs = require("fs");
+const path = require("path");
 
 module.exports = class Products {
   constructor(t) {
@@ -8,11 +8,11 @@ module.exports = class Products {
   }
 
   save() {
-    products.push(this);
+    const p = path.join(__dirname, "data");
   }
 
   //makes sue that I can call the method directly on the class itself and on instantiated object
   static fetchAll() {
-    return this.products;
+    return products;
   }
 };
