@@ -17,6 +17,14 @@ body {
   @include base-body;
 }
 
+h1 {
+  display: none;
+}
+
+h2 {
+  @include base-h2;
+}
+
 img {
   margin: 1.5rem auto 2rem auto;
   width: 17%;
@@ -28,17 +36,17 @@ p {
   font-size: 1.3rem;
 }
 
-#lpSection div {
+.lpSection div {
   display: grid;
-  grid-template-rows: 0.08fr 0.03fr 0.08fr;
+  grid-template-rows: 0.04fr 0.04fr 0.2fr;
   width: 70%;
   border-radius: 2rem;
   background-color: rgba(255, 255, 255, 0.4);
 }
 
-#lpSection div div {
+.lpSection div div {
   text-align: center;
-  grid-row-start: 2;
+  grid-row-start: 3;
   width: 90%;
   background-color: $white;
 }
@@ -51,4 +59,35 @@ button {
   color: $white;
   font-size: 1.5rem;
   border-radius: 2rem;
+}
+
+section section {
+  @include base-main;
+}
+
+section img {
+  @include base-main-img;
+}
+
+.back {
+  grid-column-start: 1;
+}
+
+div {
+  display: block;
+  justify-content: center;
+}
+
+div div {
+  display: flex;
+  margin-bottom: 6%;
+}
+
+div h2 {
+  margin: auto;
+}
+
+div img {
+  width: 15%;
+  margin: 0 7% 0 7%;
 }

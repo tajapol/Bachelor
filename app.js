@@ -22,7 +22,7 @@ app.set("views", "views");
 
 //own files imports
 const formatRoutes = require("./routes/format");
-const indexRoutes = require("./routes/index");
+const lpRoutes = require("./routes/lp");
 const uploadRoutes = require("./routes/upload");
 
 //serve static files
@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, "js")));
 
 //own middlewares
 app.use(formatRoutes);
-app.use(indexRoutes);
+app.use(lpRoutes);
 app.use("/upload", uploadRoutes);
 
 //setting 404 status

@@ -7,14 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>{{pageTitle}}</title>
     <link rel="stylesheet" href="/css/index.css" />
+    <script src="/js/errorClient.js"></script>
     <script src="/js/indexClient.js"></script>
 </head>
 
 <body>
+    {{#if landingPage}}
+    {{!-- <script src="/js/lpClient.js"></script> --}}
     <img class="logo" src="../assets/logo.png" alt="logo" />
-    <main>
-        <section id="lpSection">
 
+    <main>
+        <section class="lpSection">
             <div>
                 <div>
                     <p>
@@ -60,14 +63,70 @@
                         sed
                         diam
                     </p>
-
-
                     <button id="start" type="button">Start</button>
                 </div>
             </div>
         </section>
 
     </main>
+    {{else}}
+    <main>
+        {{!-- <script src="/js/restClient.js"></script> --}}
+        <section>
+            <section>
+                <img class="back" src="../assets/icons/back.png" alt="backButton" />
+
+                {{#if formatNotChoosen}}
+                <h1>icons right</h1>
+                <img class="home" src="../assets/icons/home.png" alt="homeButton" />
+
+                {{else}}
+                <h1>icons right</h1>
+                <img class="home" src="../assets/icons/home.png" alt="homeButton" />
+
+                {{#if mobile}}
+                <img class="both" src="../assets/icons/both.png" alt="bothButton" />
+                <img class="desktop" src="../assets/icons/desktopSmall.png" alt="desktopButton" />
+
+                {{else if desktop}}
+                <img class="mobile" src="../assets/icons/mobile.png" alt="mobileButton" />
+                <img class="both" src="../assets/icons/both.png" alt="bothButton" />
+
+                {{else}}
+                <img class="mobile" src="../assets/icons/mobile.png" alt="mobileButton" />
+                <img class="desktop" src="../assets/icons/desktopSmall.png" alt="desktopButton" />
+
+                {{/if}}
+                {{/if}}
+            </section>
+
+            <div>
+                {{#if uploadNotChoosen}}
+                <div>
+                    <h2>Choose your upload for {{version}} version</h2>
+                </div>
+
+                <div>
+                    <img src="../assets/icons/file.png" alt="fileUpload" />
+                    <img src="../assets/icons/keyboard.png" alt="keyboardUpload" />
+
+                    {{else}}
+                    <div class="chooseFormatDiv">
+                        <h2>Choose your format</h2>
+                    </div>
+
+                    <div>
+                        <img class="mobile" src="../assets/icons/mobile.png" alt="mobileButton" />
+                        <img class="both" src="../assets/icons/Both.png" alt="bothButton" />
+                        <img class="desktop" src="../assets/icons/desktopBig.png" alt="desktopButton" />
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </section>
+    </main>
+    {{/if}}
+
 </body>
 
 </html>

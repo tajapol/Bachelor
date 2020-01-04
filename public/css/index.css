@@ -15,6 +15,15 @@ body {
   background-repeat: no-repeat;
   background-size: 100%; }
 
+h1 {
+  display: none; }
+
+h2 {
+  font-size: 4rem;
+  color: white;
+  font-family: "Marion";
+  font-weight: 200; }
+
 img {
   margin: 1.5rem auto 2rem auto;
   width: 17%;
@@ -24,16 +33,16 @@ p {
   padding: 1rem;
   font-size: 1.3rem; }
 
-#lpSection div {
+.lpSection div {
   display: grid;
-  grid-template-rows: 0.08fr 0.03fr 0.08fr;
+  grid-template-rows: 0.04fr 0.04fr 0.2fr;
   width: 70%;
   border-radius: 2rem;
   background-color: rgba(255, 255, 255, 0.4); }
 
-#lpSection div div {
+.lpSection div div {
   text-align: center;
-  grid-row-start: 2;
+  grid-row-start: 3;
   width: 90%;
   background-color: white; }
 
@@ -45,3 +54,32 @@ button {
   color: white;
   font-size: 1.5rem;
   border-radius: 2rem; }
+
+section section {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  grid-template-rows: 0.1fr 0.1fr 0.1fr 0.1fr; }
+
+section img {
+  grid-column-start: 4;
+  margin: 1rem;
+  width: 3.5rem;
+  cursor: pointer; }
+
+.back {
+  grid-column-start: 1; }
+
+div {
+  display: block;
+  justify-content: center; }
+
+div div {
+  display: flex;
+  margin-bottom: 6%; }
+
+div h2 {
+  margin: auto; }
+
+div img {
+  width: 15%;
+  margin: 0 7% 0 7%; }
