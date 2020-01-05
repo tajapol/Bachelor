@@ -15,10 +15,11 @@ body {
   background-repeat: no-repeat;
   background-size: 100%; }
 
-h1 {
+h1,
+h2 {
   display: none; }
 
-h2 {
+h3 {
   font-size: 3rem;
   color: white;
   font-family: "Marion";
@@ -78,9 +79,15 @@ div div {
   display: flex;
   margin-bottom: 6%; }
 
-div h2 {
+div h3 {
   margin: auto; }
 
 div img {
   width: 10%;
   margin: 0 7% 0 7%; }
+
+form {
+  width: 50%; }
+
+label {
+  color: white; }

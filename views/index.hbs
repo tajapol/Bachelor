@@ -17,6 +17,7 @@
 
     <main>
         <section class="lpSection">
+            <h1>landingPage</h1>
             <div>
                 <div>
                     <p>
@@ -71,15 +72,14 @@
     {{else}}
     <main>
         <section>
-
+            <h1>presettings</h1>
             <section>
+                <h2>icons right</h2>
                 <img class="back" src="../assets/icons/back.png" alt="backButton" />
                 {{#if formatNotChoosen}}
-                <h1>icons right</h1>
                 <img class="home" src="../assets/icons/home.png" alt="homeButton" />
 
                 {{else}}
-                <h1>icons right</h1>
                 <img class="home" src="../assets/icons/home.png" alt="homeButton" />
 
                 {{#if mobile}}
@@ -90,8 +90,13 @@
                 <img class="mobile" src="../assets/icons/mobile.png" alt="mobileButton" />
                 <img class="both" src="../assets/icons/both.png" alt="bothButton" />
 
+                {{else if both}}
+                <img class="mobile" src="../assets/icons/mobile.png" alt="mobileButton" />
+                <img class="desktop" src="../assets/icons/desktopSmall.png" alt="desktopButton" />
+
                 {{else}}
                 <img class="mobile" src="../assets/icons/mobile.png" alt="mobileButton" />
+                <img class="both" src="../assets/icons/both.png" alt="bothButton" />
                 <img class="desktop" src="../assets/icons/desktopSmall.png" alt="desktopButton" />
 
                 {{/if}}
@@ -101,7 +106,7 @@
             <div>
                 {{#if uploadNotChoosen}}
                 <div>
-                    <h2>Choose your upload for {{version}} version</h2>
+                    <h3>Choose your upload for {{version}} version</h3>
                 </div>
 
                 <div>
@@ -110,16 +115,22 @@
 
                     {{else if uploadChoosen}}
                     {{#if fileUpload}}
-                    <div class="chooseFormatDiv">
-                        <h2>Upload your file</h2>
+                    <div>
+                        <h3>Upload your file</h3>
                     </div>
 
                     <div>
-                        blabla
+                        <form method="post" enctype="multipart/form-data">
+                            <label>Wählen Sie eine Textdatei (*.txt, *.html usw.) von Ihrem Rechner aus.
+                                <input name="datei" type="file" accept="text/*">
+                            </label>
+                            <button>Go</button>
+                        </form>
                     </div>
+
                     {{else}}
-                    <div class="chooseFormatDiv">
-                        <h2>Put your shit in </h2>
+                    <div>
+                        <h3>Put your shit in </h3>
                     </div>
 
                     <div>
@@ -129,8 +140,8 @@
                     {{/if}}
 
                     {{else}}
-                    <div class="chooseFormatDiv">
-                        <h2>Choose your format</h2>
+                    <div>
+                        <h3>Choose your format</h3>
                     </div>
 
                     <div>

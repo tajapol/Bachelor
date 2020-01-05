@@ -1,50 +1,60 @@
 * {
   box-sizing: content-box;
   display: block;
-  margin: auto; }
+  margin: auto;
+}
 
 title {
-  display: none; }
+  display: none;
+}
 
 html {
   font-family: sans-serif;
-  font-size: 18px; }
+  font-size: 18px;
+}
 
 body {
   background-image: url("../../assets/background.png");
   background-repeat: no-repeat;
-  background-size: 100%; }
+  background-size: 100%;
+}
 
 h1 {
-  display: none; }
+  display: none;
+}
 
 h2 {
   font-size: 4rem;
   color: white;
   font-family: "Marion";
-  font-weight: 200; }
+  font-weight: 200;
+}
 
 img {
   margin: 1.5rem auto 2rem auto;
   width: 17%;
-  margin-top: 5%; }
+  margin-top: 5%;
+}
 
 p {
   padding: 1rem;
-  font-size: 1.3rem; }
+  font-size: 1.3rem;
+}
 
 #lpSection div {
   display: grid;
   grid-template-rows: 0.08fr 0.03fr 0.08fr;
   width: 70%;
   border-radius: 2rem;
-  background-color: rgba(255, 255, 255, 0.4); }
+  background-color: rgba(255, 255, 255, 0.4);
+}
 
 #lpSection div div {
   text-align: center;
   grid-row-start: 2;
   width: 90%;
-  background-color: white; }
+  background-color: white;
+}
 
 button {
   margin-top: 6.5%;
@@ -53,30 +63,37 @@ button {
   background-color: #034b5f;
   color: white;
   font-size: 1.5rem;
-  border-radius: 2rem; }
+  border-radius: 2rem;
+}
 
 section section {
   display: grid;
   grid-template-columns: 2fr 2fr 2fr;
-  grid-template-rows: 0.1fr 0.1fr 0.1fr 0.1fr; }
+  grid-template-rows: 0.1fr 0.1fr 0.1fr 0.1fr;
+}
 
 section img {
   grid-column-start: 4;
   margin: 1rem;
   width: 3.5rem;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 div {
   display: block;
-  justify-content: center; }
+  justify-content: center;
+}
 
 div div {
   display: flex;
-  margin-bottom: 6%; }
+  margin-bottom: 6%;
+}
 
-div h2 {
-  margin: auto; }
+div h3 {
+  margin: auto;
+}
 
 div img {
   width: 15%;
-  margin: 0 7% 0 7%; }
+  margin: 0 7% 0 7%;
+}
