@@ -108,7 +108,6 @@
                     <div>
                         <h3>Choose your format</h3>
                     </div>
-
                     <div>
                         <img class="mobile" src="../assets/icons/mobile.png" alt="mobileButton" />
                         <img class="both" src="../assets/icons/Both.png" alt="bothButton" />
@@ -119,7 +118,6 @@
                     <div>
                         <h3>Choose your upload for {{version}} version</h3>
                     </div>
-
                     <div>
                         <img class="file" src="../assets/icons/file.png" alt="fileUpload" />
                         <img class="input" src="../assets/icons/keyboard.png" alt="keyboardUpload" />
@@ -127,15 +125,16 @@
                         {{else}}
                         {{#if fileUpload}}
                         <div>
-                            <h3>Upload your file</h3>
+                            <h3>Upload a local file to proof your design</h3>
                         </div>
-
                         <div>
                             <form method="post" enctype="multipart/form-data">
-                                <label>Wählen Sie eine Textdatei (*.txt, *.html usw.) von Ihrem Rechner aus.
-                                    <input name="datei" type="file" accept="text/*">
-                                </label>
-                                <button>Go</button>
+                                <div>
+                                    <label>Local CSS file: </label>
+                                    <input class="custom-file-input" name="datei" type="file" accept="text/*">
+                                </div>
+
+                                <button class="go">Go</button>
                             </form>
                         </div>
 
@@ -143,7 +142,6 @@
                         <div>
                             <h3>Put your shit in </h3>
                         </div>
-
                         <div>
                             blabla
                         </div>
@@ -153,7 +151,6 @@
                     </div>
                 </div>
             </div>
-
         </section>
 
         {{/if}}
