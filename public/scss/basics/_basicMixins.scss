@@ -28,6 +28,7 @@
   color: $h3-color;
   font-family: $h3-font-family;
   font-weight: $h3-font-weight;
+  // margin-top: 1%;
 }
 
 @mixin base-main() {
@@ -37,6 +38,13 @@
 }
 
 @mixin base-main-img() {
+  grid-column-start: $main-img-grid-column-start;
+  margin: $main-img-margin;
+  width: $main-img-width;
+  cursor: $main-img-cursor;
+}
+
+@mixin base-main-div() {
   grid-column-start: $main-img-grid-column-start;
   margin: $main-img-margin;
   width: $main-img-width;

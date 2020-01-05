@@ -12,10 +12,10 @@
 </head>
 
 <body>
-    {{#if landingPage}}
-    <img class="logo" src="../assets/logo.png" alt="logo" />
-
     <main>
+        {{#if landingPage}}
+        <img class="logo" src="../assets/logo.png" alt="logo" />
+
         <section class="lpSection">
             <h1>landingPage</h1>
             <div>
@@ -68,13 +68,12 @@
             </div>
         </section>
 
-    </main>
-    {{else}}
-    <main>
+
+        {{else}}
         <section>
             <h1>presettings</h1>
             <section>
-                <h2>icons right</h2>
+                <h2>small icons</h2>
                 <img class="back" src="../assets/icons/back.png" alt="backButton" />
                 {{#if formatNotChoosen}}
                 <img class="home" src="../assets/icons/home.png" alt="homeButton" />
@@ -103,43 +102,9 @@
                 {{/if}}
             </section>
 
-            <div>
-                {{#if uploadNotChoosen}}
+            <div class="content">
                 <div>
-                    <h3>Choose your upload for {{version}} version</h3>
-                </div>
-
-                <div>
-                    <img class="file" src="../assets/icons/file.png" alt="fileUpload" />
-                    <img class="input" src="../assets/icons/keyboard.png" alt="keyboardUpload" />
-
-                    {{else if uploadChoosen}}
-                    {{#if fileUpload}}
-                    <div>
-                        <h3>Upload your file</h3>
-                    </div>
-
-                    <div>
-                        <form method="post" enctype="multipart/form-data">
-                            <label>Wählen Sie eine Textdatei (*.txt, *.html usw.) von Ihrem Rechner aus.
-                                <input name="datei" type="file" accept="text/*">
-                            </label>
-                            <button>Go</button>
-                        </form>
-                    </div>
-
-                    {{else}}
-                    <div>
-                        <h3>Put your shit in </h3>
-                    </div>
-
-                    <div>
-                        blabla
-                    </div>
-
-                    {{/if}}
-
-                    {{else}}
+                    {{#if formatNotChoosen}}
                     <div>
                         <h3>Choose your format</h3>
                     </div>
@@ -149,13 +114,50 @@
                         <img class="both" src="../assets/icons/Both.png" alt="bothButton" />
                         <img class="desktop" src="../assets/icons/desktopBig.png" alt="desktopButton" />
                     </div>
-                    {{/if}}
+
+                    {{else if uploadNotChoosen}}
+                    <div>
+                        <h3>Choose your upload for {{version}} version</h3>
+                    </div>
+
+                    <div>
+                        <img class="file" src="../assets/icons/file.png" alt="fileUpload" />
+                        <img class="input" src="../assets/icons/keyboard.png" alt="keyboardUpload" />
+
+                        {{else}}
+                        {{#if fileUpload}}
+                        <div>
+                            <h3>Upload your file</h3>
+                        </div>
+
+                        <div>
+                            <form method="post" enctype="multipart/form-data">
+                                <label>Wählen Sie eine Textdatei (*.txt, *.html usw.) von Ihrem Rechner aus.
+                                    <input name="datei" type="file" accept="text/*">
+                                </label>
+                                <button>Go</button>
+                            </form>
+                        </div>
+
+                        {{else}}
+                        <div>
+                            <h3>Put your shit in </h3>
+                        </div>
+
+                        <div>
+                            blabla
+                        </div>
+
+                        {{/if}}
+                        {{/if}}
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
-    {{/if}}
 
+        </section>
+
+        {{/if}}
+    </main>
 </body>
 
 </html>

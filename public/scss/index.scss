@@ -27,14 +27,18 @@ h3 {
 }
 
 img {
-  margin: 1.5rem auto 2rem auto;
+  margin: 2% auto 4% auto;
   width: 17%;
   margin-top: 5%;
 }
 
 p {
-  padding: 1rem;
+  padding: 2%;
   font-size: 1.3rem;
+}
+
+.back {
+  grid-column-start: 1;
 }
 
 .lpSection div {
@@ -70,17 +74,19 @@ section img {
   @include base-main-img;
 }
 
-.back {
-  grid-column-start: 1;
+.content {
+  position: fixed;
+  top: 31%;
+  left: 30%;
+  right: 30%;
 }
 
-div {
-  margin-top: 4%;
+div div {
   display: block;
   justify-content: center;
 }
 
-div div {
+div div div {
   display: flex;
   margin-bottom: 6%;
 }
@@ -90,8 +96,8 @@ div h3 {
 }
 
 div img {
-  width: 10%;
-  margin: 0 7% 0 7%;
+  width: 25%;
+  margin: 2% 7% 0 7%;
 }
 
 form {
