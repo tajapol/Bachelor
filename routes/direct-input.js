@@ -4,6 +4,6 @@ const directInputController = require("../controllers/directInputController");
 
 const router = express.Router();
 
-router.get("/directInput", directInputController.getFormatsPage);
+router.get("/direct-input", directInputController.getFormatsPage);
 
 module.exports = router;

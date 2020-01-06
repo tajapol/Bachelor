@@ -21,11 +21,11 @@ app.set("view engine", "hbs");
 app.set("views", "views");
 
 //own files imports
-const formatRoutes = require("./routes/chooseFormat");
+const formatRoutes = require("./routes/choose-format");
 const lpRoutes = require("./routes/lp");
-const uploadRoutes = require("./routes/chooseUpload");
-const fileRoute = require("./routes/fileUpload");
-const inputRoute = require("./routes/directInput");
+const uploadRoutes = require("./routes/choose-upload");
+const fileRoute = require("./routes/file-upload");
+const inputRoute = require("./routes/direct-input");
 
 //serve static files
 app.use(express.static(path.join(__dirname, "public")));
@@ -37,7 +37,7 @@ app.use(formatRoutes);
 app.use(lpRoutes);
 app.use(fileRoute);
 app.use(inputRoute);
-app.use("/chooseUpload", uploadRoutes);
+app.use("/choose-upload", uploadRoutes);
 
 //setting 404 status
 app.use(errorController.get404);
