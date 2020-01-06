@@ -1,11 +1,14 @@
-const inputs = [];
+const Input = require("../models/input");
 
 exports.getInput = (req, res, next) => {
-  const input = JSON.parse(JSON.stringify(req.body));
-  const title = input.title;
-  inputs.push({ title });
-  console.log(inputs.title);
+  const input = new Input(req.body.title);
+  input.save();
   next();
 };
 
-exports.inputs = inputs;
+exports.getInputsAll = (req, res, next) => {
+  const inputs = Input.fetchAll();
+  next();
+};
+
+// exports.inputs = inputs;

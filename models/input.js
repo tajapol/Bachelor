@@ -1,6 +1,8 @@
 // upload class
 const fs = require("fs");
-const path = require("path");
+const p = require("path");
+
+const inputs = [];
 
 module.exports = class Input {
   constructor(t) {
@@ -9,10 +11,13 @@ module.exports = class Input {
 
   save() {
     // create a path
-    const p = path.join(path.dirname(process.mainModule.filename), "data", "input.txt");
-    fs.readFile(p, (err, fileContent) => {
-      console.log(fileContent);
-    });
+    // const path = p.join(path.dirname(process.mainModule.filename), "data", "input.txt");
+    // fs.readFile(path, (err, fileContent) => {
+    //   console.log(fileContent);
+
+    inputs.push(this);
+    console.log(inputs);
+    // });
   }
 
   //makes sue that I can call the method directly on the class itself and on instantiated object
@@ -20,3 +25,8 @@ module.exports = class Input {
     return inputs;
   }
 };
+
+// const input = JSON.parse(JSON.stringify(req.body.title));
+// const title = input;
+// inputs.push({ title });
+// console.log(inputs);
