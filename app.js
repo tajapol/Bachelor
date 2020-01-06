@@ -27,7 +27,7 @@ const lpRoutes = require("./routes/lp");
 const uploadRoutes = require("./routes/choose-upload");
 const fileRoute = require("./routes/file-upload");
 const directInputRoute = require("./routes/direct-input");
-// const inputRoute = require("./models/input");
+const inputRoute = require("./routes/inputs");
 const outputRoute = require("./routes/output");
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,17 +38,15 @@ app.use(express.static(path.join(__dirname, "assets")));
 app.use(express.static(path.join(__dirname, "js")));
 
 //own middlewares
-app.use(formatRoutes);
 app.use(lpRoutes);
+app.use(formatRoutes);
+app.use("/choose-upload", uploadRoutes);
 app.use(fileRoute);
 app.use(directInputRoute);
-// app.use(inputRoute);
-// app.use("/output", (req, res, next) => {
-//   console.log(req.body);
-//   res.redirect("/");
-// });
+app.use(inputRoute);
+// app.use(inputRoute.inputs);
+
 app.use(outputRoute);
-app.use("/choose-upload", uploadRoutes);
 
 //setting 404 status
 app.use(errorController.get404);

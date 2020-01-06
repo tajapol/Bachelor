@@ -9,7 +9,3 @@ exports.getDesktopFormat = (req, res, next) => {
 exports.getMobileANdDesktopFormat = (req, res, next) => {
   res.render("index", { pageTitle: "choose your upload", both: true, version: "mobile and desktop", uploadNotChoosen: true });
 };
-
-exports.postDummy = (req, res, next) => {
-  res.redirect("/");
-};
