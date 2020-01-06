@@ -26,6 +26,7 @@ const lpRoutes = require("./routes/lp");
 const uploadRoutes = require("./routes/choose-upload");
 const fileRoute = require("./routes/file-upload");
 const inputRoute = require("./routes/direct-input");
+const outputRoute = require("./routes/output");
 
 //serve static files
 app.use(express.static(path.join(__dirname, "public")));
@@ -37,6 +38,7 @@ app.use(formatRoutes);
 app.use(lpRoutes);
 app.use(fileRoute);
 app.use(inputRoute);
+app.use(outputRoute);
 app.use("/choose-upload", uploadRoutes);
 
 //setting 404 status

@@ -122,13 +122,13 @@
                         <img class="file" src="../assets/icons/file.png" alt="fileUpload" />
                         <img class="input" src="../assets/icons/keyboard.png" alt="keyboardUpload" />
 
-                        {{else}}
+                        {{else if uploadChoosen}}
                         {{#if fileUpload}}
                         <div>
                             <h3>Upload a local file to proof your design</h3>
                         </div>
                         <div>
-                            <form class="upload-form" method="post" enctype="multipart/form-data">
+                            <form class="upload-form" action="/output" method="post" enctype="multipart/form-data">
                                 <div>
                                     <label>Local CSS file: </label>
                                     <input name="datei" type="file" accept="text/*">
@@ -142,9 +142,9 @@
                             <h3>Enter your CSS code directly to proof your design</h3>
                         </div>
                         <div>
-                            <form action="/direct-input" method="POST">
+                            <form action="/output" method="POST">
                                 <div>
-                                    <label class="input-label" for="title">Title</label>
+                                    <label class="input-label">Title</label>
                                     <textarea></textarea>
                                 </div>
                                 <button class="go" type="submit">Go</button>
@@ -152,6 +152,10 @@
                         </div>
 
                         {{/if}}
+                        {{else}}
+                        <div>
+                            <h3>Output</h3>
+                        </div>
                         {{/if}}
                     </div>
                 </div>

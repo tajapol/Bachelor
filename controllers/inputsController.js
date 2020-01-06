@@ -1,28 +1,24 @@
-const Product = require("../models/product");
+const Input = require("../models/input");
 
-exports.getAddProduct = (req, res, next) => {
-  res.render("add-product", {
-    pageTitle: "Add Product",
-    path: "/admin/add-product",
-    formsCSS: true,
-    productCSS: true,
-    activeAddProduct: true
+exports.getDirectInput = (req, res, next) => {
+  res.render("index", {
+    pageTitle: "Direct Input"
   });
 };
 
-exports.postAddProduct = (req, res, next) => {
-  const product = new Product(req.body.title);
-  product.save();
-  res.redirect("/");
-};
+// exports.postDirectInput = (req, res, next) => {
+//   const product = new Product(req.body.title);
+//   product.save();
+//   res.redirect("/");
+// };
 
-exports.getProducts = (req, res, next) => {
-  const products = Product.fetchAll();
+exports.getInputs = (req, res, next) => {
+  const inputs = Product.fetchAll();
   res.render("shop", {
-    prods: products,
+    prods: inputs,
     pageTitle: "Shop",
     path: "/",
-    hasProducts: products.length > 0,
+    hasinputs: inputs.length > 0,
     activeShop: true,
     productCSS: true
   });

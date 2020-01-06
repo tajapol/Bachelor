@@ -1,9 +1,9 @@
 const express = require("express");
 
-const fileController = require("../controllers/fileController");
+const fileUploadController = require("../controllers/fileUploadController");
 
 const router = express.Router();
 
-router.get("/file-upload", fileController.getFormatsPage);
+router.get("/file-upload", fileUploadController.getFileUploadPage);
 
 module.exports = router;
