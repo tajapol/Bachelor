@@ -2,6 +2,7 @@ const path = require("path");
 
 const express = require("express");
 const expressHbs = require("express-handlebars");
+const bodyParser = require("body-parser");
 
 // import error controller
 const errorController = require("./controllers/error");
@@ -25,8 +26,11 @@ const formatRoutes = require("./routes/choose-format");
 const lpRoutes = require("./routes/lp");
 const uploadRoutes = require("./routes/choose-upload");
 const fileRoute = require("./routes/file-upload");
-const inputRoute = require("./routes/direct-input");
+const directInputRoute = require("./routes/direct-input");
+// const inputRoute = require("./models/input");
 const outputRoute = require("./routes/output");
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 //serve static files
 app.use(express.static(path.join(__dirname, "public")));
@@ -37,7 +41,12 @@ app.use(express.static(path.join(__dirname, "js")));
 app.use(formatRoutes);
 app.use(lpRoutes);
 app.use(fileRoute);
-app.use(inputRoute);
+app.use(directInputRoute);
+// app.use(inputRoute);
+// app.use("/output", (req, res, next) => {
+//   console.log(req.body);
+//   res.redirect("/");
+// });
 app.use(outputRoute);
 app.use("/choose-upload", uploadRoutes);
 

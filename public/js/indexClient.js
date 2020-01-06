@@ -46,13 +46,6 @@
       });
     });
 
-    // const goButtons = Array.from(document.getElementsByClassName("go"));
-    // goButtons.forEach(function(elem) {
-    //   elem.addEventListener("click", () => {
-    //     window.location = "/output";
-    //   });
-    // });
-
     document.getElementById("start").addEventListener("click", () => {
       window.location = "/choose-format";
     });

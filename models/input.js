@@ -9,7 +9,10 @@ module.exports = class Input {
 
   save() {
     // create a path
-    const p = path.join(__dirname, "data", "inputs.json");
+    const p = path.join(path.dirname(process.mainModule.filename), "data", "input.txt");
+    fs.readFile(p, (err, fileContent) => {
+      console.log(fileContent);
+    });
   }
 
   //makes sue that I can call the method directly on the class itself and on instantiated object

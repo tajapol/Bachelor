@@ -1,19 +1,21 @@
 const Input = require("../models/input");
 
+console.log("hello");
+
 exports.getDirectInput = (req, res, next) => {
   res.render("index", {
     pageTitle: "Direct Input"
   });
 };
 
-// exports.postDirectInput = (req, res, next) => {
-//   const product = new Product(req.body.title);
-//   product.save();
-//   res.redirect("/");
-// };
+exports.postDirectInput = (req, res, next) => {
+  const input = new Input(req.body.title);
+  input.save();
+  res.redirect("/");
+};
 
 exports.getInputs = (req, res, next) => {
-  const inputs = Product.fetchAll();
+  const inputs = Input.fetchAll();
   res.render("shop", {
     prods: inputs,
     pageTitle: "Shop",
