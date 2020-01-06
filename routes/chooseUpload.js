@@ -1,7 +1,7 @@
 const express = require("express");
 
 // import presets controller
-const uploadController = require("../controllers/uploadController");
+const uploadController = require("../controllers/fileUploadController");
 
 const router = express.Router();
 

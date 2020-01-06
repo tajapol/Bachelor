@@ -128,22 +128,27 @@
                             <h3>Upload a local file to proof your design</h3>
                         </div>
                         <div>
-                            <form method="post" enctype="multipart/form-data">
+                            <form class="upload-form" method="post" enctype="multipart/form-data">
                                 <div>
                                     <label>Local CSS file: </label>
-                                    <input class="custom-file-input" name="datei" type="file" accept="text/*">
+                                    <input name="datei" type="file" accept="text/*">
                                 </div>
-
                                 <button class="go">Go</button>
                             </form>
                         </div>
 
                         {{else}}
                         <div>
-                            <h3>Put your shit in </h3>
+                            <h3>Enter your CSS code directly to proof your design</h3>
                         </div>
                         <div>
-                            blabla
+                            <form action="/directInput" method="POST">
+                                <div>
+                                    <label class="input-label" for="title">Title</label>
+                                    <textarea></textarea>
+                                </div>
+                                <button class="go" type="submit">Go</button>
+                            </form>
                         </div>
 
                         {{/if}}

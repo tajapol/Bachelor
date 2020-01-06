@@ -102,9 +102,13 @@ div img {
 
 form {
   width: 60%;
-  height: 20rem;
+  height: 30rem;
   background-color: $blass;
   border-radius: 2rem;
+}
+
+.upload-form {
+  height: 12rem;
 }
 
 form div {
@@ -115,6 +119,10 @@ label {
   color: $black;
 }
 
+.input-label {
+  display: none;
+}
+
 input[type="file"] {
   width: 75%;
   padding: 0.8%;
@@ -122,8 +130,18 @@ input[type="file"] {
   background-color: $white;
 }
 
+textarea {
+  caret-color: $petrol;
+  width: 90%;
+  height: 20rem;
+  border: 1px solid #cccccc;
+  padding: 0.5em;
+  font-family: Tahoma, sans-serif;
+  font-size: 1rem;
+}
+
 .go {
-  margin-top: 15%;
+  // margin-top: 4%;
   height: 75px;
   width: 75px;
   border-radius: 49%;
