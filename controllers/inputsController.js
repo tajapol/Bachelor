@@ -2,7 +2,7 @@ const Input = require("../models/input");
 
 exports.getInput = (req, res, next) => {
   const input = new Input(req.body.title);
-  console.log(input);
+  // console.log(input);
   input.save();
   next();
 };

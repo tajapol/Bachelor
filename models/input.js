@@ -2,8 +2,8 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = class Input {
-  constructor(t) {
-    this.title = t;
+  constructor(title) {
+    this.directInput = title;
   }
 
   save() {
