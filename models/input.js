@@ -1,18 +1,25 @@
 const fs = require("fs");
 const path = require("path");
 
+const p = path.join(path.dirname(process.mainModule.filename), "data", "inputs.json");
+
+const getInputFromFile = callB => {
+  fs.readFile(p, (err, fileContent) => {
+    if (err) {
+      callB([]);
+    } else {
+      callB(JSON.parse(fileContent));
+    }
+  });
+};
+
 module.exports = class Input {
-  constructor(title) {
-    this.directInput = title;
+  constructor(t) {
+    this.title = t;
   }
 
   save() {
-    const p = path.join(path.dirname(process.mainModule.filename), "data", "inputs.json");
-    fs.readFile(p, (err, fileContent) => {
-      let inputs = [];
-      if (!err) {
-        inputs = JSON.parse(fileContent);
-      }
+    getInputFromFile(inputs => {
       inputs.push(this);
       fs.writeFile(p, JSON.stringify(inputs), err => {
         console.log(err);
@@ -20,13 +27,7 @@ module.exports = class Input {
     });
   }
 
-  static fetchAll(cb) {
-    const p = path.join(path.dirname(process.mainModule.filename), "data", "inputs.json");
-    fs.readFile(p, (err, fileContent) => {
-      if (err) {
-        cb([]);
-      }
-      cb(JSON.parse(fileContent));
-    });
+  static fetchAll(callB) {
+    getInputFromFile(callB);
   }
 };
