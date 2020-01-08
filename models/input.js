@@ -1,8 +1,5 @@
-// upload class
 const fs = require("fs");
-const p = require("path");
-
-const inputs = [];
+const path = require("path");
 
 module.exports = class Input {
   constructor(t) {
@@ -10,23 +7,26 @@ module.exports = class Input {
   }
 
   save() {
-    // create a path
-    // const path = p.join(path.dirname(process.mainModule.filename), "data", "input.txt");
-    // fs.readFile(path, (err, fileContent) => {
-    //   console.log(fileContent);
-
-    inputs.push(this);
-    console.log(inputs);
-    // });
+    const p = path.join(path.dirname(process.mainModule.filename), "data", "inputs.json");
+    fs.readFile(p, (err, fileContent) => {
+      let inputs = [];
+      if (!err) {
+        inputs = JSON.parse(fileContent);
+      }
+      inputs.push(this);
+      fs.writeFile(p, JSON.stringify(inputs), err => {
+        console.log(err);
+      });
+    });
   }
 
-  //makes sue that I can call the method directly on the class itself and on instantiated object
-  static fetchAll() {
-    return inputs;
+  static fetchAll(cb) {
+    const p = path.join(path.dirname(process.mainModule.filename), "data", "inputs.json");
+    fs.readFile(p, (err, fileContent) => {
+      if (err) {
+        cb([]);
+      }
+      cb(JSON.parse(fileContent));
+    });
   }
 };
-
-// const input = JSON.parse(JSON.stringify(req.body.title));
-// const title = input;
-// inputs.push({ title });
-// console.log(inputs);

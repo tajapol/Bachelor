@@ -45,9 +45,10 @@ app.use(fileRoute);
 app.use(directInputRoute);
 
 //setting 404 status
-// app.use(errorController.get404);
 
 app.use(inputsRoute);
 app.use(outputRoute);
+
+app.use(errorController.get404);
 
 app.listen(3001);
