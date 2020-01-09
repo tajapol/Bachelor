@@ -1,0 +1,145 @@
+* {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  display: block;
+  margin: auto; }
+
+title {
+  display: none; }
+
+html {
+  font-family: sans-serif;
+  font-size: 18px; }
+
+body {
+  background-image: url("../../assets/background.png");
+  background-repeat: no-repeat;
+  background-size: 100%; }
+
+h1,
+h2 {
+  display: none; }
+
+h3 {
+  font-size: 2.5em;
+  color: white;
+  font-family: "Marion";
+  font-weight: 200; }
+
+img {
+  margin: 7% auto 4% auto;
+  width: 17%; }
+
+p {
+  padding: 2%;
+  font-size: 23.4px;
+  font-size: 1.3rem; }
+
+.back {
+  grid-column-start: 1; }
+
+.lpSection div {
+  display: grid;
+  margin: 2% auto;
+  width: 70%;
+  border-radius: 2rem;
+  background-color: rgba(255, 255, 255, .4); }
+
+.lpSection div div {
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 96%;
+  background-color: white; }
+
+button {
+  width: 15%;
+  height: 45%;
+  margin: 2% auto;
+  background-color: #034b5f;
+  color: white;
+  font-size: 27px;
+  font-size: 1.5rem;
+  border-radius: 2rem;
+  border-color: #034b5f; }
+
+section section {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  grid-template-rows: 0.1fr 0.1fr 0.1fr 0.1fr; }
+
+section img {
+  grid-column-start: 4;
+  margin: 18px;
+  margin: 1rem;
+  width: 63px;
+  width: 3.5rem;
+  cursor: pointer; }
+
+.content {
+  position: fixed;
+  top: 31%;
+  left: 10%;
+  right: 10%; }
+
+div div {
+  display: block;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+
+div div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 3%; }
+
+div h3 {
+  margin: auto; }
+
+div img {
+  width: 10%;
+  margin: 2% 7% 0 7%; }
+
+form {
+  width: 60%;
+  height: 540px;
+  height: 30rem;
+  background-color: rgba(255, 255, 255, .4);
+  border-radius: 2rem; }
+
+.upload-form {
+  height: 216px;
+  height: 12rem; }
+
+form div {
+  margin-top: 2%; }
+
+label {
+  color: black; }
+
+.input-label {
+  display: none; }
+
+input[type="file"] {
+  width: 75%;
+  padding: 0.8%;
+  margin-left: -5%;
+  background-color: white; }
+
+textarea {
+  caret-color: #034b5f;
+  width: 90%;
+  height: 360px;
+  height: 20rem;
+  border: 1px solid #cccccc;
+  padding: 0.5em;
+  font-family: Tahoma, sans-serif;
+  font-size: 18px;
+  font-size: 1rem; }
+
+.go {
+  height: 75px;
+  width: 75px;
+  border-radius: 49%; }
