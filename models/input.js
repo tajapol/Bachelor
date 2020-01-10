@@ -1,7 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 
-const p = path.join(path.dirname(process.mainModule.filename), "data", "inputs.css");
+const p = path.join(path.dirname(process.mainModule.filename), "data", "input.css");
+const p2 = path.join(path.dirname(process.mainModule.filename), "data", "formatedInput.css");
 
 module.exports = class Input {
   constructor(t) {
@@ -32,10 +33,10 @@ module.exports = class Input {
       require("postcss-cssnext"),
       require("postcss-reporter")({ clearReportedMessages: true })
     ])
-      .process(css, { from: p, to: "app.css" })
+      .process(css, { from: p, to: p2 })
       .then(function(result) {
-        fs.writeFileSync("app.css", result.css);
-        if (result.map) fs.writeFileSync("app.css.map", result.map);
+        fs.writeFileSync(p2, result.css);
+        if (result.map) fs.writeFileSync(p2.map, result.map);
       })
       .catch(err => console.error(err.stack));
   }
