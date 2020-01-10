@@ -27,7 +27,6 @@ const lpRoutes = require("./routes/lp");
 const uploadRoutes = require("./routes/choose-upload");
 const fileRoute = require("./routes/file-upload");
 const directInputRoute = require("./routes/direct-input");
-// const inputsRoute = require("./routes/inputs");
 const outputRoute = require("./routes/output");
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,10 +42,6 @@ app.use(formatRoutes);
 app.use("/choose-upload", uploadRoutes);
 app.use(fileRoute);
 app.use(directInputRoute);
-
-//setting 404 status
-
-// app.use(inputsRoute);
 app.use(outputRoute);
 
 app.use(errorController.get404);
