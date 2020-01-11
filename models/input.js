@@ -1,17 +1,21 @@
 const fs = require("fs");
 const path = require("path");
 
+//path input
 const p = path.join(path.dirname(process.mainModule.filename), "data", "input.css");
+//path formatedInput
 const p2 = path.join(path.dirname(process.mainModule.filename), "data", "formatedInput.css");
 
 module.exports = class Input {
   constructor(t) {
     this.directInput = t;
+    this.id = Math.random().toString();
   }
 
   save() {
     fs.writeFile(p, this.directInput, err => {
       console.log(err);
+      // console.log(this.id);
       this.formatInput();
     });
   }
