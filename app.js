@@ -3,6 +3,7 @@ const path = require("path");
 const express = require("express");
 const expressHbs = require("express-handlebars");
 const bodyParser = require("body-parser");
+const mongoConnect = require("./util/database");
 
 // import error controller
 const errorController = require("./controllers/error");
@@ -46,4 +47,7 @@ app.use(outputRoute);
 
 app.use(errorController.get404);
 
-app.listen(3001);
+mongoConnect(client => {
+  console.log(client);
+  app.listen(3001);
+});
