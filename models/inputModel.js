@@ -8,8 +8,8 @@ const p = path.join(path.dirname(process.mainModule.filename), "data", "input.cs
 const p2 = path.join(path.dirname(process.mainModule.filename), "data", "formatedInput.css");
 
 module.exports = class Input {
-  constructor(directInput) {
-    this.directInput = directInput;
+  constructor(i) {
+    this.directInput = i;
     this.id = Math.random().toString();
   }
 
@@ -19,7 +19,7 @@ module.exports = class Input {
       .collection("inputs")
       .insertOne(this)
       .then(result => {
-        console.log(result);
+        // console.log(result);
       })
       .catch(err => {
         console.log(err);
