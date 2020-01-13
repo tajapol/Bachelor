@@ -1,10 +1,24 @@
-const Input = require("../models/input");
-const Output = require("../models/output");
+const Input = require("../models/inputModel");
+const Output = require("../models/outputModel");
 
 exports.postOutputPage = (req, res, next) => {
-  const input = new Input(req.body.title);
-  input.save();
+  getInput();
   const output = new Output();
-  // console.log(output.id);
+  console.log(output.id);
   res.render("index", { pageTitle: "Output" });
+};
+
+const getInput = () => {
+  const input = new Input();
+  const directInput = input.directInput;
+  const id = input.id;
+  input
+    .save()
+    .then(result => {
+      console.log(result);
+      console.log("Created Input");
+    })
+    .catch(err => {
+      //   console.log(err);
+    });
 };

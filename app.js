@@ -3,7 +3,7 @@ const path = require("path");
 const express = require("express");
 const expressHbs = require("express-handlebars");
 const bodyParser = require("body-parser");
-const mongoConnect = require("./util/database");
+const mongoConnect = require("./util/database").mongoConnect;
 
 // import error controller
 const errorController = require("./controllers/error");
@@ -26,8 +26,7 @@ app.set("views", "views");
 const formatRoutes = require("./routes/choose-format");
 const lpRoutes = require("./routes/lp");
 const uploadRoutes = require("./routes/choose-upload");
-const fileRoute = require("./routes/file-upload");
-const directInputRoute = require("./routes/direct-input");
+const directInputRoute = require("./routes/input");
 const outputRoute = require("./routes/output");
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,13 +40,11 @@ app.use(express.static(path.join(__dirname, "js")));
 app.use(lpRoutes);
 app.use(formatRoutes);
 app.use("/choose-upload", uploadRoutes);
-app.use(fileRoute);
 app.use(directInputRoute);
 app.use(outputRoute);
 
 app.use(errorController.get404);
 
-mongoConnect(client => {
-  console.log(client);
+mongoConnect(() => {
   app.listen(3001);
 });

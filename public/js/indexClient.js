@@ -42,7 +42,7 @@
     const inputButtons = Array.from(document.getElementsByClassName("input"));
     inputButtons.forEach(function(elem) {
       elem.addEventListener("click", () => {
-        window.location = "/direct-input";
+        window.location = "/input";
       });
     });
 
