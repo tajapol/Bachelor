@@ -20,7 +20,7 @@ module.exports = class Input {
       .insertOne(this)
       .then(inputs => {
         const ini = this.getDataFromDB();
-        // console.log(ini);
+        // console.log(ini.directInput);
       })
       .catch(err => {
         console.log(err);
@@ -34,7 +34,6 @@ module.exports = class Input {
       .find()
       .toArray()
       .then(dI => {
-        console.log("hiiihi");
         // console.log(dI[0].directInput);
         return dI;
       })
@@ -83,3 +82,19 @@ module.exports = class Input {
   //     .catch(err => console.error(err.stack));
   // }
 };
+
+// const getDataFromDB = () => {
+//   const db = getDb();
+//   return db
+//     .collection("inputs")
+//     .find()
+//     .toArray()
+//     .then(dI => {
+//       const help = dI[0].directInput;
+//       // console.log(help);
+//       return dI;
+//     })
+//     .catch(err => {
+//       console.log(err);
+//     });
+// };

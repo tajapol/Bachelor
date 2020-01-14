@@ -6,16 +6,16 @@ exports.postOutputPage = (req, res, next) => {
   const input = new Input(directInput);
   const id = input.id;
   input
-    .save()
+    .getDataFromDB()
     .then(inputs => {
-      // console.log();
+      console.log(inputs[0].directInput);
       console.log("Created Input");
       // res.redirect("/direct-input");
     })
     .catch(err => {
       console.log(err);
     });
-  const output = new Output();
-  // console.log(output.id);
+  // const output = new Output();
+  // // console.log(output.id);
   res.render("index", { pageTitle: "Output" });
 };
