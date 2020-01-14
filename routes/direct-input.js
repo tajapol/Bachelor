@@ -5,6 +5,5 @@ const directInputController = require("../controllers/directInputController");
 const router = express.Router();
 
 router.get("/direct-input", directInputController.getDirectInputPage);
-// router.post("/direct-input", directInputController.getInput);
 
 module.exports = router;

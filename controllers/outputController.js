@@ -1,14 +1,14 @@
 const Input = require("../models/inputModel");
 const Output = require("../models/outputModel");
 
-exports.postOutputPage = (req, res, next) => {
+exports.saveInputToDB = (req, res, next) => {
   const directInput = req.body.title;
   const input = new Input(directInput);
   const id = input.id;
   input
-    .getDataFromDB()
-    .then(inputs => {
-      console.log(inputs[0].directInput);
+    .save()
+    .then(result => {
+      console.log(result);
       console.log("Created Input");
       // res.redirect("/direct-input");
     })
@@ -16,6 +16,26 @@ exports.postOutputPage = (req, res, next) => {
       console.log(err);
     });
   // const output = new Output();
-  // // console.log(output.id);
+  // console.log(output.id);
+  // res.redirect("/direct-input");
+  next();
+};
+
+exports.postOutputPage = (req, res, next) => {
+  // const directInput = req.body.title;
+  // const input = new Input(directInput);
+  // const id = input.id;
+  // input
+  //   .formatInput()
+  //   .then(inputs => {
+  //     console.log("format comes");
+  //     // console.log("Created Input");
+  //     // res.redirect("/direct-input");
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
+  // const output = new Output();
+  // console.log(output.id);
   res.render("index", { pageTitle: "Output" });
 };

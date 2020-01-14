@@ -20,7 +20,7 @@ module.exports = class Input {
       .insertOne(this)
       .then(inputs => {
         const ini = this.getDataFromDB();
-        // console.log(ini.directInput);
+        console.log(ini.directInput);
       })
       .catch(err => {
         console.log(err);
@@ -34,8 +34,37 @@ module.exports = class Input {
       .find()
       .toArray()
       .then(dI => {
+        console.log(dI[0].directInput);
+        return dI;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  formatInput() {
+    const db = getDb();
+    return db
+      .collection("inputs")
+      .find()
+      .toArray()
+      .then(dI => {
         // console.log(dI[0].directInput);
         return dI;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  saveFormatedInput() {
+    const db = getDb();
+    return db
+      .collection("formatedInputs")
+      .insertOne(this)
+      .then(inputs => {
+        const ini = this.getDataFromDB();
+        // console.log(ini.directInput);
       })
       .catch(err => {
         console.log(err);
