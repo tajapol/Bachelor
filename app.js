@@ -26,7 +26,8 @@ app.set("views", "views");
 const formatRoutes = require("./routes/choose-format");
 const lpRoutes = require("./routes/lp");
 const uploadRoutes = require("./routes/choose-upload");
-const directInputRoute = require("./routes/input");
+const directInputRoute = require("./routes/direct-input");
+const fileUploadRoute = require("./routes/file-upload");
 const outputRoute = require("./routes/output");
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -41,6 +42,7 @@ app.use(lpRoutes);
 app.use(formatRoutes);
 app.use("/choose-upload", uploadRoutes);
 app.use(directInputRoute);
+app.use(fileUploadRoute);
 app.use(outputRoute);
 
 app.use(errorController.get404);

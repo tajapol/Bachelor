@@ -18,22 +18,46 @@ module.exports = class Input {
     return db
       .collection("inputs")
       .insertOne(this)
-      .then(result => {
-        // console.log(result);
+      .then(inputs => {
+        const ini = this.getDataFromDB();
+        // console.log(ini);
       })
       .catch(err => {
         console.log(err);
       });
   }
 
-  // save() {
-  //   fs.writeFile(p, this.directInput, err => {
-  //     console.log(err);
-  //     // console.log(this.id);
-  //     this.formatInput();
-  //   });
-  // }
+  getDataFromDB() {
+    const db = getDb();
+    return db
+      .collection("inputs")
+      .find()
+      .toArray()
+      .then(dI => {
+        console.log("hiiihi");
+        // console.log(dI[0].directInput);
+        return dI;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
+  // static formatInput() {
+  //   return db
+  //     .collection("inputs")
+  //     .findOne({
+  //       id: Input.id
+  //     })
+  //     .then(inputs => {
+  //       // const input = this.result;
+  //       console.log(inputs);
+  //       return inputs;
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }
   // formatInput() {
   //   var postcss = require("postcss");
   //   var stylelint = require("stylelint");

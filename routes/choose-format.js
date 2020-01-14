@@ -1,9 +1,9 @@
 const express = require("express");
 
-const formatController = require("../controllers/formatController");
+const chooseFormatController = require("../controllers/chooseFormatController");
 
 const router = express.Router();
 
-router.get("/choose-format", formatController.getFormatsPage);
+router.get("/choose-format", chooseFormatController.getFormatsPage);
 
 module.exports = router;

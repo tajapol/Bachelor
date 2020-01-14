@@ -1,12 +1,12 @@
 const express = require("express");
 
 // import presets controller
-const uploadController = require("../controllers/uploadController");
+const chooseUploadController = require("../controllers/chooseUploadController");
 
 const router = express.Router();
 
-router.get("/mobile", uploadController.getMobileFormat);
-router.get("/desktop", uploadController.getDesktopFormat);
-router.get("/mobileAndDesktop", uploadController.getMobileANdDesktopFormat);
+router.get("/mobile", chooseUploadController.getMobileFormat);
+router.get("/desktop", chooseUploadController.getDesktopFormat);
+router.get("/mobileAndDesktop", chooseUploadController.getMobileANdDesktopFormat);
 
 module.exports = router;

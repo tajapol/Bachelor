@@ -7,8 +7,8 @@ exports.postOutputPage = (req, res, next) => {
   const id = input.id;
   input
     .save()
-    .then(result => {
-      // console.log(result);
+    .then(inputs => {
+      // console.log();
       console.log("Created Input");
       // res.redirect("/direct-input");
     })
@@ -16,6 +16,6 @@ exports.postOutputPage = (req, res, next) => {
       console.log(err);
     });
   const output = new Output();
-  console.log(output.id);
+  // console.log(output.id);
   res.render("index", { pageTitle: "Output" });
 };
