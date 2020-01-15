@@ -18,9 +18,8 @@ module.exports = class Input {
     return db
       .collection("inputs")
       .insertOne(this)
-      .then(inputs => {
-        const ini = this.getDataFromDB();
-        console.log(ini.directInput);
+      .then(i => {
+        // const ini = this.getDataFromDB();
       })
       .catch(err => {
         console.log(err);
@@ -33,39 +32,35 @@ module.exports = class Input {
       .collection("inputs")
       .find()
       .toArray()
-      .then(dI => {
-        console.log(dI[0].directInput);
-        return dI;
+      .then(inputs => {
+        return inputs;
       })
       .catch(err => {
         console.log(err);
       });
   }
 
-  formatInput() {
-    const db = getDb();
-    return db
-      .collection("inputs")
-      .find()
-      .toArray()
-      .then(dI => {
-        // console.log(dI[0].directInput);
-        return dI;
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+  // formatInput() {
+  //   const db = getDb();
+  //   return db
+  //     .collection("inputs")
+  //     .find()
+  //     .toArray()
+  //     .then(dI => {
+  //       // console.log(dI[0].directInput);
+  //       return dI;
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }
 
   saveFormatedInput() {
     const db = getDb();
     return db
       .collection("formatedInputs")
       .insertOne(this)
-      .then(inputs => {
-        const ini = this.getDataFromDB();
-        // console.log(ini.directInput);
-      })
+      .then(inputs => {})
       .catch(err => {
         console.log(err);
       });
