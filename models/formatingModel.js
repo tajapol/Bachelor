@@ -21,11 +21,3 @@ module.exports = class Analyze {
       });
   }
 };
-
-doFormatInput = inputs => {
-  const formatInput = inputs[0].directInput;
-  console.log(formatInput);
-  return formatInput;
-};
-
-exports.doFormatInput = doFormatInput;
