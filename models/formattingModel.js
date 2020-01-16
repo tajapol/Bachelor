@@ -1,8 +1,6 @@
-const fs = require("fs");
-const path = require("path");
 const getDb = require("../util/database").getDb;
 
-module.exports = class Analyze {
+module.exports = class Formatting {
   constructor(f) {
     this.toFormat = f;
   }
