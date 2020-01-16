@@ -2,13 +2,21 @@ const path = require("path");
 
 const express = require("express");
 const expressHbs = require("express-handlebars");
+const session = require("express-session");
+
 const bodyParser = require("body-parser");
+
 const mongoConnect = require("./util/database").mongoConnect;
+const MongoDBStore = require("connect-mongodb-session")(session);
 
 // import error controller
 const errorController = require("./controllers/errorController");
 
 const app = express();
+const store = new MongoDBStore({
+  uri: "mongodb+srv://tajapol:bachelor@pukki-122bn.mongodb.net/test?retryWrites=true&w=majority",
+  collection: "sessions"
+});
 
 //register templating engine
 app.engine(
@@ -30,7 +38,9 @@ const directInputRoute = require("./routes/direct-input");
 const fileUploadRoute = require("./routes/file-upload");
 const outputRoute = require("./routes/output");
 
+//middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({ secret: "my secret", resave: false, saveUninitialized: false, store: store }));
 
 //serve static files
 app.use(express.static(path.join(__dirname, "public")));
