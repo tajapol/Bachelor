@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const mongoConnect = require("./util/database").mongoConnect;
 
 // import error controller
-const errorController = require("./controllers/error");
+const errorController = require("./controllers/errorController");
 
 const app = express();
 

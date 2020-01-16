@@ -2,7 +2,12 @@ const fs = require("fs");
 const path = require("path");
 const getDb = require("../util/database").getDb;
 
-module.exports = class Analyze {
+//path input
+const p = path.join(path.dirname(process.mainModule.filename), "data", "input.css");
+//path formatedInput
+const p2 = path.join(path.dirname(process.mainModule.filename), "data", "formatedInput.css");
+
+module.exports = class FormatedInput {
   constructor(f) {
     this.toFormat = f;
   }
@@ -21,11 +26,3 @@ module.exports = class Analyze {
       });
   }
 };
-
-doFormatInput = inputs => {
-  const formatInput = inputs[0].directInput;
-  console.log(formatInput);
-  return formatInput;
-};
-
-exports.doFormatInput = doFormatInput;
