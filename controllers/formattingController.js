@@ -2,11 +2,15 @@ const Formatting = require("../models/formattingModel");
 const getDb = require("../util/database").getDb;
 
 exports.getInput = (req, res, next) => {
+  if (req.session.sessionStarted != true) {
+    req.session.sessionStarted = true;
+  }
+  const sessionId = req.sessionID;
   const formatting = new Formatting();
   formatting
     .getDataFromDB()
     .then(dbData => {
-      doFormatInput(dbData);
+      getCurrentInput(dbData, sessionId);
     })
     .catch(err => {
       console.log(err);
@@ -14,8 +18,18 @@ exports.getInput = (req, res, next) => {
   next();
 };
 
-doFormatInput = inputs => {
-  const toformatInput = inputs[0].directInput;
+getCurrentInput = (dbData, sessionId) => {
+  for (var i = 0; i < dbData.length; i++) {
+    if (dbData[i].sID == sessionId) {
+      const currentInput = dbData[i].directInput;
+      doFormatInput(currentInput);
+    }
+    i++;
+  }
+};
+
+doFormatInput = currentInput => {
+  const toformatInput = currentInput;
 
   var postcss = require("postcss");
   var stylelint = require("stylelint");
