@@ -1,5 +1,4 @@
 exports.postOutputPage = (req, res, next) => {
-  const sessionId = req.sessionID;
-  Session.endSession();
+  req.session.destroy();
   res.render("index", { pageTitle: "Output" });
 };
