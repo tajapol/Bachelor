@@ -1,35 +1,36 @@
 const Formatting = require("../models/formattingModel");
 const getDb = require("../util/database").getDb;
+const formatting = new Formatting();
 
 exports.getInput = (req, res, next) => {
   if (req.session.sessionStarted != true) {
     req.session.sessionStarted = true;
   }
   const sessionId = req.sessionID;
-  deleteInput();
-  const formatting = new Formatting();
-  formatting.getDataFromDB();
+  formatting.validation = true;
+  // console.log(formatting.validation);
+
   formatting
     .getDataFromDB()
     .then(dbData => {
-      // console.log(sessionId);
-
       getCurrentInput(dbData, sessionId);
     })
     .catch(err => {
       console.log(err);
     });
-  next();
+  setTimeout(function() {
+    next();
+  }, 10000);
 };
 
 getCurrentInput = (dbData, sessionId) => {
   console.log(dbData);
-  console.log(sessionId);
   for (var i = 0; i < dbData.length; i++) {
-    if (dbData[0].sID == sessionId) {
-      let currentInput = dbData[0].directInput;
+    if (dbData[i].sID == sessionId) {
+      let currentInput = dbData[i].directInput;
 
       doFormatInput(currentInput);
+      console.log(currentInput);
     }
     i++;
   }
@@ -55,9 +56,12 @@ doFormatInput = currentInput => {
     .process(toformatInput, { from: toformatInput })
     .then(formatedInput => {
       saveFormIn(formatedInput.css);
-      deleteInput();
     })
-    .catch(err => console.error(err.stack));
+    .catch(err => {
+      console.error(err.stack);
+      formatting.validation = false;
+    });
+  removeInput();
 };
 
 saveFormIn = formatedInput => {
@@ -71,10 +75,22 @@ saveFormIn = formatedInput => {
     });
 };
 
-const deleteInput = () => {
+const removeInput = () => {
   const db = getDb();
   db.collection("inputs").remove(function(err, delOK) {
     if (err) throw err;
-    if (delOK) console.log("Collection deleted");
+    // if (delOK) console.log("Input removed");
   });
+};
+
+exports.getValidation = (req, res, next) => {
+  // const formatting = new Formatting();
+  console.log(formatting.validation);
+  if (formatting.validation == false) {
+    res.status(422).render("index", { pageTitle: "choose Upload", uploadChoosen: true, inputUpload: true });
+  } else {
+    req.session.destroy();
+    res.render("index", { pageTitle: "Output" });
+  }
+  formatting.validation == null;
 };

@@ -1,7 +1,8 @@
 const getDb = require("../util/database").getDb;
 
 module.exports = class Formatting {
-  constructor(f) {
+  constructor(v, f) {
+    this.validation = v;
     this.toFormat = f;
   }
 

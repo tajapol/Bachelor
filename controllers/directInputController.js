@@ -8,9 +8,9 @@ exports.getDirectInputPage = (req, res, next) => {
 };
 
 exports.saveInputToDB = (req, res, next) => {
-  // if (req.session.sessionStarted != true) {
-  //   req.session.sessionStarted = true;
-  // }
+  if (req.session.sessionStarted != true) {
+    req.session.sessionStarted = true;
+  }
   const directInput = req.body.title;
   const id = req.sessionID;
   const input = new Input(directInput, id);
