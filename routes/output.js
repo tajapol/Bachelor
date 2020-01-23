@@ -7,9 +7,10 @@ const outputController = require("../controllers/outputController");
 const router = express.Router();
 
 router.post("/output", directInputController.saveInputToDB);
+
 router.post("/output", formattingController.getInput);
 router.post("/output", formattingController.getValidation);
 
-// router.post("/output", outputController.postOutputPage);
+router.post("/output", outputController.postOutputPage);
 
 module.exports = router;
