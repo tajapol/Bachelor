@@ -37,7 +37,8 @@ const lpRoutes = require("./routes/lp");
 const uploadRoutes = require("./routes/choose-upload");
 const directInputRoute = require("./routes/direct-input");
 const fileUploadRoute = require("./routes/file-upload");
-const outputRoute = require("./routes/output");
+const directOutputRoute = require("./routes/direct-output");
+const fileOutputRoute = require("./routes/file-output");
 
 //middlewares
 // parsing texts
@@ -58,7 +59,8 @@ app.use(formatRoutes);
 app.use("/choose-upload", uploadRoutes);
 app.use(directInputRoute);
 app.use(fileUploadRoute);
-app.use(outputRoute);
+app.use(directOutputRoute);
+app.use(fileOutputRoute);
 
 app.use(errorController.get404);
 

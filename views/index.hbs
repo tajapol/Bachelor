@@ -129,7 +129,7 @@
                             <h3>Upload a local file to proof your design</h3>
                         </div>
                         <div>
-                            <form class="upload-form" action="/output" method="post" enctype="multipart/form-data">
+                            <form class="upload-form" action="/file-output" method="post" enctype="multipart/form-data">
                                 <div>
                                     <label for="file">Local CSS file: </label>
                                     <input name="file" type="file" id="file">
@@ -145,7 +145,7 @@
                         </div>
 
                         <div>
-                            <form action="/output" method="POST">
+                            <form action="/direct-output" method="POST">
                                 <div>
                                     <label for="directInput" class="input-label">Title</label>
                                     <textarea name="directInput">{{oldInput}}</textarea>
