@@ -7,6 +7,7 @@ exports.getFileUploadPage = (req, res, next) => {
   res.render("index", { pageTitle: "choose Upload", uploadChoosen: true, fileUpload: true });
 };
 
-exports.saveUploadedFile = (req, res, next) => {
-  const uploadedFile = req.body.file;
+exports.postUploadedFile = (req, res, next) => {
+  const uploadedFile = req.file;
+  next();
 };

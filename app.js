@@ -5,6 +5,7 @@ const expressHbs = require("express-handlebars");
 const session = require("express-session");
 
 const bodyParser = require("body-parser");
+const multer = require("multer");
 
 const mongoConnect = require("./util/database").mongoConnect;
 const MongoDBStore = require("connect-mongodb-session")(session);
@@ -41,6 +42,9 @@ const outputRoute = require("./routes/output");
 //middlewares
 // parsing texts
 app.use(bodyParser.urlencoded({ extended: false }));
+// parsing ONE file
+app.use(multer({ dest: "files" }).single("file"));
+
 app.use(session({ secret: "my secret", resave: false, saveUninitialized: false, store: store }));
 
 //serve static files
