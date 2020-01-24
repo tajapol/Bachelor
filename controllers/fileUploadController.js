@@ -9,5 +9,9 @@ exports.getFileUploadPage = (req, res, next) => {
 
 exports.postUploadedFile = (req, res, next) => {
   const uploadedFile = req.file;
-  next();
+  if (!uploadedFile) {
+    res.status(422).render("index", { pageTitle: "choose Upload", uploadChoosen: true, fileUpload: true, noFile: true });
+  } else {
+    next();
+  }
 };

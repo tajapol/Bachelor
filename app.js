@@ -10,7 +10,6 @@ const multer = require("multer");
 const mongoConnect = require("./util/database").mongoConnect;
 const MongoDBStore = require("connect-mongodb-session")(session);
 
-// import error controller
 const errorController = require("./controllers/errorController");
 
 const app = express();
@@ -18,6 +17,16 @@ const store = new MongoDBStore({
   uri: "mongodb+srv://tajapol:bachelor@pukki-122bn.mongodb.net/test?retryWrites=true&w=majority",
   collection: "sessions"
 });
+
+//accept css only, seperate const for better structrue
+// if right mimetype, accept it
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === "file/css") {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
 
 //register templating engine
 app.engine(
@@ -44,7 +53,7 @@ const fileOutputRoute = require("./routes/file-output");
 // parsing texts
 app.use(bodyParser.urlencoded({ extended: false }));
 // parsing ONE file
-app.use(multer({ dest: "files" }).single("file"));
+app.use(multer({ dest: "files", fileFilter: fileFilter }).single("file"));
 
 app.use(session({ secret: "my secret", resave: false, saveUninitialized: false, store: store }));
 
