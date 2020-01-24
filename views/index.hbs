@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/index.css" />
     <script src="/js/errorClient.js"></script>
     <script src="/js/indexClient.js"></script>
+
 </head>
 
 <body>
@@ -138,18 +139,27 @@
                         </div>
 
                         {{else}}
+
                         <div>
                             <h3>Enter your CSS code directly to proof your design</h3>
                         </div>
+
                         <div>
                             <form action="/output" method="POST">
                                 <div>
                                     <label class="input-label">Title</label>
-                                    <textarea name="directInput"></textarea>
+                                    <textarea name="directInput">{{oldInput}}</textarea>
                                 </div>
                                 <button class="go" type="submit">Go</button>
                             </form>
                         </div>
+
+                        {{#if redirected}}
+                        <div class="validation">
+                            <h4> Please only enter semantically correct css code.</h4>
+                        </div>
+
+                        {{/if}}
 
                         {{/if}}
                         {{else}}

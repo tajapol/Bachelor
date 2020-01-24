@@ -30,6 +30,11 @@
   font-weight: $h3-font-weight;
 }
 
+@mixin base-h4() {
+  font-size: $h4-font-size;
+  color: $h4-color;
+}
+
 @mixin base-main() {
   display: $main-display;
   grid-template-columns: $main-grid-template-columns;

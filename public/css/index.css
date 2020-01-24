@@ -25,6 +25,14 @@ h3 {
   font-family: "Marion";
   font-weight: 200; }
 
+h4 {
+  font-size: 2.5em;
+  color: white;
+  font-family: "Marion";
+  font-weight: 200;
+  font-size: 2rem;
+  color: #9f0505; }
+
 img {
   margin: 7% auto 4% auto;
   width: 17%; }
@@ -85,7 +93,7 @@ div div div {
   margin-bottom: 3%; }
 
 div h3 {
-  margin: auto; }
+  margin: -2% auto 0 auto; }
 
 div img {
   width: 10%;
@@ -128,3 +136,10 @@ textarea {
   height: 75px;
   width: 75px;
   border-radius: 49%; }
+
+.validation {
+  width: 40%;
+  padding: 1%;
+  background-color: white;
+  border-style: solid;
+  border-color: #9f0505; }

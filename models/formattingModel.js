@@ -1,16 +1,17 @@
 const getDb = require("../util/database").getDb;
 
-module.exports = class Input {
-  constructor(dInput, id) {
-    this.directInput = dInput;
-    this.sID = id;
+module.exports = class Formatting {
+  constructor(v, f) {
+    this.validation = v;
+    this.toFormat = f;
   }
 
-  saveInput() {
+  saveFormIn() {
     const db = getDb();
     return db
       .collection("inputs")
-      .insertOne(this)
+      .find()
+      .toArray()
       .then(inputs => {
         return inputs;
       })

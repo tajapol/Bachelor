@@ -26,6 +26,11 @@ h3 {
   @include base-h3;
 }
 
+h4 {
+  @include base-h3;
+  @include base-h4;
+}
+
 img {
   margin: 7% auto 4% auto;
   width: 17%;
@@ -92,7 +97,7 @@ div div div {
 }
 
 div h3 {
-  margin: auto;
+  margin: -2% auto 0 auto;
 }
 
 div img {
@@ -144,4 +149,12 @@ textarea {
   height: 75px;
   width: 75px;
   border-radius: 49%;
+}
+
+.validation {
+  width: 40%;
+  padding: 1%;
+  background-color: $white;
+  border-style: solid;
+  border-color: $red;
 }

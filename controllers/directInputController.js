@@ -11,7 +11,7 @@ exports.saveInputToDB = (req, res, next) => {
   if (req.session.sessionStarted != true) {
     req.session.sessionStarted = true;
   }
-  const directInput = req.body.title;
+  const directInput = req.body.dire;
   const id = req.sessionID;
   const input = new Input(directInput, id);
   input
