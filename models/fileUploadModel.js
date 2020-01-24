@@ -1,17 +1,17 @@
 const getDb = require("../util/database").getDb;
 
 module.exports = class FileUpload {
-  constructor(fUpload) {
-    this.uploadedFile = fUpload;
+  constructor(fu) {
+    this.uploadedFile = fu;
   }
 
   saveInput() {
     const db = getDb();
     return db
-      .collection("inputs")
+      .collection("uploads")
       .insertOne(this)
-      .then(inputs => {
-        return inputs;
+      .then(uploadedFile => {
+        return uploadedFile;
       })
       .catch(err => {
         console.log(err);

@@ -5,16 +5,16 @@ module.exports = class DirectInput {
     this.directInput = dInput;
   }
 
-  saveInput() {
-    const db = getDb();
-    return db
-      .collection("inputs")
-      .insertOne(this)
-      .then(inputs => {
-        return inputs;
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+  // saveInput() {
+  //   const db = getDb();
+  //   return db
+  //     .collection("inputs")
+  //     .insertOne(this)
+  //     .then(inputs => {
+  //       return inputs;
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }
 };

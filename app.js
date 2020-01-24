@@ -43,7 +43,7 @@ const fileOutputRoute = require("./routes/file-output");
 // parsing texts
 app.use(bodyParser.urlencoded({ extended: false }));
 // parsing ONE file
-app.use(multer({ dest: "data/files" }).single("file"));
+app.use(multer({ dest: "files" }).single("file"));
 
 app.use(session({ secret: "my secret", resave: false, saveUninitialized: false, store: store }));
 

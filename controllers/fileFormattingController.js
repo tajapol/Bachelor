@@ -1,40 +1,23 @@
 const Formatting = require("../models/formattingModel");
-const getDb = require("../util/database").getDb;
 const formatting = new Formatting();
 
-exports.getInput = (req, res, next) => {
+exports.getDirecInput = (req, res, next) => {
   if (req.session.sessionStarted != true) {
     req.session.sessionStarted = true;
   }
-  const sessionId = req.sessionID;
-  formatting.validation = true;
 
-  formatting
-    .getDataFromDB()
-    .then(dbData => {
-      getCurrentInput(dbData, sessionId);
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  formatting.validation = true;
+  const currentUpload = req.file;
+  console.log(currentUpload);
+  const formatedUpload = doFormatUpload(currentUpload);
+
   setTimeout(function() {
     next();
-  }, 5000);
+  }, 3000);
 };
 
-getCurrentInput = (dbData, sessionId) => {
-  for (var i = 0; i < dbData.length; i++) {
-    if (dbData[i].sID == sessionId) {
-      let currentInput = dbData[i].directInput;
-      doFormatInput(currentInput);
-      console.log(currentInput);
-    }
-    i++;
-  }
-};
-
-doFormatInput = currentInput => {
-  const toformatInput = currentInput;
+doFormatUpload = currentUpload => {
+  const toformatUpload = currentUpload;
   let postcss = require("postcss");
 
   postcss([
@@ -44,44 +27,35 @@ doFormatInput = currentInput => {
     require("postcss-cssnext"),
     require("postcss-reporter")({ clearReportedMessages: true })
   ])
-    .process(toformatInput, { from: toformatInput })
-    .then(formatedInput => {
-      saveFormIn(formatedInput.css);
+    .process(toformatUpload, { from: toformatUpload })
+    .then(formatedUpload => {
+      saveFormIn(formatedUpload.css);
     })
     .catch(err => {
       console.error("no CSS");
       formatting.validation = false;
     });
-  removeInput();
 };
 
-saveFormIn = formatedInput => {
+saveFormIn = formatedUpload => {
+  const getDb = require("../util/database").getDb;
   const db = getDb();
   return db
-    .collection("formatedInputs")
-    .insertOne({ formatedInput: formatedInput })
-    .then(formatedInput => {})
+    .collection("formatedUploads")
+    .insertOne({ formatedUpload: formatedUpload })
+    .then(formatedUpload => {})
     .catch(err => {
       console.log(err);
     });
 };
 
-const removeInput = () => {
-  const db = getDb();
-  db.collection("inputs").remove(function(err, delOK) {
-    if (err) throw err;
-    if (delOK) console.log("Input removed");
-  });
-};
-
 exports.getValidation = (req, res, next) => {
-  const userInput = req.body.directInput;
-  console.log(userInput);
-  console.log("käse");
+  const directInput = req.body.directInput;
+
   if (formatting.validation == false) {
-    res.status(422).render("index", { pageTitle: "choose Upload", uploadChoosen: true, inputUpload: true });
+    res.status(422).render("index", { pageTitle: "choose Upload", uploadChoosen: true, fileUpload: true, redirected: true });
   } else {
     next();
   }
-  formatting.validation == null;
+  formatting.validation = null;
 };
