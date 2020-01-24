@@ -18,16 +18,6 @@ const store = new MongoDBStore({
   collection: "sessions"
 });
 
-//accept css only, seperate const for better structrue
-// if right mimetype, accept it
-const fileFilter = (req, file, cb) => {
-  if (file.mimetype === "file/css") {
-    cb(null, true);
-  } else {
-    cb(null, false);
-  }
-};
-
 //register templating engine
 app.engine(
   "hbs",
@@ -53,7 +43,7 @@ const fileOutputRoute = require("./routes/file-output");
 // parsing texts
 app.use(bodyParser.urlencoded({ extended: false }));
 // parsing ONE file
-app.use(multer({ dest: "files", fileFilter: fileFilter }).single("file"));
+app.use(multer({ dest: "data/files" }).single("file"));
 
 app.use(session({ secret: "my secret", resave: false, saveUninitialized: false, store: store }));
 
