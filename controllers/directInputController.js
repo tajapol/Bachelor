@@ -1,4 +1,4 @@
-const Input = require("../models/inputModel");
+const Input = require("../models/directInputModel");
 
 exports.getDirectInputPage = (req, res, next) => {
   if (req.session.sessionStarted != true) {
@@ -8,12 +8,8 @@ exports.getDirectInputPage = (req, res, next) => {
 };
 
 exports.saveInputToDB = (req, res, next) => {
-  if (req.session.sessionStarted != true) {
-    req.session.sessionStarted = true;
-  }
-  const directInput = req.body.dire;
-  const id = req.sessionID;
-  const input = new Input(directInput, id);
+  const di = req.body.directInput;
+  const directnput = new DirectInput(di);
   input
     .saveInput()
     .then(inputs => {})

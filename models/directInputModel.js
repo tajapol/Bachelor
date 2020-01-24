@@ -1,9 +1,8 @@
 const getDb = require("../util/database").getDb;
 
-module.exports = class Input {
-  constructor(dInput, id) {
+module.exports = class DirectInput {
+  constructor(dInput) {
     this.directInput = dInput;
-    this.sID = id;
   }
 
   saveInput() {

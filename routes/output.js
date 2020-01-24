@@ -6,7 +6,7 @@ const outputController = require("../controllers/outputController");
 
 const router = express.Router();
 
-router.post("/output", formattingController.getInput);
+router.post("/output", formattingController.getDirecInput);
 router.post("/output", formattingController.getValidation);
 // router.post("/direct-input", directInputController.getDirectInputPage);
 

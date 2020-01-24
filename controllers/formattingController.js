@@ -1,7 +1,7 @@
 const Formatting = require("../models/formattingModel");
 const formatting = new Formatting();
 
-exports.getInput = (req, res, next) => {
+exports.getDirecInput = (req, res, next) => {
   if (req.session.sessionStarted != true) {
     req.session.sessionStarted = true;
   }

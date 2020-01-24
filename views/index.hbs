@@ -131,8 +131,8 @@
                         <div>
                             <form class="upload-form" action="/output" method="post" enctype="multipart/form-data">
                                 <div>
-                                    <label>Local CSS file: </label>
-                                    <input name="datei" type="file" accept="text/*">
+                                    <label for="file">Local CSS file: </label>
+                                    <input name="file" type="file" id="file">
                                 </div>
                                 <button class="go">Go</button>
                             </form>
@@ -147,7 +147,7 @@
                         <div>
                             <form action="/output" method="POST">
                                 <div>
-                                    <label class="input-label">Title</label>
+                                    <label for="directInput" class="input-label">Title</label>
                                     <textarea name="directInput">{{oldInput}}</textarea>
                                 </div>
                                 <button class="go" type="submit">Go</button>
