@@ -21,7 +21,7 @@ const store = new MongoDBStore({
 //configuration object (uploaded file storage)
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "data/uploadedFiles");
+    cb(null, "uploadedFiles");
   },
   filename: (req, file, cb) => {
     cb(null, file.fieldname + "-" + file.originalname);
