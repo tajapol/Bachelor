@@ -29,7 +29,7 @@ doFormatUpload = currentUpload => {
   ])
     .process(toformatUpload, { from: toformatUpload })
     .then(formatedUpload => {
-      saveFormIn(formatedUpload.css);
+      saveFormatted(formatedUpload.css);
     })
     .catch(err => {
       console.error("no CSS");
@@ -37,7 +37,7 @@ doFormatUpload = currentUpload => {
     });
 };
 
-saveFormIn = formatedUpload => {
+saveFormatted = formatedUpload => {
   const getDb = require("../util/database").getDb;
   const db = getDb();
   return db

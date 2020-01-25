@@ -18,6 +18,16 @@ const store = new MongoDBStore({
   collection: "sessions"
 });
 
+//configuration object (uploaded file storage)
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "data/uploadedFiles");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + "-" + file.originalname);
+  }
+});
+
 //register templating engine
 app.engine(
   "hbs",
@@ -43,7 +53,7 @@ const fileOutputRoute = require("./routes/file-output");
 // parsing texts
 app.use(bodyParser.urlencoded({ extended: false }));
 // parsing ONE file
-app.use(multer({ dest: "files" }).single("file"));
+app.use(multer({ storage: fileStorage }).single("file"));
 
 app.use(session({ secret: "my secret", resave: false, saveUninitialized: false, store: store }));
 

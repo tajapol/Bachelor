@@ -28,7 +28,7 @@ doFormatInput = currentInput => {
   ])
     .process(toformatInput, { from: toformatInput })
     .then(formatedInput => {
-      saveFormIn(formatedInput.css);
+      saveFormatted(formatedInput.css);
     })
     .catch(err => {
       console.error("no CSS");
@@ -36,7 +36,7 @@ doFormatInput = currentInput => {
     });
 };
 
-saveFormIn = formatedInput => {
+saveFormatted = formatedInput => {
   const getDb = require("../util/database").getDb;
   const db = getDb();
   return db
