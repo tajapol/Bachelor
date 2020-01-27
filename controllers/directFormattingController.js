@@ -8,7 +8,7 @@ exports.getDirecInput = (req, res, next) => {
 
   formatting.validation = true;
   const currentInput = req.body.directInput;
-  const formatedInput = doFormatInput(currentInput);
+  doFormatInput(currentInput);
 
   setTimeout(function() {
     next();
@@ -28,7 +28,7 @@ doFormatInput = currentInput => {
   ])
     .process(toformatInput, { from: toformatInput })
     .then(formatedInput => {
-      saveFormatted(formatedInput.css);
+      formatting.saveFormatted(formatedInput.css);
     })
     .catch(err => {
       console.error("no CSS");

@@ -18,15 +18,26 @@ const store = new MongoDBStore({
   collection: "sessions"
 });
 
-//configuration object (uploaded file storage)
+//configuration object (uploadedFile storage)
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "uploadedFiles");
   },
   filename: (req, file, cb) => {
-    cb(null, file.fieldname + "-" + file.originalname);
+    cb(null, new Date().toISOString() + "-" + file.originalname);
   }
 });
+
+//configuration object (only css accepted)
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === "text/css") {
+    //accept file
+    cb(null, true);
+  } else {
+    //don't accept file
+    cb(null, false);
+  }
+};
 
 //register templating engine
 app.engine(
@@ -53,8 +64,7 @@ const fileOutputRoute = require("./routes/file-output");
 // parsing texts
 app.use(bodyParser.urlencoded({ extended: false }));
 // parsing ONE file
-app.use(multer({ storage: fileStorage }).single("file"));
-
+app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single("file"));
 app.use(session({ secret: "my secret", resave: false, saveUninitialized: false, store: store }));
 
 //serve static files

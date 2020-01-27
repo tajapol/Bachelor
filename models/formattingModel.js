@@ -1,19 +1,17 @@
-const getDb = require("../util/database").getDb;
-
 module.exports = class Formatting {
   constructor(v, f) {
     this.validation = v;
     this.toFormat = f;
   }
 
-  saveFormIn() {
+  saveFormatted(f) {
+    const getDb = require("../util/database").getDb;
     const db = getDb();
     return db
-      .collection("inputs")
-      .find()
-      .toArray()
-      .then(inputs => {
-        return inputs;
+      .collection("formatted")
+      .insertOne({ formattedContent: f })
+      .then(formatedUpload => {
+        return formatedUpload;
       })
       .catch(err => {
         console.log(err);
