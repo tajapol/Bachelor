@@ -10,9 +10,7 @@ exports.getUploadedFile = (req, res, next) => {
   const currentUpload = req.file.path;
   doFormatUpload(currentUpload);
 
-  setTimeout(function() {
-    next();
-  }, 3000);
+  next();
 };
 
 doFormatUpload = currentUpload => {
@@ -49,5 +47,4 @@ exports.getValidation = (req, res, next) => {
   } else {
     next();
   }
-  // formatting.validation = null;
 };

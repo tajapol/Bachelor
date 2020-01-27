@@ -5,16 +5,16 @@ module.exports = class FileUpload {
     this.uploadedFile = fu;
   }
 
-  saveInput() {
-    const db = getDb();
-    return db
-      .collection("uploads")
-      .insertOne(this)
-      .then(uploadedFile => {
-        return uploadedFile;
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
+  // saveInput() {
+  //   const db = getDb();
+  //   return db
+  //     .collection("uploads")
+  //     .insertOne(this)
+  //     .then(uploadedFile => {
+  //       return uploadedFile;
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }
 };

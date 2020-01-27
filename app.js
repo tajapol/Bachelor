@@ -60,7 +60,7 @@ const fileUploadRoute = require("./routes/file-upload");
 const directOutputRoute = require("./routes/direct-output");
 const fileOutputRoute = require("./routes/file-output");
 
-//middlewares
+//installed middlewares
 // parsing texts
 app.use(bodyParser.urlencoded({ extended: false }));
 // parsing ONE file

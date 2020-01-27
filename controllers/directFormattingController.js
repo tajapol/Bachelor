@@ -10,9 +10,7 @@ exports.getDirecInput = (req, res, next) => {
   const currentInput = req.body.directInput;
   doFormatInput(currentInput);
 
-  setTimeout(function() {
-    next();
-  }, 3000);
+  next();
 };
 
 doFormatInput = currentInput => {
@@ -36,18 +34,6 @@ doFormatInput = currentInput => {
     });
 };
 
-saveFormatted = formatedInput => {
-  const getDb = require("../util/database").getDb;
-  const db = getDb();
-  return db
-    .collection("formatedInputs")
-    .insertOne({ formatedInput: formatedInput })
-    .then(formatedInput => {})
-    .catch(err => {
-      console.log(err);
-    });
-};
-
 exports.getValidation = (req, res, next) => {
   const directInput = req.body.directInput;
 
@@ -62,5 +48,4 @@ exports.getValidation = (req, res, next) => {
   } else {
     next();
   }
-  formatting.validation = null;
 };
