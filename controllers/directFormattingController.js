@@ -1,20 +1,21 @@
 const Formatting = require("../models/formattingModel");
 const formatting = new Formatting();
 
-exports.getDirecInput = (req, res, next) => {
-  if (req.session.sessionStarted != true) {
-    req.session.sessionStarted = true;
+exports.postDirectInput = (req, res, next) => {
+  if (!req.body.directInput) {
+    res.status(422).render("index", {
+      pageTitle: "choose Upload",
+      uploadChoosen: true,
+      inputUpload: true,
+      noInput: true
+    });
+  } else {
+    next();
   }
-
-  formatting.validation = true;
-  const currentInput = req.body.directInput;
-  doFormatInput(currentInput);
-
-  next();
 };
 
-doFormatInput = currentInput => {
-  const toformatInput = currentInput;
+exports.doFormatting = (req, res, next) => {
+  const toformatInput = req.body.directInput;
   let postcss = require("postcss");
 
   postcss([
@@ -27,10 +28,12 @@ doFormatInput = currentInput => {
     .process(toformatInput, { from: toformatInput })
     .then(formatedInput => {
       formatting.saveFormatted(formatedInput.css);
+      next();
     })
     .catch(err => {
       console.error("no CSS");
       formatting.validation = false;
+      next();
     });
 };
 
@@ -48,4 +51,5 @@ exports.getValidation = (req, res, next) => {
   } else {
     next();
   }
+  formatting.validation = true;
 };
