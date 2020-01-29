@@ -5,5 +5,6 @@ const fileUploadController = require("../controllers/fileUploadController");
 const router = express.Router();
 
 router.get("/file-upload", fileUploadController.getFileUploadPage);
+router.post("/file-output", fileUploadController.postUploadedFile);
 
 module.exports = router;
