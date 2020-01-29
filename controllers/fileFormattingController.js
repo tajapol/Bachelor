@@ -23,11 +23,12 @@ exports.doFormatting = (req, res, next) => {
   ])
     .process(toformatUpload, { from: toformatUpload })
     .then(formatedUpload => {
-      formatting.saveFormatted(formatedUpload.css).then(req => {
-        deleteFile(req), next();
-      });
+      formatting.saveFormatted(formatedUpload.css);
+      deleteFile(req);
+      next();
     })
     .catch(err => {
+      console.error("no CSS");
       formatting.validation = false;
       next();
     });
