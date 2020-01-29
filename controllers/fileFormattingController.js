@@ -1,3 +1,4 @@
+const fs = require("fs");
 const Formatting = require("../models/formattingModel");
 const formatting = new Formatting();
 
@@ -10,7 +11,6 @@ exports.postUploadedFile = (req, res, next) => {
 };
 
 exports.doFormatting = (req, res, next) => {
-  const fs = require("fs");
   let postcss = require("postcss");
   const toformatUpload = fs.readFileSync(req.file.path, "utf8");
 
@@ -23,17 +23,11 @@ exports.doFormatting = (req, res, next) => {
   ])
     .process(toformatUpload, { from: toformatUpload })
     .then(formatedUpload => {
-      formatting.saveFormatted(formatedUpload.css);
-      fs.unlinkSync(req.file.path, err => {
-        if (err) {
-          console.error(err);
-          return;
-        }
+      formatting.saveFormatted(formatedUpload.css).then(req => {
+        deleteFile(req), next();
       });
-      next();
     })
     .catch(err => {
-      console.error("no CSS");
       formatting.validation = false;
       next();
     });
@@ -41,9 +35,19 @@ exports.doFormatting = (req, res, next) => {
 
 exports.getValidation = (req, res, next) => {
   if (formatting.validation == false) {
+    deleteFile(req);
     res.status(422).render("index", { pageTitle: "choose Upload", uploadChoosen: true, fileUpload: true, redirected: true });
   } else {
     next();
   }
   formatting.validation = true;
+};
+
+deleteFile = req => {
+  fs.unlinkSync(req.file.path, err => {
+    if (err) {
+      throw new Error(err);
+      return;
+    }
+  });
 };

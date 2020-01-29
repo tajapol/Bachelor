@@ -81,6 +81,7 @@ app.use(fileUploadRoute);
 app.use(directOutputRoute);
 app.use(fileOutputRoute);
 
+app.use("/500", errorController.get500);
 app.use(errorController.get404);
 
 mongoConnect(() => {
