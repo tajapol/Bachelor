@@ -45,7 +45,8 @@ p {
   grid-column-start: 1;
 }
 
-.lpSection div {
+.lpSection div,
+.output {
   display: grid;
   margin: 2% auto;
   width: 70%;
@@ -157,4 +158,22 @@ textarea {
   background-color: $white;
   border-style: solid;
   border-color: $red;
+}
+
+.outputDiv {
+  margin-top: -10%;
+}
+
+.senteces {
+  color: $petrol;
+  font-weight: bold;
+  margin-bottom: -2%;
+}
+
+.output {
+  margin-top: -2%;
+
+  display: inline;
+  background-color: white;
+  width: 60%;
 }

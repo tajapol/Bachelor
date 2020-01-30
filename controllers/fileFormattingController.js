@@ -2,9 +2,6 @@ const fs = require("fs");
 const Formatting = require("../models/formattingModel");
 const formatting = new Formatting();
 
-const Analyze = require("../models/analyzeModel");
-const analyze = new Analyze();
-
 exports.doFormatting = (req, res, next) => {
   let postcss = require("postcss");
   const toformatUpload = fs.readFileSync(req.file.path, "utf8");
@@ -19,8 +16,11 @@ exports.doFormatting = (req, res, next) => {
     .process(toformatUpload, { from: toformatUpload })
     .then(formatedUpload => {
       formatting.saveFormatted(formatedUpload.css);
-      // const analyze = new Analyze();
-      // analyze.doAnalyze(formatedUpload.css);
+
+      const Analyze = require("../models/analyzeModel");
+      const analyze = new Analyze();
+      analyze.doAnalyze(formatedUpload.css);
+
       deleteFile(req);
       next();
     })
@@ -48,10 +48,4 @@ deleteFile = req => {
       return;
     }
   });
-};
-
-exports.getAnalyze = (req, res, next) => {
-  const analyze = new Analyze();
-  analyze.doAnalyze(formatedUpload.css);
-  next();
 };

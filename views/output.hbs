@@ -14,7 +14,10 @@
 
 <body>
     <main>
+
+
         <section>
+
             <h1>presettings</h1>
             <section>
                 <h2>small icons</h2>
@@ -28,15 +31,25 @@
             </section>
 
 
-            <div class="content">
+            <div class="outputDiv">
+
                 <div>
                     <div>
-                        <h3>output</h3>
+                        <h3>Output</h3>
                     </div>
+
                     <div>
-                        <div>
-                            <p>
-                                {{analyze}}
+                        {{#if color}}
+                        <div class="output">
+                            <p class="senteces">
+                                colors:
+                                <p>{{color}}</p>
+                            </p>
+                            {{/if}}
+
+                            <p class="senteces">
+                                fonts:
+                                <p>{{fonts}}</p>
                             </p>
                         </div>
                     </div>

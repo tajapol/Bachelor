@@ -28,12 +28,16 @@ exports.doFormatting = (req, res, next) => {
     .process(toformatInput, { from: toformatInput })
     .then(formatedInput => {
       formatting.saveFormatted(formatedInput.css);
+
+      const Analyze = require("../models/analyzeModel");
+      const analyze = new Analyze();
+      analyze.doAnalyze(formatedInput.css);
+
       next();
     })
     .catch(err => {
       console.error("no CSS");
       formatting.validation = false;
-      deleteFile(req);
       next();
     });
 };
@@ -42,7 +46,6 @@ exports.getValidation = (req, res, next) => {
   const directInput = req.body.directInput;
 
   if (formatting.validation == false) {
-    deleteFile(req);
     res.status(422).render("index", {
       pageTitle: "choose Upload",
       uploadChoosen: true,
@@ -54,13 +57,4 @@ exports.getValidation = (req, res, next) => {
     next();
   }
   formatting.validation = true;
-};
-
-deleteFile = req => {
-  fs.unlinkSync(req.file.path, err => {
-    if (err) {
-      throw new Error(err);
-      return;
-    }
-  });
 };
