@@ -85,6 +85,8 @@ section img {
   top: 31%;
   left: 10%;
   right: 10%;
+  max-height: 600px;
+  overflow: scroll;
 }
 
 div div {
@@ -160,10 +162,6 @@ textarea {
   border-color: $red;
 }
 
-.outputDiv {
-  margin-top: -10%;
-}
-
 .senteces {
   color: $petrol;
   font-weight: bold;
@@ -171,9 +169,7 @@ textarea {
 }
 
 .output {
-  margin-top: -2%;
-
   display: inline;
-  background-color: white;
   width: 60%;
+  background-color: white;
 }

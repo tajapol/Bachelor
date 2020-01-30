@@ -83,7 +83,9 @@ section img {
   position: fixed;
   top: 31%;
   left: 10%;
-  right: 10%; }
+  right: 10%;
+  max-height: 600px;
+  overflow: scroll; }
 
 div div {
   display: block;
@@ -145,16 +147,12 @@ textarea {
   border-style: solid;
   border-color: #9f0505; }
 
-.outputDiv {
-  margin-top: -10%; }
-
 .senteces {
   color: #034b5f;
   font-weight: bold;
   margin-bottom: -2%; }
 
 .output {
-  margin-top: -2%;
   display: inline;
-  background-color: white;
-  width: 60%; }
+  width: 60%;
+  background-color: white; }

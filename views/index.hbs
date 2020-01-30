@@ -15,7 +15,7 @@
 <body>
     <main>
         {{#if landingPage}}
-        <img src="../assets/logo.png" alt="logo" />
+        <img class="logo" src="../assets/logo.png" alt="logo" />
 
         <section class="lpSection">
             <h1>landingPage</h1>
@@ -137,16 +137,15 @@
                                 <button class="go">Go</button>
                             </form>
                         </div>
-
                         {{#if noFile}}
                         <div class="validation">
-                            <h4> Please upload a css file.</h4>
+                            <h4> Please upload a file.</h4>
                         </div>
                         {{/if}}
 
                         {{#if redirected}}
                         <div class="validation">
-                            <h4> Please only enter semantically correct css code.</h4>
+                            <h4> Please only enter semantically correct css files.</h4>
                         </div>
                         {{/if}}
 
@@ -166,13 +165,6 @@
                             </form>
                         </div>
 
-                        {{#if noInput}}
-                        <div class="validation">
-                            <h4> Please enter your css code.</h4>
-                        </div>
-                        {{/if}}
-
-
                         {{#if redirected}}
                         <div class="validation">
                             <h4> Please only enter semantically correct css code.</h4>
@@ -180,6 +172,47 @@
                         {{/if}}
 
                         {{/if}}
+                        {{else}}
+                        {{!-- <div>
+                            <h3>Output</h3>
+                        </div> --}}
+
+                        <div>
+                            <div class="output">
+
+                                <p class="senteces">
+                                    The analysis of your colors showed the following:
+                                </p>
+                                <p>{{color}}</p>
+
+                                <p class="senteces">
+                                    The analysis of your fonts showed the following:
+                                </p>
+                                <p>{{fonts}}</p>
+
+
+                                <p class="senteces">
+                                    The analysis of your colors showed the following:
+                                </p>
+                                <p>{{color}}</p>
+
+                                <p class="senteces">
+                                    The analysis of your fonts showed the following:
+                                </p>
+                                <p>{{fonts}}</p>
+
+
+                                <p class="senteces">
+                                    The analysis of your colors showed the following:
+                                </p>
+                                <p>{{color}}</p>
+
+                                <p class="senteces">
+                                    The analysis of your fonts showed the following:
+                                </p>
+                                <p>{{fonts}}</p>
+                            </div>
+                        </div>
                         {{/if}}
                     </div>
                 </div>
