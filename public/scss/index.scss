@@ -22,7 +22,8 @@ h2 {
   display: none;
 }
 
-h3 {
+h3,
+h5 {
   @include base-h3;
 }
 
@@ -80,13 +81,12 @@ section img {
   @include base-main-img;
 }
 
-.content {
+.content,
+.output {
   position: fixed;
   top: 31%;
   left: 10%;
   right: 10%;
-  max-height: 600px;
-  overflow: scroll;
 }
 
 div div {
@@ -162,14 +162,23 @@ textarea {
   border-color: $red;
 }
 
+.output {
+  margin-top: -5%;
+}
+
+.output div {
+  width: 95%;
+}
+
+.outputContent {
+  display: inline;
+  background-color: white;
+  max-height: 600px;
+  overflow: scroll;
+}
+
 .senteces {
   color: $petrol;
   font-weight: bold;
   margin-bottom: -2%;
-}
-
-.output {
-  display: inline;
-  width: 60%;
-  background-color: white;
 }

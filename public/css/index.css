@@ -19,7 +19,8 @@ h1,
 h2 {
   display: none; }
 
-h3 {
+h3,
+h5 {
   font-size: 2.5em;
   color: white;
   font-family: "Marion";
@@ -79,13 +80,12 @@ section img {
   width: 3.5rem;
   cursor: pointer; }
 
-.content {
+.content,
+.output {
   position: fixed;
   top: 31%;
   left: 10%;
-  right: 10%;
-  max-height: 600px;
-  overflow: scroll; }
+  right: 10%; }
 
 div div {
   display: block;
@@ -147,12 +147,19 @@ textarea {
   border-style: solid;
   border-color: #9f0505; }
 
+.output {
+  margin-top: -5%; }
+
+.output div {
+  width: 95%; }
+
+.outputContent {
+  display: inline;
+  background-color: white;
+  max-height: 600px;
+  overflow: scroll; }
+
 .senteces {
   color: #034b5f;
   font-weight: bold;
   margin-bottom: -2%; }
-
-.output {
-  display: inline;
-  width: 60%;
-  background-color: white; }

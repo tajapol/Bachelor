@@ -103,6 +103,45 @@
                 {{/if}}
             </section>
 
+            {{#if output}}
+            <div class="output">
+                <div>
+                    <div>
+                        <h3>Output</h3>
+                    </div>
+
+                    <div>
+                        <div class="outputContent">
+                            <p class="senteces">
+                                Your input:
+                                <p>{{input}}</p>
+                            </p>
+                            <p class="senteces">
+                                The analysis of your colors showed the following:
+                                <p>{{color}}</p>
+                            </p>
+                            <p class="senteces">
+                                The analysis of your fonts showed the following:
+                                <p>{{fonts}}</p>
+
+                                <p class="senteces">
+                                    Your input:
+                                    <p>{{input}}</p>
+                                </p>
+                                <p class="senteces">
+                                    The analysis of your colors showed the following:
+                                    <p>{{color}}</p>
+                                </p>
+                                <p class="senteces">
+                                    The analysis of your fonts showed the following:
+                                    <p>{{fonts}}</p>
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{else}}
             <div class="content">
                 <div>
                     {{#if formatNotChoosen}}
@@ -172,50 +211,10 @@
                         {{/if}}
 
                         {{/if}}
-                        {{else}}
-                        {{!-- <div>
-                            <h3>Output</h3>
-                        </div> --}}
-
-                        <div>
-                            <div class="output">
-
-                                <p class="senteces">
-                                    The analysis of your colors showed the following:
-                                </p>
-                                <p>{{color}}</p>
-
-                                <p class="senteces">
-                                    The analysis of your fonts showed the following:
-                                </p>
-                                <p>{{fonts}}</p>
-
-
-                                <p class="senteces">
-                                    The analysis of your colors showed the following:
-                                </p>
-                                <p>{{color}}</p>
-
-                                <p class="senteces">
-                                    The analysis of your fonts showed the following:
-                                </p>
-                                <p>{{fonts}}</p>
-
-
-                                <p class="senteces">
-                                    The analysis of your colors showed the following:
-                                </p>
-                                <p>{{color}}</p>
-
-                                <p class="senteces">
-                                    The analysis of your fonts showed the following:
-                                </p>
-                                <p>{{fonts}}</p>
-                            </div>
-                        </div>
                         {{/if}}
                     </div>
                 </div>
+                {{/if}}
             </div>
         </section>
 
