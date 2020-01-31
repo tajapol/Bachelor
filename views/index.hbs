@@ -114,23 +114,23 @@
 
                         <div class="outputContent">
                             <p class="senteces">
-                                Your input:
-                                {{#each input}}
-                                <p class="formattedInput">{{ this }}</p>
-                                {{/each}}
-                            </p>
+                                Your input: </p>
+                            {{#each input}}
+                            <p class="formattedInput">{{ this }}</p>
+                            {{/each}}
+
                         </div>
 
                         <div class="outputContent">
                             <p class="senteces">
-                                The analysis of your colors showed the following:
-                                <p>{{color}}</p>
-                            </p>
+                                The analysis of your colors showed the following: </p>
+                            <p>{{color}}</p>
+
 
                             <p class="senteces">
-                                The analysis of your fonts showed the following:
-                                <p>{{fonts}}</p>
-                            </p>
+                                The analysis of your fonts showed the following: </p>
+                            <p>{{fonts}}</p>
+
                         </div>
 
                     </div>
@@ -194,7 +194,7 @@
                             <form action="/direct-output" method="POST">
                                 <div>
                                     <label for="directInput" class="input-label">Title</label>
-                                    <textarea name="directInput">{{oldInput}}</textarea>
+                                    <textarea id="directInput" name="directInput">{{oldInput}}</textarea>
                                 </div>
                                 <button class="go" type="submit">Go</button>
                             </form>
