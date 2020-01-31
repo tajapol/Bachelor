@@ -110,11 +110,15 @@
                         <h3>Output</h3>
                     </div>
 
+
+
                     <div>
                         <div class="outputContent">
                             <p class="senteces">
                                 Your input:
-                                <p>{{input}}</p>
+                                {{#each input}}
+                                <p>{{ this }}</p>
+                                {{/each}}
                             </p>
                             <p class="senteces">
                                 The analysis of your colors showed the following:
@@ -124,18 +128,7 @@
                                 The analysis of your fonts showed the following:
                                 <p>{{fonts}}</p>
 
-                                <p class="senteces">
-                                    Your input:
-                                    <p>{{input}}</p>
-                                </p>
-                                <p class="senteces">
-                                    The analysis of your colors showed the following:
-                                    <p>{{color}}</p>
-                                </p>
-                                <p class="senteces">
-                                    The analysis of your fonts showed the following:
-                                    <p>{{fonts}}</p>
-                                </p>
+                            </p>
                         </div>
                     </div>
                 </div>

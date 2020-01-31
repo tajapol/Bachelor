@@ -10,8 +10,6 @@ module.exports = class Analyze {
 
     this.colors = analyzeColor(formattedInput);
     this.fonts = analyzeFont(formattedInput);
-    console.log(this.anaSaves);
-
     this.result.push(this.colors, this.fonts);
 
     return this.result;

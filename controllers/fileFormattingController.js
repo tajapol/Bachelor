@@ -21,7 +21,7 @@ exports.doFormatting = (req, res, next) => {
       const analyze = new Analyze();
       analyze.doAnalyze(formatedUpload.css);
 
-      deleteFile(req);
+      // deleteFile(req);
       next();
     })
     .catch(err => {
@@ -33,7 +33,7 @@ exports.doFormatting = (req, res, next) => {
 
 exports.getValidation = (req, res, next) => {
   if (formatting.validation == false) {
-    deleteFile(req);
+    // deleteFile(req);
     res.status(422).render("index", { pageTitle: "choose Upload", uploadChoosen: true, fileUpload: true, redirected: true });
   } else {
     next();
