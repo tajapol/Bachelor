@@ -20,8 +20,6 @@ exports.doFormatting = (req, res, next) => {
       const Analyze = require("../models/analyzeModel");
       const analyze = new Analyze();
       analyze.doAnalyze(formatedUpload.css);
-
-      // deleteFile(req);
       next();
     })
     .catch(err => {
@@ -33,19 +31,15 @@ exports.doFormatting = (req, res, next) => {
 
 exports.getValidation = (req, res, next) => {
   if (formatting.validation == false) {
-    // deleteFile(req);
+    fs.unlinkSync(req.file.path, err => {
+      if (err) {
+        throw new Error(err);
+        return;
+      }
+    });
     res.status(422).render("index", { pageTitle: "choose Upload", uploadChoosen: true, fileUpload: true, redirected: true });
   } else {
     next();
   }
   formatting.validation = true;
-};
-
-deleteFile = req => {
-  fs.unlinkSync(req.file.path, err => {
-    if (err) {
-      throw new Error(err);
-      return;
-    }
-  });
 };

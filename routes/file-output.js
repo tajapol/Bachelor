@@ -9,6 +9,5 @@ router.post("/file-output", formattingController.doFormatting);
 router.post("/file-output", formattingController.getValidation);
 
 router.post("/file-output", outputController.postOutputPage);
-router.get("/file-output", outputController.postOutputPage);
 
 module.exports = router;

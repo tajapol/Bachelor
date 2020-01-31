@@ -34,6 +34,9 @@ h4 {
   font-size: 2rem;
   color: #9f0505; }
 
+.formattedInput {
+  font-size: 0.9rem; }
+
 img {
   margin: 7% auto 4% auto;
   width: 17%; }
@@ -150,16 +153,24 @@ textarea {
 .output {
   margin-top: -5%; }
 
-.output div {
-  width: 95%; }
-
 .outputContent {
   display: inline;
   background-color: white;
   max-height: 600px;
-  overflow: scroll; }
+  overflow: scroll;
+  margin: 2%; }
+
+.output div {
+  width: 95%; }
+
+.formattedInput {
+  font-family: "Courier New", Courier, monospace;
+  padding-bottom: 0.7%; }
 
 .senteces {
-  color: #034b5f;
+  color: #14af8f;
   font-weight: bold;
   margin-bottom: -2%; }
+
+.senteces:first-of-type {
+  margin: 0%; }

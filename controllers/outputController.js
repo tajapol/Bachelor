@@ -3,6 +3,7 @@ const fs = require("fs");
 es = require("event-stream");
 
 exports.postOutputPage = (req, res, next) => {
+  //get input, format it again for output
   const lines = [];
   const s = fs
     .createReadStream(req.file.path)
@@ -20,7 +21,6 @@ exports.postOutputPage = (req, res, next) => {
         })
         .on("end", function() {
           console.log("Finish reading.");
-          console.log(lines);
         })
     );
 
@@ -35,10 +35,6 @@ exports.postOutputPage = (req, res, next) => {
     fonts: result[1]
   });
   req.session.destroy();
-  deleteFile(req);
-};
-
-deleteFile = req => {
   fs.unlinkSync(req.file.path, err => {
     if (err) {
       throw new Error(err);
@@ -47,15 +43,11 @@ deleteFile = req => {
   });
 };
 
-// splitArray = req => {
-//   var fs = require("fs");
-//   fs.readFile(req.file.path, function(err, data) {
-//     if (err) throw err;
-//     var array = data.toString().split("\r\n");
-//     for (i in array) {
-//       // console.log(array[i]);
-//       return array[i];
+// deleteFile = req => {
+//   fs.unlinkSync(req.file.path, err => {
+//     if (err) {
+//       throw new Error(err);
+//       return;
 //     }
-//     done();
 //   });
 // };

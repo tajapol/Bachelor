@@ -32,6 +32,10 @@ h4 {
   @include base-h4;
 }
 
+.formattedInput {
+  font-size: 0.9rem;
+}
+
 img {
   margin: 7% auto 4% auto;
   width: 17%;
@@ -166,19 +170,30 @@ textarea {
   margin-top: -5%;
 }
 
+.outputContent {
+  display: inline;
+  background-color: white;
+  // width: 90%;
+  max-height: 600px;
+  overflow: scroll;
+  margin: 2%;
+}
+
 .output div {
   width: 95%;
 }
 
-.outputContent {
-  display: inline;
-  background-color: white;
-  max-height: 600px;
-  overflow: scroll;
+.formattedInput {
+  font-family: "Courier New", Courier, monospace;
+  padding-bottom: 0.7%;
 }
 
 .senteces {
-  color: $petrol;
+  color: $türkis;
   font-weight: bold;
   margin-bottom: -2%;
+}
+
+.senteces:first-of-type {
+  margin: 0%;
 }
