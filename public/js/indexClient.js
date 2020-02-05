@@ -21,7 +21,7 @@
     const bothButtons = Array.from(document.getElementsByClassName("both"));
     bothButtons.forEach(function(elem) {
       elem.addEventListener("click", () => {
-        window.location = "/choose-upload/mobileAndDesktop";
+        window.location = "/choose-upload/mobile-and-desktop";
       });
     });
 
@@ -33,18 +33,54 @@
     });
 
     const fileButtons = Array.from(document.getElementsByClassName("file"));
-    fileButtons.forEach(function(elem) {
-      elem.addEventListener("click", () => {
-        window.location = "/file-upload";
+    if (window.location.href == "http://localhost:3001/choose-upload/mobile") {
+      fileButtons.forEach(function(elem) {
+        elem.addEventListener("click", () => {
+          window.location = "/mobile/file-upload";
+        });
       });
-    });
+    }
+
+    if (window.location.href == "http://localhost:3001/choose-upload/desktop") {
+      fileButtons.forEach(function(elem) {
+        elem.addEventListener("click", () => {
+          window.location = "/desktop/file-upload";
+        });
+      });
+    }
+
+    if (window.location.href == "http://localhost:3001/choose-upload/mobile-and-desktop") {
+      fileButtons.forEach(function(elem) {
+        elem.addEventListener("click", () => {
+          window.location = "/mobile-and-desktop/file-upload";
+        });
+      });
+    }
 
     const inputButtons = Array.from(document.getElementsByClassName("input"));
-    inputButtons.forEach(function(elem) {
-      elem.addEventListener("click", () => {
-        window.location = "/direct-input";
+    if (window.location.href == "http://localhost:3001/choose-upload/mobile") {
+      inputButtons.forEach(function(elem) {
+        elem.addEventListener("click", () => {
+          window.location = "/mobile/direct-input";
+        });
       });
-    });
+    }
+
+    if (window.location.href == "http://localhost:3001/choose-upload/desktop") {
+      inputButtons.forEach(function(elem) {
+        elem.addEventListener("click", () => {
+          window.location = "/desktop/direct-input";
+        });
+      });
+    }
+
+    if (window.location.href == "http://localhost:3001/choose-upload/mobile-and-desktop") {
+      inputButtons.forEach(function(elem) {
+        elem.addEventListener("click", () => {
+          window.location = "/mobile-and-desktop/direct-input";
+        });
+      });
+    }
 
     document.getElementById("start").addEventListener("click", () => {
       window.location = "/choose-format";

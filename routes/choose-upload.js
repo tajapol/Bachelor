@@ -7,6 +7,6 @@ const router = express.Router();
 
 router.get("/mobile", chooseUploadController.getMobileFormat);
 router.get("/desktop", chooseUploadController.getDesktopFormat);
-router.get("/mobileAndDesktop", chooseUploadController.getMobileANdDesktopFormat);
+router.get("/mobile-and-desktop", chooseUploadController.getMobileANdDesktopFormat);
 
 module.exports = router;
