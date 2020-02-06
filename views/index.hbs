@@ -199,6 +199,12 @@
                             </form>
                         </div>
 
+                        {{#if noInput}}
+                        <div class="validation">
+                            <h4> Please enter your code.</h4>
+                        </div>
+                        {{/if}}
+
                         {{#if redirected}}
                         <div class="validation">
                             <h4> Please only enter semantically correct css code.</h4>
