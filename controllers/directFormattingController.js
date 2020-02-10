@@ -28,11 +28,7 @@ exports.doFormatting = (req, res, next) => {
     .process(toformatInput, { from: toformatInput })
     .then(formatedInput => {
       formatting.saveFormatted(formatedInput.css);
-
-      const Analyze = require("../models/analyzeModel");
-      const analyze = new Analyze();
-      analyze.doAnalyze(formatedInput.css);
-
+      res.locals.formatted = formatedUpload.css;
       next();
     })
     .catch(err => {

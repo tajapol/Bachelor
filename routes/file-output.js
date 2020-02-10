@@ -8,6 +8,7 @@ const router = express.Router();
 router.post("/file-output", formattingController.doFormatting);
 router.post("/file-output", formattingController.getValidation);
 
+router.post("/file-output", outputController.getColorsDB);
 router.post("/file-output", outputController.postOutputPage);
 
 module.exports = router;

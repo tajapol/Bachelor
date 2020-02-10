@@ -1,6 +1,21 @@
 const Analyze = require("../models/analyzeModel");
+const ana = new Analyze();
+const Colors = require("../models/ColorsModel");
+const c = new Colors();
+
 const fs = require("fs");
 es = require("event-stream");
+
+exports.getColorsDB = (req, res, next) => {
+  Colors.getColors()
+    .then(colors => {
+      res.locals.colorsDB = colors;
+      next();
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
 exports.postOutputPage = (req, res, next) => {
   //get input, format String for output
@@ -38,7 +53,8 @@ exports.postOutputPage = (req, res, next) => {
   }
 
   const ana = new Analyze();
-  const result = ana.doAnalyze();
+  // console.log()
+  const result = ana.doAnalyze(res.locals.formatted, res.locals.colorsDB);
 
   res.render("index", {
     pageTitle: "Output",
