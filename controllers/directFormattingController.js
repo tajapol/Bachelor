@@ -1,19 +1,6 @@
 const Formatting = require("../models/formattingModel");
 const formatting = new Formatting();
 
-exports.postDirectInput = (req, res, next) => {
-  if (!req.body.directInput) {
-    res.status(422).render("index", {
-      pageTitle: "choose Upload",
-      uploadChoosen: true,
-      inputUpload: true,
-      noInput: true
-    });
-  } else {
-    next();
-  }
-};
-
 exports.doFormatting = (req, res, next) => {
   const toformatInput = req.body.directInput;
   let postcss = require("postcss");
@@ -28,7 +15,7 @@ exports.doFormatting = (req, res, next) => {
     .process(toformatInput, { from: toformatInput })
     .then(formatedInput => {
       formatting.saveFormatted(formatedInput.css);
-      res.locals.formatted = formatedUpload.css;
+      res.locals.formatted = formatedInput.css;
       next();
     })
     .catch(err => {

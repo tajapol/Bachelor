@@ -1,21 +1,7 @@
 const Analyze = require("../models/analyzeModel");
-const ana = new Analyze();
-const Colors = require("../models/ColorsModel");
-const c = new Colors();
 
 const fs = require("fs");
 es = require("event-stream");
-
-exports.getColorsDB = (req, res, next) => {
-  Colors.getColors()
-    .then(colors => {
-      res.locals.colorsDB = colors;
-      next();
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
 
 exports.postOutputPage = (req, res, next) => {
   //get input, format String for output
@@ -53,8 +39,19 @@ exports.postOutputPage = (req, res, next) => {
   }
 
   const ana = new Analyze();
-  // console.log()
-  const result = ana.doAnalyze(res.locals.formatted, res.locals.colorsDB);
+  const result = ana.doAnalyze(
+    res.locals.formatted,
+    res.locals.colorsDB,
+    res.locals.yellowDB,
+    res.locals.blueDB,
+    res.locals.brownDB,
+    res.locals.grayDB,
+    res.locals.greenDB,
+    res.locals.orangeDB,
+    res.locals.redDB,
+    res.locals.violettDB,
+    res.locals.whiteDB
+  );
 
   res.render("index", {
     pageTitle: "Output",

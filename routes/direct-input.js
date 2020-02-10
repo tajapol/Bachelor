@@ -7,5 +7,6 @@ const router = express.Router();
 router.get("/mobile/direct-input", directInputController.getDirectInputPage);
 router.get("/desktop/direct-input", directInputController.getDirectInputPage);
 router.get("/mobile-and-desktop/direct-input", directInputController.getDirectInputPage);
+router.post("/direct-output", directInputController.postDirectInput);
 
 module.exports = router;
