@@ -1,11 +1,6 @@
 const Colors = require("../models/colorsModel");
 const c = new Colors();
-const Fonts = require("../models/fontsModel");
-const f = new Fonts();
 
-const fs = require("fs");
-
-//Colors////////////////////////////////////////////////
 exports.getColorsDB = (req, res, next) => {
   c.getColors()
     .then(colors => {

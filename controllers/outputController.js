@@ -1,4 +1,5 @@
-const Analyze = require("../models/analyzeModel");
+const ColorAnalyze = require("../models/anaColorsModel");
+const FontAnalyze = require("../models/anaFontsModel");
 
 const fs = require("fs");
 es = require("event-stream");
@@ -38,9 +39,7 @@ exports.postOutputPage = (req, res, next) => {
     lines = input.split("\n");
   }
 
-  const ana = new Analyze();
-
-  let dbData = {
+  let dbColorData = {
     formatted: res.locals.formatted,
     colorsDB: res.locals.colorsDB,
     yellowDB: res.locals.yellowDB,
@@ -51,7 +50,10 @@ exports.postOutputPage = (req, res, next) => {
     orangeDB: res.locals.orangeDB,
     redDB: res.locals.redDB,
     violettDB: res.locals.violettDB,
-    whiteDB: res.locals.whiteDB,
+    whiteDB: res.locals.whiteDB
+  };
+
+  let dbFontsData = {
     fontsDB: res.locals.fontsDB,
     serifDB: res.locals.serifDB,
     sansSerifDB: res.locals.sansSerifDB,
@@ -59,14 +61,17 @@ exports.postOutputPage = (req, res, next) => {
     fantasyDB: res.locals.fantasyDB
   };
 
-  const result = ana.doAnalyze(dbData);
+  const anaColors = new ColorAnalyze();
+  const anaFonts = new FontAnalyze();
+  const resultColors = anaColors.doAnalyzeColors(dbColorData);
+  const resultFonts = anaFonts.doAnalyzeFonts(dbFontsData);
 
   res.render("index", {
     pageTitle: "Output",
     output: true,
     input: lines,
-    color: result[0],
-    fonts: result[1]
+    color: resultColors[0],
+    fonts: resultFonts[0]
   });
   req.session.destroy();
 };

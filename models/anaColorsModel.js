@@ -1,17 +1,12 @@
-const Colors = require("./colorsModel");
-const c = new Colors();
-const fs = require("fs");
-
 module.exports = class Analyze {
   constructor() {
-    this.result = [];
+    this.resultColors = [];
   }
 
-  doAnalyze(dbData) {
+  doAnalyzeColors(dbData) {
     const colorsAna = analyzeColors(dbData);
-    const fontsAna = analyzeFonts(dbData);
-    this.result.push(colorsAna, fontsAna);
-    return this.result;
+    this.resultColors.push(colorsAna);
+    return this.resultColors;
   }
 };
 
@@ -28,18 +23,8 @@ analyzeColors = dbData => {
   const violettDB = dbData.violettDB;
   const whiteDB = dbData.whiteDB;
 
+  console.log(formatted);
+
   const colorResult = "green";
   return colorResult;
-};
-
-analyzeFonts = dbData => {
-  const fontsDB = dbData.fontsDB;
-  const seriffDB = dbData.serifDB;
-  const sanssSerifDB = dbData.sansSerifDB;
-  const monospaceDB = dbData.monospaceDB;
-  const fantasyDB = dbData.fantasyDB;
-
-  console.log(fantasyDB);
-  const font = "Marion";
-  return font;
 };
