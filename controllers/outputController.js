@@ -39,19 +39,27 @@ exports.postOutputPage = (req, res, next) => {
   }
 
   const ana = new Analyze();
-  const result = ana.doAnalyze(
-    res.locals.formatted,
-    res.locals.colorsDB,
-    res.locals.yellowDB,
-    res.locals.blueDB,
-    res.locals.brownDB,
-    res.locals.grayDB,
-    res.locals.greenDB,
-    res.locals.orangeDB,
-    res.locals.redDB,
-    res.locals.violettDB,
-    res.locals.whiteDB
-  );
+
+  let dbData = {
+    formatted: res.locals.formatted,
+    colorsDB: res.locals.colorsDB,
+    yellowDB: res.locals.yellowDB,
+    blueDB: res.locals.blueDB,
+    brownDB: res.locals.brownDB,
+    grayDB: res.locals.grayDB,
+    greenDB: res.locals.greenDB,
+    orangeDB: res.locals.orangeDB,
+    redDB: res.locals.redDB,
+    violettDB: res.locals.violettDB,
+    whiteDB: res.locals.whiteDB,
+    fontsDB: res.locals.fontsDB,
+    serifDB: res.locals.serifDB,
+    sansSerifDB: res.locals.sansSerifDB,
+    monospaceDB: res.locals.monospaceDB,
+    fantasyDB: res.locals.fantasyDB
+  };
+
+  const result = ana.doAnalyze(dbData);
 
   res.render("index", {
     pageTitle: "Output",

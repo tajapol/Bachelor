@@ -7,34 +7,39 @@ module.exports = class Analyze {
     this.result = [];
   }
 
-  doAnalyze(f, c, y, bl, br, gray, gr, o, r, v, w) {
-    const colorsAna = analyzeColor(f, c, y, bl, br, gray, gr, o, r, v, w);
-    const fontsAna = analyzeFont();
+  doAnalyze(dbData) {
+    const colorsAna = analyzeColors(dbData);
+    const fontsAna = analyzeFonts(dbData);
     this.result.push(colorsAna, fontsAna);
-
     return this.result;
   }
 };
 
-analyzeColor = (f, c, y, bl, br, gray, gr, o, r, v, w) => {
-  const formatted = f;
-  const allColors = c;
-  const yellowDB = y;
-  const blueDB = bl;
-  const brownDB = br;
-  const grayDB = gray;
-  const greenDB = gr;
-  const orangeDB = o;
-  const redDB = r;
-  const violettDB = v;
-  const whiteDB = w;
+analyzeColors = dbData => {
+  const formatted = dbData.formatted;
+  const allColors = dbData.colorsDB;
+  const yellowDB = dbData.yellowDB;
+  const blueDB = dbData.blueDB;
+  const brownDB = dbData.brownDB;
+  const grayDB = dbData.grayDB;
+  const greenDB = dbData.greenDB;
+  const orangeDB = dbData.orangeDB;
+  const redDB = dbData.redDB;
+  const violettDB = dbData.violettDB;
+  const whiteDB = dbData.whiteDB;
 
-  console.log(whiteDB);
   const colorResult = "green";
   return colorResult;
 };
 
-analyzeFont = () => {
+analyzeFonts = dbData => {
+  const fontsDB = dbData.fontsDB;
+  const seriffDB = dbData.serifDB;
+  const sanssSerifDB = dbData.sansSerifDB;
+  const monospaceDB = dbData.monospaceDB;
+  const fantasyDB = dbData.fantasyDB;
+
+  console.log(fantasyDB);
   const font = "Marion";
   return font;
 };

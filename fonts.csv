@@ -1,0 +1,53 @@
+fontfamily,name ,websafe
+serif,Gergioa,true
+serif,Palatino Linotype,true
+serif,Times New Roman,true
+serif,Book Antiqua,true
+serif,Palatino Linotype,true
+serif,Times New Roman,true
+sans-serif,Arial,true
+sans-serif,Helvetica,true
+sans-serif,Arial-Black,true
+sans-serif,Gadget,true
+sans-serif,Comic Sans MS,true
+sans-serif,Impact,true
+sans-serif,Lucida Sans Unicode,true
+sans-serif,Lucida Grande,true
+sans-serif,Tahoma,true
+sans-serif,Trebuchet MS,true
+sans-serif,Verdana,true
+sans-serif,Geneva,true
+monospace,Courier New,true
+monospace,Courier,true
+monospace,Lucida Console,true
+monospace,Monaco,true
+sans-serif,Arial Narrow,true
+sans-serif,Arial Rounded MT Bold,false
+sans-serif,Avant Garde,false
+sans-serif,Calibri,false
+sans-serif,Candra,false
+sans-serif,Century Gothic,false
+sans-serif,Franklin Gothic Medium,false
+sans-serif,Futura,false
+sans-serif,Gill Sans,false
+sans-serif,Impact,false
+sans-serif,Optima,false
+sans-serif,Segeo UI,false
+serif ,Big Caslon,false
+serif ,Bodoni MT,false
+serif ,Calisto MT,false
+serif ,Cambrio,false
+serif ,Didot,false
+serif ,Garamond,false
+serif ,Goudy Old Style,false
+serif ,Hoefler Text,false
+serif ,Lucida Bright,true
+serif ,Perpetua,false
+serif ,Rockwell,false
+serif ,Rockwell Extra Bold,false
+serif ,Baskerville,false
+monospace,Consolas,false
+monospace,Lucida Sans Typewriter,false
+monospace,Andele Mono,false
+fantasy,Cooperlate,false
+fantasy,Papyrus,false

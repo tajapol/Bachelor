@@ -18,7 +18,12 @@ router.post(
   analyzeController.getOrangeDB,
   analyzeController.getRedDB,
   analyzeController.getViolettDB,
-  analyzeController.getWhiteDB
+  analyzeController.getWhiteDB,
+  analyzeController.getFontsDB,
+  analyzeController.getSerifDB,
+  analyzeController.getSansSerifDB,
+  analyzeController.getMonospaceDB,
+  analyzeController.getFantasyDB
 );
 router.post("/direct-output", outputController.postOutputPage);
 
