@@ -54,6 +54,7 @@ exports.postOutputPage = (req, res, next) => {
   };
 
   let dbFontsData = {
+    formatted: res.locals.formatted,
     fontsDB: res.locals.fontsDB,
     serifDB: res.locals.serifDB,
     sansSerifDB: res.locals.sansSerifDB,

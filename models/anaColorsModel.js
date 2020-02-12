@@ -23,8 +23,6 @@ analyzeColors = dbData => {
   const violettDB = dbData.violettDB;
   const whiteDB = dbData.whiteDB;
 
-  console.log(formatted);
-
   const colorResult = "green";
   return colorResult;
 };

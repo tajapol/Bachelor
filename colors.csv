@@ -20,11 +20,11 @@ blue,DodgerBlue,#1E90FF,30/144/255
 blue,DodgerBlue2,#1C86EE,28/134/238
 blue,DodgerBlue3,#1874CD,24/116/205
 blue,DodgerBlue4,#104E8B,16/78/139
-blue,LightBlue,#ADD8E6,173/216/230
-blue,LightBlue1,#BFEFFF,191/239/255
-blue,LightBlue2,#B2DFEE,178/223/238
-blue,LightBlue3,#9AC0CD,154/192/205
-blue,LightBlue4,#68838B,104/131/139
+blue,Light-blue,#ADD8E6,173/216/230
+blue,Light-blue1,#BFEFFF,191/239/255
+blue,Light-blue2,#B2DFEE,178/223/238
+blue,Light-blue3,#9AC0CD,154/192/205
+blue,Light-blue4,#68838B,104/131/139
 blue,LightCyan,#E0FFFF,224/255/255
 blue,LightCyan2,#D1EEEE,209/238/238
 blue,LightCyan3,#B4CDCD,180/205/205

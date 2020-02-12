@@ -168,9 +168,9 @@ textarea {
   padding-bottom: 0.7%; }
 
 .senteces {
-  color: #14af8f;
+  color: #19c5f3;
   font-weight: bold;
-  margin-bottom: -2%; }
+  margin: 4% 0 -3% 0; }
 
 .senteces:first-of-type {
-  margin: 0%; }
+  margin-top: 0%; }

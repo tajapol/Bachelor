@@ -128,7 +128,10 @@
 
                             <p class="senteces">
                                 The analysis of your fonts showed the following: </p>
-                            <p>{{fonts}}</p>
+                            {{#each fonts}}
+                            <p>{{this}}</p>
+                            {{/each}}
+
 
                         </div>
 
@@ -173,7 +176,7 @@
                         </div>
                         {{#if noFile}}
                         <div class="validation">
-                            <h4> Please upload a file.</h4>
+                            <h4> Please upload a css file.</h4>
                         </div>
                         {{/if}}
 
