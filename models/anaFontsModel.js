@@ -13,7 +13,7 @@ module.exports = class Analyze {
 analyzeFonts = dbData => {
   let formatted = dbData.formatted;
   let fontAna = [];
-  let extractedFonts = [];
+  // let extractedFonts = [];
 
   const fontsDB = dbData.fontsDB;
   const seriffDB = dbData.serifDB;
@@ -23,16 +23,13 @@ analyzeFonts = dbData => {
 
   //extract all font-families and store it in an array
   let extracted = Object.values(formatted.match(/font-family:+(["'`a-zA-Z- ])*/g));
-  // let extractedFonts = extractFonts();
-
-  console.log(extractedFonts);
-  // }
+  let extractedFontNames = extractFonts(extracted);
 
   //Webtypografie s84
   // rule 1: 1-2 font types are enough
-  // if (searchDoubleFonts(extractedFonts) > 2) {
-  //   fontAna.push("You use more than 2 different fonts. In most cases this is not necessary.");
-  // }
+  if (uniqueFonts(extractedFontNames).length > 2) {
+    fontAna.push("You use more than 2 different fonts. In most cases this is not necessary.");
+  }
 
   //Webtypografie S84
   // serifen Schrift mit serfienfreier Schrift kombinieren
@@ -40,27 +37,17 @@ analyzeFonts = dbData => {
   return fontAna;
 };
 
-searchDoubleFonts = eF => {
-  let fonts = [];
-  for (i = 0; i < extracted.length; i++) {
-    extractedFonts.push[
-      extracted[i]
-        .replace("font-family: ", "")
-        .replace('"', "")
-        .replace('"', "")
-    ];
-    return fonts;
+extractFontNames = e => {
+  let fontnames = [];
+  for (i = 0; i < e.length; i++) {
+    const cutFF = e[i].slice(13);
+    fontnames.push(cutFF.replace(/"/g, ""));
   }
+  return fontnames;
 };
 
-searchDoubleFonts = eF => {
-  let duplos = 0;
-  for (var i = 0; i < eF.length; i++) {
-    for (var j = i + 1; j < eF.length; j++) {
-      if (eF[i] != eF[j]) {
-        duplos++;
-      }
-    }
-    return duplos;
-  }
+uniqueFonts = ef => {
+  return ef.filter(function(value, index, self) {
+    return ef.indexOf(value) === index;
+  });
 };
