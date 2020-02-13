@@ -41,7 +41,7 @@ fieldset {
 /* "" um die HTML schrift zu unterdrücken */
 a{
     font-size: 1.8rem;
-    font-family: "";
+    font-family: sans-serif;
 }
 
 li {

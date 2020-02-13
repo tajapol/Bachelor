@@ -1,5 +1,6 @@
 const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
+var config = require("config");
 
 let db;
 
@@ -9,11 +10,17 @@ const mongoConnect = callback => {
     useUnifiedTopology: true,
     useNewUrlParser: true
   })
+    // MongoClient.connect("mongodb://localhost:27017/bachlor", {
+    //   useUnifiedTopology: true,
+    //   useNewUrlParser: true
+    // })
+
     .then(client => {
       console.log("Connected!");
       db = client.db();
       callback();
     })
+
     .catch(err => {
       console.log(err);
       throw err;
