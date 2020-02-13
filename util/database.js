@@ -1,6 +1,5 @@
 const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
-var config = require("config");
 
 let db;
 

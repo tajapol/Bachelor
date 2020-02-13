@@ -9,7 +9,7 @@ const router = express.Router();
 router.post("/file-output", formattingController.doFormatting, formattingController.getValidation);
 
 router.post(
-  "/direct-output",
+  "/file-output",
   anaColorController.getColorsDB,
   anaColorController.getYellowDB,
   anaColorController.getBlueDB,
@@ -23,7 +23,7 @@ router.post(
 );
 
 router.post(
-  "/direct-output",
+  "/file-output",
   anaFontsController.getFontsDB,
   anaFontsController.getSerifDB,
   anaFontsController.getSansSerifDB,

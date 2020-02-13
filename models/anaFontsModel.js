@@ -23,7 +23,7 @@ analyzeFonts = dbData => {
 
   //extract all font-families and store it in an array
   let extracted = Object.values(formatted.match(/font-family:+(["'`a-zA-Z- ])*/g));
-  let extractedFontNames = extractFonts(extracted);
+  let extractedFontNames = extractNames(extracted);
 
   //Webtypografie s84
   // rule 1: 1-2 font types are enough
@@ -37,7 +37,7 @@ analyzeFonts = dbData => {
   return fontAna;
 };
 
-extractFontNames = e => {
+extractNames = e => {
   let fontnames = [];
   for (i = 0; i < e.length; i++) {
     const cutFF = e[i].slice(13);

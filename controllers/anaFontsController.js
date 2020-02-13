@@ -2,6 +2,7 @@ const Fonts = require("../models/fontsModel");
 const f = new Fonts();
 
 exports.getFontsDB = (req, res, next) => {
+  console.error("Fonts");
   f.getFonts()
     .then(fonts => {
       res.locals.fontsDB = fonts;
@@ -15,6 +16,7 @@ exports.getFontsDB = (req, res, next) => {
 exports.getSerifDB = (req, res, next) => {
   f.getSerif()
     .then(serif => {
+      console.log(serif);
       res.locals.serifDB = serif;
       next();
     })

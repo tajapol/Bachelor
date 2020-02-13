@@ -16,6 +16,7 @@ exports.doFormatting = (req, res, next) => {
     .then(formatedInput => {
       formatting.saveFormatted(formatedInput.css);
       res.locals.formatted = formatedInput.css;
+
       next();
     })
     .catch(err => {

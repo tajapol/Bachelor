@@ -62,6 +62,8 @@ exports.postOutputPage = (req, res, next) => {
     fantasyDB: res.locals.fantasyDB
   };
 
+  console.log(res.locals.fontsDB);
+
   const anaColors = new ColorAnalyze();
   const anaFonts = new FontAnalyze();
   const resultColors = anaColors.doAnalyzeColors(dbColorData);
