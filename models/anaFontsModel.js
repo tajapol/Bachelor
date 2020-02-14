@@ -21,8 +21,8 @@ analyzeFonts = dbData => {
 
   const fontsDB = dbData.fontsDB;
   const allFontNamesDb = fontNamesDB(fontsDB);
-
   const extractedInput = Object.values(formatted.match(/font-family:+(["'`a-zA-Z- ])*/g));
+
   const inputFontNames = extractInputNames(extractedInput);
   const usedFonts = uniqueFonts(inputFontNames);
 

@@ -22,14 +22,7 @@ router.post(
   anaColorController.getWhiteDB
 );
 
-router.post(
-  "/direct-output",
-  anaFontsController.getFontsDB,
-  anaFontsController.getSerifDB,
-  anaFontsController.getSansSerifDB,
-  anaFontsController.getMonospaceDB,
-  anaFontsController.getFantasyDB
-);
+router.post("/direct-output", anaFontsController.getFontsDB);
 router.post("/direct-output", outputController.postOutputPage);
 
 module.exports = router;
