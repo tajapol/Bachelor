@@ -32,6 +32,15 @@ h4 {
   @include base-h4;
 }
 
+p {
+  padding: 2%;
+  font-size: 1.3rem;
+}
+
+.analyze {
+  font-size: 1.1rem;
+}
+
 .formattedInput {
   font-size: 0.9rem;
 }
@@ -39,11 +48,6 @@ h4 {
 img {
   margin: 7% auto 2% auto;
   width: 17%;
-}
-
-p {
-  padding: 2%;
-  font-size: 1.3rem;
 }
 
 .back {
@@ -173,7 +177,6 @@ textarea {
 .outputContent {
   display: inline;
   background-color: white;
-  // width: 90%;
   max-height: 600px;
   overflow: scroll;
   margin: 2%;
@@ -183,7 +186,8 @@ textarea {
   width: 95%;
 }
 
-.formattedInput {
+.formattedInput,
+.outputContent {
   font-family: "Courier New", Courier, monospace;
   padding-bottom: 0.7%;
 }
@@ -196,4 +200,8 @@ textarea {
 
 .senteces:first-of-type {
   margin-top: 0%;
+}
+
+.analyze {
+  margin-bottom: -2%;
 }
