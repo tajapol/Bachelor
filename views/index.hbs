@@ -122,7 +122,9 @@
                         <div class="outputContent">
                             <p class="senteces">
                                 The analysis of your colors showed the following: </p>
-                            <p class="analyze">{{color}}</p>
+                            {{#each color}}
+                            <p class="analyze">{{this}}</p>
+                            {{/each}}
 
 
                             <p class="senteces">

@@ -11,6 +11,7 @@ router.post("/file-output", formattingController.doFormatting, formattingControl
 router.post(
   "/file-output",
   anaColorController.getColorsDB,
+
   anaColorController.getYellowDB,
   anaColorController.getBlueDB,
   anaColorController.getBrownDB,

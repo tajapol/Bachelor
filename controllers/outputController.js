@@ -55,11 +55,7 @@ exports.postOutputPage = (req, res, next) => {
 
   let dbFontsData = {
     formatted: res.locals.formatted,
-    fontsDB: res.locals.fontsDB,
-    serifDB: res.locals.serifDB,
-    sansSerifDB: res.locals.sansSerifDB,
-    monospaceDB: res.locals.monospaceDB,
-    fantasyDB: res.locals.fantasyDB
+    fontsDB: res.locals.fontsDB
   };
 
   const anaColors = new ColorAnalyze();

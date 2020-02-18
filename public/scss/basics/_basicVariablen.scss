@@ -18,14 +18,14 @@ $base-background-size: 100%;
 // color
 $petrol: rgba(3, 75, 95, 1);
 $blass: rgba(255, 255, 255, 0.4);
-$white: lighten($petrol, 100%);
-$black: darken($petrol, 100%);
+$white-white: lighten($petrol, 100%);
+$black-black: darken($petrol, 100%);
 $red: rgba(159, 5, 5, 1);
 $light-blue: rgba(25, 197, 243, 1);
 
 //fonts
 $h3-font-size: 2.5em;
-$h3-color: $white;
+$h3-color: $white-white;
 $h3-font-family: "Marion";
 $h3-font-weight: 200;
 
