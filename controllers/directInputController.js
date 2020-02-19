@@ -1,3 +1,5 @@
+let choosenFormat = "placeholder";
+
 exports.getDirectInputPage = (req, res, next) => {
   if (req.session.sessionStarted != true) {
     req.session.sessionStarted = true;
@@ -15,6 +17,13 @@ exports.postDirectInput = (req, res, next) => {
       noInput: true
     });
   } else {
+    if (choosenFormat.includes("mobile-and-desktop")) {
+      res.locals.choosenFormat = "both";
+    } else if (choosenFormat.includes("/mobile/file-upload")) {
+      res.locals.choosenFormat = "mobile";
+    } else {
+      res.locals.choosenFormat = "desktop";
+    }
     next();
   }
 };

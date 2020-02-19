@@ -17,6 +17,7 @@ exports.doFormatting = (req, res, next) => {
     .then(formatedUpload => {
       formatting.saveFormatted(formatedUpload.css);
       res.locals.formatted = formatedUpload.css;
+      res.locals.notFormatted = toformatUpload;
       next();
     })
     .catch(err => {

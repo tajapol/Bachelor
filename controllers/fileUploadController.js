@@ -1,4 +1,4 @@
-let choosenFormat = String;
+let choosenFormat = "placeholder";
 
 exports.getChoosenFormat = (req, res, next) => {
   choosenFormat = req.path;

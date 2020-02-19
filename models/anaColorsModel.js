@@ -15,36 +15,33 @@ analyzeColors = dbData => {
   let colorAna = [];
 
   const allColors = dbData.colorsDB;
-  const extracedInputRGB = formatted.match(/rgb+([a(0-9, ])*/g);
-  const extractedInputHEX = formatted.match(/#+([0-9a-zA-Z])*/g);
+  const checkColorUsed = formatted.match(/color: +([a-zA-Z])*/g);
+  let extracedInputRGB = proofNotNULL(formatted.match(/rgb+([a(0-9, ])*/g));
+  let extractedInputHEX = proofNotNULL(formatted.match(/#+([0-9a-zA-Z])*/g));
 
-  if (extracedInputRGB != null && extractedInputHEX != null) {
-    const usedRGB = unique(extractInputRGB(extracedInputRGB));
-    const usedHEX = unique(extractedInputHEX);
-    const usedColors = usedHEX.concat(usedRGB);
+  const usedRGB = unique(extractInputRGB(extracedInputRGB));
+  const usedHEX = unique(extractedInputHEX);
+  const usedColors = usedHEX.concat(usedRGB);
 
-    const badColors = unique(filterBadColors(formatted));
-    const usedShades = extractInputShades(allColors, usedColors);
+  const badColors = unique(filterBadColors(formatted));
+  const usedShades = extractInputShades(allColors, usedColors);
 
-    //////////////////////////////////// rule 1 only use rgb, rgba, hex //////////////////////////////////
-    if (badColors.length >= 1) {
-      colorAna.push("You use " + badColors + " instead of rgb or hex colors. You should change that.");
-    }
-
-    // ///////////////////https://birgithotz.com/website-farbkonzept////////////////////////////////
-    //////////////////////////////////// rule 2: max 2 colors (except black, white, gray) //////////////////////////////////
-
-    if (usedShades.length > 2) {
-      colorAna.push("You use more than 2 primarycolors. In most cases this is too much.");
-    }
-    console.log(badColors);
-    console.log(usedShades.length);
-
-    return colorAna;
-  } else {
-    colorAna.push("You didn't use any colors, that's why we can't analyze something.");
-    return colorAna;
+  //////////////////////////////////// rule 1 only use rgb, rgba, hex //////////////////////////////////
+  if (badColors.length >= 1) {
+    colorAna.push("You use " + badColors + " instead of rgb or hex colors. You should change that.");
   }
+
+  // ///////////////////https://birgithotz.com/website-farbkonzept////////////////////////////////
+  //////////////////////////////////// rule 2: max 2 colors (except black, white, gray) //////////////////////////////////
+
+  if (usedShades.length > 2) {
+    colorAna.push("You use more than 2 primarycolors. In most cases this is too much.");
+  }
+
+  if (extracedInputRGB.length == 0 && extractedInputHEX.length == 0 && checkColorUsed == null) {
+    colorAna.push("You didn't use any colors, that's why we can't analyze something.");
+  }
+  return colorAna;
 };
 
 // ///////////////////   Grundkurs gutes Webdesign S.333 ///////////////////////////////
@@ -91,8 +88,7 @@ unique = many => {
 
 filterBadColors = formatted => {
   const badFilter = ["color: rgb", "color: rgba", "background-color: rgb", "background-color: rgba", "background-color: ", "color: "];
-  const badColorsFiltered = formatted
-    .match(/color: +([a-zA-Z])*/g)
+  const badColorsFiltered = proofNotNULL(formatted.match(/color: +([a-zA-Z])*/g))
     .filter(item => item !== badFilter[0])
     .filter(item => item !== badFilter[1])
     .filter(item => item !== badFilter[2])
@@ -104,4 +100,10 @@ filterBadColors = formatted => {
     cutBadColors.push(bad.replace("color: ", ""));
   }
   return cutBadColors;
+};
+
+proofNotNULL = check => {
+  let saveRGB = [];
+  check ? (saveRGB = check) : (saveRGB = []);
+  return saveRGB;
 };

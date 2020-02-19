@@ -41,6 +41,7 @@ exports.postOutputPage = (req, res, next) => {
 
   let dbColorData = {
     formatted: res.locals.formatted,
+    notFormatted: res.locals.notFormatted,
     colorsDB: res.locals.colorsDB,
     yellowDB: res.locals.yellowDB,
     blueDB: res.locals.blueDB,
@@ -55,6 +56,7 @@ exports.postOutputPage = (req, res, next) => {
 
   let dbFontsData = {
     formatted: res.locals.formatted,
+    notFormatted: res.locals.notFormatted,
     fontsDB: res.locals.fontsDB,
     choosenFormat: res.locals.choosenFormat
   };
