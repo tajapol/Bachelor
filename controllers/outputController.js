@@ -55,7 +55,8 @@ exports.postOutputPage = (req, res, next) => {
 
   let dbFontsData = {
     formatted: res.locals.formatted,
-    fontsDB: res.locals.fontsDB
+    fontsDB: res.locals.fontsDB,
+    choosenFormat: res.locals.choosenFormat
   };
 
   const anaColors = new ColorAnalyze();

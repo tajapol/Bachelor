@@ -11,7 +11,9 @@ module.exports = class Analyze {
 };
 
 analyzeFonts = dbData => {
-  let formatted = dbData.formatted;
+  const formatted = dbData.formatted;
+  const choosenFormat = dbData.choosenFormat;
+
   let fontAna = [];
 
   const fontsDB = dbData.fontsDB;
@@ -104,6 +106,8 @@ analyzeFonts = dbData => {
           break;
       }
     }
+
+    //////////////////////////////////// rule 4: font-sizes //////////////////////////////////
     return fontAna;
   } else {
     fontAna.push("You didn't use any fonts, that's why we can't analyze something.");

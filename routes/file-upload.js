@@ -4,6 +4,10 @@ const fileUploadController = require("../controllers/fileUploadController");
 
 const router = express.Router();
 
+router.get("/mobile/file-upload", fileUploadController.getChoosenFormat);
+router.get("/desktop/file-upload", fileUploadController.getChoosenFormat);
+router.get("/mobile-and-desktop/file-upload", fileUploadController.getChoosenFormat);
+
 router.get("/mobile/file-upload", fileUploadController.getFileUploadPage);
 router.get("/desktop/file-upload", fileUploadController.getFileUploadPage);
 router.get("/mobile-and-desktop/file-upload", fileUploadController.getFileUploadPage);

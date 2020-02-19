@@ -1,0 +1,28 @@
+* {
+  box-sizing: content-box;
+  display: block;
+  margin: auto;
+}
+
+h1 {
+  background-color: aqua;
+  color: purple;
+
+  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 1);
+  color: rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 1);
+
+  color: #ffff00;
+  color: #cdcd00;
+  background-color: #ffff00;
+  background-color: #cdcd00;
+
+  color: rgba(0, 0, 0, 1);
+  color: rgb(0, 0, 0);
+  background-color: rgb(95, 158, 160);
+  background-color: rgba(10, 12, 13, 0.4);
+  background-color: rgb(139, 158, 168);
+}

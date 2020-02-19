@@ -47,6 +47,9 @@ analyzeColors = dbData => {
   }
 };
 
+// ///////////////////   Grundkurs gutes Webdesign S.333 ///////////////////////////////
+//////////////////////////////////// rule 3: contrast //////////////////////////////////
+
 extractInputRGB = eRGB => {
   let rgb = [];
   for (let e of eRGB) {
@@ -102,33 +105,3 @@ filterBadColors = formatted => {
   }
   return cutBadColors;
 };
-
-// const yellowDB = dbData.yellowDB;
-// const blueDB = dbData.blueDB;
-// const brownDB = dbData.brownDB;
-// const grayDB = dbData.grayDB;
-// const greenDB = dbData.greenDB;
-// const orangeDB = dbData.orangeDB;
-// const redDB = dbData.redDB;
-// const violettDB = dbData.violettDB;
-// const whiteDB = dbData.whiteDB;
-
-// const rgbDB = extractRGBdb(allColors);
-//   const hexDB = extractHEXdb(allColors);
-
-// extractRGBdb = allColor => {
-//   let rgbs = [];
-//   for (rgb of allColor) {
-//     const rgbContentDB = rgb.rgb;
-//     rgbs.push(rgbContentDB.replace(/-/g, ", "));
-//   }
-//   return rgbs;
-// };
-
-// extractHEXdb = allColor => {
-//   let hexs = [];
-//   for (hex of allColor) {
-//     hexs.push(hex.hex);
-//   }
-//   return hexs;
-// };
