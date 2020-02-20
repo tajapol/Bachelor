@@ -65,11 +65,13 @@ exports.postOutputPage = (req, res, next) => {
   const anaColors = new ColorAnalyze();
   const anaFontfamily = new FontfamilyAnalyze();
   const anaFontsizes = new FontsizeAnalyze();
+
   const resultColors = anaColors.doAnalyzeColors(dbColorData);
   const resultFontfamily = anaFontfamily.doAnalyzeFontfamily(dbFontsData);
   const resultFontsize = anaFontsizes.doAnalyzeFontsize(dbFontsData);
 
   const fine = ["Good work", " everthing fine."];
+
   resultColors[0].length == 0 ? resultColors[0].push(fine) : resultColors[0];
   resultFontfamily[0].length == 0 ? resultFontfamily[0].push(fine) : resultFontfamily[0];
   resultFontsize[0].length == 0 ? resultFontsize[0].push(fine) : resultFontsize[0];

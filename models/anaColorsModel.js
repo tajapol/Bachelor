@@ -80,9 +80,9 @@ extractInputShades = (allColor, uC) => {
   return inputShades;
 };
 
-filterBadColors = formatted => {
+filterBadColors = f => {
   const badFilter = ["color: rgb", "color: rgba", "background-color: rgb", "background-color: rgba", "background-color: ", "color: "];
-  const badColorsFiltered = proofNotNULL(formatted.match(/color: +([a-zA-Z])*/g))
+  const badColorsFiltered = proofNotNULL(f.match(/color: +([a-zA-Z])*/g))
     .filter(item => item !== badFilter[0])
     .filter(item => item !== badFilter[1])
     .filter(item => item !== badFilter[2])

@@ -4,6 +4,7 @@ const formattingController = require("../controllers/fileFormattingController");
 const outputController = require("../controllers/outputController");
 const anaColorController = require("../controllers/anaColorController");
 const anaFontsController = require("../controllers/anaFontsController");
+
 const router = express.Router();
 
 router.post("/file-output", formattingController.doFormatting, formattingController.getValidation);
@@ -11,7 +12,6 @@ router.post("/file-output", formattingController.doFormatting, formattingControl
 router.post(
   "/file-output",
   anaColorController.getColorsDB,
-
   anaColorController.getYellowDB,
   anaColorController.getBlueDB,
   anaColorController.getBrownDB,
