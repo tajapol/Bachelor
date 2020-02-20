@@ -3,17 +3,15 @@ module.exports = class Analyze {
     this.resultFonts = [];
   }
 
-  doAnalyzeFonts(dbData) {
-    const fontsAna = analyzeFonts(dbData);
+  doAnalyzeFontfamily(dbData) {
+    const fontsAna = analyzeFontfamily(dbData);
     this.resultFonts.push(fontsAna);
     return this.resultFonts;
   }
 };
 
-analyzeFonts = dbData => {
+analyzeFontfamily = dbData => {
   const formatted = dbData.formatted;
-  const notFormatted = dbData.notFormatted;
-  const choosenFormat = dbData.choosenFormat;
 
   let fontAna = [];
 
@@ -21,19 +19,15 @@ analyzeFonts = dbData => {
   const allFontNamesDb = fontNamesDB(fontsDB);
 
   const extractedInputFonts = proofNotNULL(formatted.match(/font-family:+(["'`a-zA-Z- ])*/g));
-  const extractedInputHeadingFS = proofNotNULL(extractHeadingFontsizes(notFormatted));
 
   const inputFontNames = extractInputNames(extractedInputFonts);
   const usedFonts = unique(inputFontNames);
-  const usedHeadingSizes = proofNotNULL(parseToInt(extractedInputHeadingFS));
 
   const existsInDB = usedFonts.filter(element => allFontNamesDb.includes(element));
   const notWebsafeDB = usedFonts.filter(element => !existsInDB.includes(element));
 
   const inputFontFamily = extractFontFamily(existsInDB, fontsDB);
   const usedFontFamily = unique(inputFontFamily);
-
-  console.log(usedHeadingSizes);
 
   //Webtypografie S84
   //////////////////////////////////// rule 1: 1-2 font types are enough//////////////////////////////////
@@ -62,7 +56,7 @@ analyzeFonts = dbData => {
   //////////////////////////////////// rule 3:combinate serif with sans-sarif //////////////////////////////////
   if (usedFonts.length > 1) {
     switch (true) {
-      case usedFontFamily.length == 1 && existsInDB.length > 1:
+      case usedFontFamily.length == 1:
         fontAna.push(
           "You use more than 1 font ( " +
             existsInDB.filter(item => item !== usedFonts) +
@@ -112,12 +106,7 @@ analyzeFonts = dbData => {
     }
   }
 
-  //Webtypografie S93
-  //////////////////////////////////// rule 4: use responsive font-sizes//////////////////////////////////
-
-  // /////////////// https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
-  //////////////////////////////////// rule 4: font-sizes //////////////////////////////////
-  if (extractedInputFonts.length == 0 && extractedInputH.length == 0) {
+  if (extractedInputFonts.length == 0) {
     fontAna.push("You didn't use any fonts, that's why we can't analyze something.");
   }
 
@@ -153,33 +142,6 @@ extractFontFamily = (wst, fDb) => {
   return inputFontFamily;
 };
 
-extractHeadingFontsizes = nf => {
-  let headingFS = [];
-  const headings = nf.match(/h+([0-9a])* {+[\r\n ]+([a-zA-Z -:0-9.;\r\n])*}+/g);
-  for (let h of headings) {
-    let fontSize = h.match(/font-size: +([0-9a-zA-Z.])*/g);
-    for (let f of fontSize) {
-      headingFS.push(f.replace("font-size: ", ""));
-    }
-  }
-  return headingFS;
-};
-
-parseToInt = eHFZs => {
-  let parsedUnits = [];
-  for (let h of eHFZs) {
-    if (h.match("px")) {
-      const cut = parseFloat(h.replace("px", ""));
-      parsedUnits.push(cut * 0.06);
-    }
-    if (h.match("rem")) {
-      const cut = parseFloat(h.replace("rem", ""));
-      parsedUnits.push(cut);
-    }
-  }
-  return parsedUnits;
-};
-
 unique = many => {
   return many.filter(function(value, index, self) {
     return many.indexOf(value) === index;
@@ -187,7 +149,7 @@ unique = many => {
 };
 
 proofNotNULL = check => {
-  let saveRGB = [];
-  check ? (saveRGB = check) : (saveRGB = []);
-  return saveRGB;
+  let toProof = [];
+  check ? (toProof = check) : (toProof = []);
+  return toProof;
 };

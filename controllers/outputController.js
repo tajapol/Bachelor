@@ -1,5 +1,6 @@
 const ColorAnalyze = require("../models/anaColorsModel");
-const FontAnalyze = require("../models/anaFontsModel");
+const FontfamilyAnalyze = require("../models/anaFontfamilyModel");
+const FontsizeAnalyze = require("../models/anaFontsizeModel");
 
 const fs = require("fs");
 es = require("event-stream");
@@ -62,16 +63,24 @@ exports.postOutputPage = (req, res, next) => {
   };
 
   const anaColors = new ColorAnalyze();
-  const anaFonts = new FontAnalyze();
+  const anaFontfamily = new FontfamilyAnalyze();
+  const anaFontsizes = new FontsizeAnalyze();
   const resultColors = anaColors.doAnalyzeColors(dbColorData);
-  const resultFonts = anaFonts.doAnalyzeFonts(dbFontsData);
+  const resultFontfamily = anaFontfamily.doAnalyzeFontfamily(dbFontsData);
+  const resultFontsize = anaFontsizes.doAnalyzeFontsize(dbFontsData);
+
+  const fine = ["Good work", " everthing fine."];
+  resultColors[0].length == 0 ? resultColors[0].push(fine) : resultColors[0];
+  resultFontfamily[0].length == 0 ? resultFontfamily[0].push(fine) : resultFontfamily[0];
+  resultFontsize[0].length == 0 ? resultFontsize[0].push(fine) : resultFontsize[0];
 
   res.render("index", {
     pageTitle: "Output",
     output: true,
     input: lines,
     color: resultColors[0],
-    fonts: resultFonts[0]
+    fontfamily: resultFontfamily[0],
+    fontsize: resultFontsize[0]
   });
   req.session.destroy();
 };

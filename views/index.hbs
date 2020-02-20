@@ -128,8 +128,14 @@
 
 
                             <p class="senteces">
-                                The analysis of your fonts showed the following: </p>
-                            {{#each fonts}}
+                                The analysis of your fontfamilies showed the following: </p>
+                            {{#each fontfamily}}
+                            <p class="analyze">{{this}}</p>
+                            {{/each}}
+
+                            <p class="senteces">
+                                The analysis of your fontsizes showed the following: </p>
+                            {{#each fontsize}}
                             <p class="analyze">{{this}}</p>
                             {{/each}}
 

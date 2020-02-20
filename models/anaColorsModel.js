@@ -80,12 +80,6 @@ extractInputShades = (allColor, uC) => {
   return inputShades;
 };
 
-unique = many => {
-  return many.filter(function(value, index, self) {
-    return many.indexOf(value) === index;
-  });
-};
-
 filterBadColors = formatted => {
   const badFilter = ["color: rgb", "color: rgba", "background-color: rgb", "background-color: rgba", "background-color: ", "color: "];
   const badColorsFiltered = proofNotNULL(formatted.match(/color: +([a-zA-Z])*/g))
@@ -102,8 +96,14 @@ filterBadColors = formatted => {
   return cutBadColors;
 };
 
+unique = many => {
+  return many.filter(function(value, index, self) {
+    return many.indexOf(value) === index;
+  });
+};
+
 proofNotNULL = check => {
-  let saveRGB = [];
-  check ? (saveRGB = check) : (saveRGB = []);
-  return saveRGB;
+  let toProof = [];
+  check ? (toProof = check) : (toProof = []);
+  return toProof;
 };
