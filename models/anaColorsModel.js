@@ -26,26 +26,28 @@ analyzeColors = dbData => {
   const badColors = unique(filterBadColors(formatted));
   const usedShades = extractInputShades(allColors, usedColors);
 
-  //////////////////////////////////// rule 1 only use rgb, rgba, hex //////////////////////////////////
-  if (badColors.length >= 1) {
-    colorAna.push("You use " + badColors + " instead of rgb or hex colors. You should change that.");
+  switch (true) {
+    case extracedInputRGB.length == 0 && extractedInputHEX.length == 0 && checkColorUsed == null:
+      colorAna.push("You didn't use any colors, that's why we can't analyze something.");
+      break;
+
+    //////////////////////////////////// rule 1 only use rgb, rgba, hex //////////////////////////////////
+
+    case badColors.length >= 1:
+      colorAna.push("You use " + badColors + " instead of rgb or hex colors. You should change that.");
+
+    // ///////////////////https://birgithotz.com/website-farbkonzept////////////////////////////////
+    //////////////////////////////////// rule 2: max 2 colors (except black, white, gray) //////////////////////////////////
+
+    case usedShades.length > 2:
+      colorAna.push("You use more than 2 primarycolors. In most cases this is too much.");
+
+    // ///////////////////   Grundkurs gutes Webdesign S.333 ///////////////////////////////
+    //////////////////////////////////// rule 3: contrast //////////////////////////////////
   }
 
-  // ///////////////////https://birgithotz.com/website-farbkonzept////////////////////////////////
-  //////////////////////////////////// rule 2: max 2 colors (except black, white, gray) //////////////////////////////////
-
-  if (usedShades.length > 2) {
-    colorAna.push("You use more than 2 primarycolors. In most cases this is too much.");
-  }
-
-  if (extracedInputRGB.length == 0 && extractedInputHEX.length == 0 && checkColorUsed == null) {
-    colorAna.push("You didn't use any colors, that's why we can't analyze something.");
-  }
   return colorAna;
 };
-
-// ///////////////////   Grundkurs gutes Webdesign S.333 ///////////////////////////////
-//////////////////////////////////// rule 3: contrast //////////////////////////////////
 
 extractInputRGB = eRGB => {
   let rgb = [];
