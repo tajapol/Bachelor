@@ -27,91 +27,114 @@ analyzeFontsize = dbData => {
   const sortedDesktop = isSorted(usedHeadingSizesDesktop.parsedUnits);
   const notReasonableSizesDesktop = checkReasonableSizesDesktop(proofNotNULL(usedHeadingSizesDesktop.parsedUnits));
 
-  const extractedHeadingFSMobile = proofNotNULL(extractHeadingFontsizes(proofStringNotNull(extractedMediaQueryTypes[0])));
+  const extractedHeadingFSMobile = proofNotNULL(extractHeadingFontsizes(proofStringNotNull(extractedMediaQueryTypes.mobile[0])));
   const usedHeadingSizesMobile = proofNotNULL(parseToFloat(extractedHeadingFSMobile));
   const usedUnitMobile = [usedHeadingSizesMobile.rem, usedHeadingSizesMobile.pixel];
   const sortedMobile = isSorted(usedHeadingSizesMobile.parsedUnits);
   const notReasonableSizesMobile = checkReasonableSizesDesktop(proofNotNULL(usedHeadingSizesMobile.parsedUnits));
 
+  //Webtypografie S93
+  ////////////////////////////////////  ///rule 1: don't mix rem and px//////////////////////////////////
+  //////////////////////////////////// rule 2: use responsive font-sizes//////////////////////////////////
+
   switch (true) {
-    case extractedHeadingFSDesktop.length == 0:
-      fontsizeAna.push("You didn't use any font-sizes, that's why we can't analyze something.");
+    case usedUnitDesktop[0] == false && usedUnitDesktop[1] == true:
+      fontsizeAnaDesktop.push(" You just use pixel as a size unit. In most cases, you should use relative rather than absolute units.");
       break;
 
-    //Webtypografie S93
-    ////////////////////////////////////  ///rule 1: don't mix rem and px//////////////////////////////////
-    //////////////////////////////////// rule 2: use responsive font-sizes//////////////////////////////////
+    case usedUnitDesktop[0] == true && usedUnitDesktop[1] == true:
+      fontsizeAnaDesktop.push(" You mixed size units. In most cases, you should use relative rather than absolute units. ");
+      break;
 
-    case usedUnitDesktop[1] == true:
-      usedUnitDesktop[0] == false
-        ? fontsizeAnaDesktop.push(" You just use pixel as a size unit. In most cases, you should use relative rather than absolute units.")
-        : fontsizeAnaDesktop.push(" You mixed size units. In most cases, you should use relative rather than absolute units. ");
+    default:
+      console.log("Size units are fine.");
+      break;
+  }
 
-    case usedUnitMobile[1] == true:
-      usedUnitMobile[0] == false
-        ? fontsizeAnaMobile.push(
-            " You just use pixel as a size in your mobile media queries. In most cases, you should use relative rather than absolute units."
-          )
-        : fontsizeAnaMobile.push(
-            " You mixed size units in your mobile media queries. In most cases, you should use relative rather than absolute units. "
-          );
+  switch (true) {
+    case usedUnitMobile[0] == false && usedUnitMobile[1] == true:
+      fontsizeAnaMobile.push(
+        " You just use pixel as a size in your mobile media queries. In most cases, you should use relative rather than absolute units."
+      );
+      break;
 
-    //////////////////////////////////// rule 3:sorted chronologically according to size//////////////////////////////////
+    case usedUnitMobile[0] == true && usedUnitMobile[1] == true:
+      fontsizeAnaMobile.push(
+        " You mixed size units in your mobile media queries. In most cases, you should use relative rather than absolute units. "
+      );
+      break;
 
+    default:
+      console.log("Mobile size units are fine.");
+      break;
+  }
+
+  //////////////////////////////////// rule 3:sorted chronologically according to size//////////////////////////////////
+
+  switch (true) {
     case sortedDesktop == false:
       fontsizeAnaDesktop.push("Font-sizes should always be sorted chronologically.");
 
     case sortedMobile == false:
       fontsizeAnaMobile.push("Font-sizes should always be sorted chronologically in the mediaqueries as well.");
+  }
 
-    /////////////////////      https://www.mediaevent.de/css/font-size.html //////////////////////
-    //////////////////////////////////// rule 4: reasonable font-sizes //////////////////////////////////
+  /////////////////////      https://www.mediaevent.de/css/font-size.html //////////////////////
+  //////////////////////////////////// rule 4: reasonable font-sizes //////////////////////////////////
 
+  switch (true) {
     case notReasonableSizesDesktop.length > 0:
       for (let i = 0; i < notReasonableSizesDesktop.length; i++) {
         if (notReasonableSizesDesktop[i] === false) {
           const nr = i + 1;
           fontsizeAnaDesktop.push(
-            "Your " + nr + ". heading font-size:" + extractedHeadingFSDesktop[i] + " is too large. Maybe you should revise that."
+            "Your " + nr + ". heading font-size: " + extractedHeadingFSDesktop[i] + " is too large. Maybe you should revise that."
           );
         }
       }
-    case otReasonableSizesMobile.length > 0:
+
+    case notReasonableSizesMobile.length > 0:
       for (let i = 0; i < notReasonableSizesDesktop.length; i++) {
         if (notReasonableSizesMobile[i] === false) {
           const nr = i + 1;
           fontsizeAnaMobile.push(
-            "In your mediaqueries your " + nr + ". heading font-size:" + extractedHeadingFSMobile[i] + " is too large. Maybe you should revise that."
+            "In yout mediaqueries your " + nr + ". heading font-size: " + extractedHeadingFSMobile[i] + " is too large. Maybe you should revise that."
           );
         }
       }
-
-      switch (true) {
-        case choosenFormat == "mobile":
-          fontsizeAna = fontsizeAnaMobile;
-          break;
-
-        case choosenFormat == "desktop":
-          fontsizeAna = fontsizeAnaDesktop;
-          break;
-
-        case choosenFormat == "both":
-          fontsizeAna = fontsizeAnaDesktop.concat(fontsizeAnaMobile);
-          break;
-
-        case choosenFormat == "placeholder":
-          fontsizeAnaDesktop.push("You didn't choose a format. Desktop is our default format.");
-          fontsizeAna = fontsizeAnaDesktop;
-          break;
-      }
-
-      return fontsizeAna;
   }
+
+  // /////////////// https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
+  //////////////////////////////////// rule 5: font-sizes //////////////////////////////////
+
+  switch (true) {
+    case choosenFormat == "mobile":
+      fontsizeAna = fontsizeAnaMobile;
+      break;
+
+    case choosenFormat == "desktop":
+      fontsizeAna = fontsizeAnaDesktop;
+      break;
+
+    case choosenFormat == "both":
+      fontsizeAna = fontsizeAnaDesktop.concat(fontsizeAnaMobile);
+      break;
+
+    case choosenFormat == "placeholder":
+      fontsizeAna.push("You didn't choose a format. Desktop is our default format.");
+      break;
+  }
+
+  if (extractedHeadingFSDesktop.length == 0) {
+    fontsizeAna.push("You didn't use any font-sizes, that's why we can't analyze something.");
+  }
+
+  return fontsizeAna;
 };
 
-extractHeadingFontsizes = nf => {
+extractHeadingFontsizes = eMQ => {
   let headingFS = [];
-  const headings = proofNotNULL(nf.match(/h+([0-9a])* {+[\r\n ]+([a-zA-Z -:0-9.;\r\n])*}+/g));
+  const headings = proofNotNULL(eMQ.match(/h+([0-9a])* {+[\r\n ]+([a-zA-Z -:0-9.;\r\n])*}+/g));
   for (let h of headings) {
     let fontSize = proofNotNULL(h.match(/font-size: +([0-9a-zA-Z.])*/g));
     for (let f of fontSize) {
@@ -189,7 +212,11 @@ mediaqueryType = emqs => {
       }
     }
   }
-  return mobile;
+  let allMQs = {
+    mobile: mobile,
+    tablet: tablet
+  };
+  return allMQs;
 };
 
 proofNotNULL = check => {

@@ -44,15 +44,7 @@ exports.postOutputPage = (req, res, next) => {
   let dbColorData = {
     formatted: res.locals.formatted,
     colorsDB: res.locals.colorsDB,
-    yellowDB: res.locals.yellowDB,
-    blueDB: res.locals.blueDB,
-    brownDB: res.locals.brownDB,
-    grayDB: res.locals.grayDB,
-    greenDB: res.locals.greenDB,
-    orangeDB: res.locals.orangeDB,
-    redDB: res.locals.redDB,
-    violettDB: res.locals.violettDB,
-    whiteDB: res.locals.whiteDB
+    contrastDB: res.locals.contrastDB
   };
 
   let dbFontsData = {
@@ -87,10 +79,10 @@ exports.postOutputPage = (req, res, next) => {
     pageTitle: "Output",
     output: true,
     input: lines,
-    // layout: resultLayout[0],
-    color: resultColors[0],
-    fontfamily: resultFontfamily[0],
-    fontsize: resultFontsize[0]
+    layoutAna: resultLayout[0],
+    colorAna: resultColors[0],
+    fontfamilyAna: resultFontfamily[0],
+    fontsizeAna: resultFontsize[0]
   });
   req.session.destroy();
 };

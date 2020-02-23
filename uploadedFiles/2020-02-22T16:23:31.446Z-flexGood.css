@@ -48,7 +48,7 @@ article {
 
 @media screen and (max-width: 630px) {
   div {
-    flex-direction: column-reverse;
+    display: block;
   }
   img {
     width: 100%;

@@ -15,15 +15,13 @@ analyzeLayout = data => {
   const choosenFormat = data.choosenFormat;
 
   let layoutAna = [];
-  let layoutAnaDesktop = [];
-  let layoutAnaMobile = [];
 
   const extractMeadiaQuery = formatted.match(/@media+([a-zA-Z0-9 -:(){}\r\n;])*/g);
   const extractedMediaQueryTypes = mediaqueryType(proofNotNULL(extractMeadiaQuery));
 
   const formattedNoMQs = formatted.replace(proofNotNULL(extractMeadiaQuery), "");
   const extractedTagsDesktop = extractTags(formattedNoMQs);
-  const extractedTagsMobile = extractTags(proofStringNotNull(extractedMediaQueryTypes[0]));
+  const extractedTagsMobile = extractTags(proofStringNotNull(extractedMediaQueryTypes.mobile[0]));
 
   const extractedDivDisplayDesktop = extractDisplay(proofNotNULL(extractedTagsDesktop.div));
   const extractedDivDisplayMobile = extractDisplay(proofNotNULL(extractedTagsMobile.div));
@@ -31,8 +29,21 @@ analyzeLayout = data => {
   const extractedFlexRowDesktop = extractFlexCondition(proofNotNULL(extractedDivDisplayDesktop.flex));
   const extractedFlexRowMobile = extractFlexCondition(proofNotNULL(extractedDivDisplayMobile.flex));
 
-  console.log(extractedDivDisplayDesktop.flex);
+  if (choosenFormat == "mobile" || (choosenFormat == "both" && extractedFlexRowDesktop == true)) {
+    switch (true) {
+      case extractedDivDisplayMobile.flex.length == 0:
+        layoutAna.push(
+          "You arrange the contents of your divs next to each other in your desktop layout, but you do not resolve this in your media queries. You should change that."
+        );
+        break;
 
+      case proofNotNULL(!extractedTagsMobile.div[0].includes("display: block")) && proofNotNULL(extractedFlexRowMobile) == true:
+        layoutAna.push(
+          "You arrange the contents of your divs next to each other in your desktop layout, but you do not resolve this in your media queries. You should change that."
+        );
+        break;
+    }
+  }
   return layoutAna;
 };
 
@@ -51,6 +62,7 @@ mediaqueryType = emqs => {
   let intOnly = [];
   let mediaOnly = [];
   let mobile = [];
+  let tablet = [];
 
   for (let i = 0; i < emqs.length; i++) {
     mediaOnly = emqs[i].match(/@media screen+([a-zA-Z0-9 -:()])*{+/g);
@@ -61,21 +73,24 @@ mediaqueryType = emqs => {
       }
     }
   }
-  return mobile;
+  let allMQs = {
+    mobile: mobile,
+    tablet: tablet
+  };
+  return allMQs;
 };
 
 extractDisplay = eTags => {
   let fl = [];
   let gr = [];
   for (let e of eTags) {
-    if (e.match("display: flex")) {
+    if (e.match("flex")) {
       fl.push(e);
     }
-    if (e.match("display: grid")) {
+    if (e.match("grid")) {
       gr.push(e);
     }
   }
-
   let allDisplays = {
     flex: fl,
     grid: gr
@@ -86,10 +101,10 @@ extractDisplay = eTags => {
 extractFlexCondition = eFlex => {
   let inRow = Boolean;
   for (let e of eFlex) {
-    if (e.match("flex-direction: row;")) {
+    if (e.match("flex-direction: row;") || e.match("flex-direction: row-reverse;")) {
       inRow = true;
     }
-    if (e.match("flex-direction: column;")) {
+    if (e.match("flex-direction: column;") || e.match("flex-direction: column-reverse;")) {
       inRow = false;
     }
   }

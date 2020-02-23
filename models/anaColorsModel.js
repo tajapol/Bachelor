@@ -12,7 +12,15 @@ module.exports = class Analyze {
 
 analyzeColors = dbData => {
   const formatted = dbData.formatted;
+  const contrast = dbData.contrastDB;
+
   let colorAna = [];
+  const notPrintTwiceBad = [];
+  const notPrintTwiceMedium = [];
+  let goodContrast = [];
+  let checkCommonColors = [];
+
+  let count = 0;
 
   const allColors = dbData.colorsDB;
   const checkColorUsed = formatted.match(/color: +([a-zA-Z])*/g);
@@ -24,7 +32,7 @@ analyzeColors = dbData => {
   const usedColors = usedHEX.concat(usedRGB);
 
   const badColors = unique(filterBadColors(formatted));
-  const usedShades = extractInputShades(allColors, usedColors);
+  const usedShades = unique(extractInputShades(allColors, usedColors));
 
   switch (true) {
     case extracedInputRGB.length == 0 && extractedInputHEX.length == 0 && checkColorUsed == null:
@@ -41,11 +49,366 @@ analyzeColors = dbData => {
 
     case usedShades.length > 2:
       colorAna.push("You use more than 2 primarycolors. In most cases this is too much.");
-
-    // ///////////////////   Grundkurs gutes Webdesign S.333 ///////////////////////////////
-    //////////////////////////////////// rule 3: contrast //////////////////////////////////
   }
 
+  // ///////////////////   Grundkurs gutes Webdesign S.333 ///////////////////////////////
+  // /////////// https://www.talu.de/komplementaerfarben-definition/ ///////////////////
+  //////////////////////////////////// rule 3: contrast //////////////////////////////////
+
+  if (usedShades.includes("yellow")) {
+    count = 0;
+    for (let u of usedShades) {
+      if (contrast[2].yellow.includes(u)) {
+        if (!notPrintTwiceMedium.includes(u)) {
+          notPrintTwiceMedium.push(u, "yellow");
+          colorAna.push("You combined YELLOW with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
+        }
+      }
+
+      if (contrast[1].yellow.includes(u)) {
+        count++;
+        if (!notPrintTwiceBad.includes(u)) {
+          notPrintTwiceBad.push(u, "yellow");
+          colorAna.push("You combined YELLOW with " + u + ",  which only offers bad contrast.");
+        }
+      }
+    }
+
+    if (count >= 1) {
+      goodContrast.push(contrast[0].yellow);
+      checkCommonColors.push("darkyellow");
+      colorAna.push("Better colors to combine with DARKYELLOW would be: " + contrast[0].darkyellow + ".");
+      count = 0;
+    }
+  }
+
+  if (usedShades.includes("darkyellow")) {
+    count = 0;
+    for (let u of usedShades) {
+      if (contrast[2].darkyellow.includes(u)) {
+        if (!notPrintTwiceMedium.includes(u)) {
+          notPrintTwiceMedium.push(u, "darkyellow");
+          colorAna.push(
+            "You combined DARKYELLOW with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. "
+          );
+        }
+      }
+
+      if (contrast[1].darkyellow.includes(u)) {
+        count++;
+        if (!notPrintTwiceBad.includes(u)) {
+          notPrintTwiceBad.push(u, "darkyellow");
+          colorAna.push("You combined DARKYELLOW with " + u + ",  which only offers bad contrast.");
+        }
+      }
+    }
+
+    if (count >= 1) {
+      goodContrast.push(contrast[0].darkyellow);
+      checkCommonColors.push("darkyellow");
+      colorAna.push("Better colors to combine with DARKYELLOW would be: " + contrast[0].darkyellow + ".");
+      count = 0;
+    }
+  }
+
+  if (usedShades.includes("lightorange")) {
+    count = 0;
+    for (let u of usedShades) {
+      if (contrast[2].lightorange.includes(u)) {
+        if (!notPrintTwiceMedium.includes(u)) {
+          notPrintTwiceMedium.push(u, "lightorange");
+          colorAna.push(
+            "You combined LIGHTORANGE with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. "
+          );
+        }
+      }
+
+      if (contrast[1].lightorange.includes(u)) {
+        count++;
+        if (!notPrintTwiceBad.includes(u)) {
+          notPrintTwiceBad.push(u, "lightorange");
+          colorAna.push("You combined LIGHTORANGE with " + u + ",  which only offers bad contrast.");
+        }
+      }
+    }
+
+    if (count >= 1) {
+      goodContrast.push(contrast[0].lightorange);
+      checkCommonColors.push("lightorange");
+      colorAna.push("Better colors to combine with LIGHTORANGE would be: " + contrast[0].lightorange + ".");
+      count = 0;
+    }
+  }
+
+  if (usedShades.includes("orange")) {
+    count = 0;
+    for (let u of usedShades) {
+      if (contrast[2].orange.includes(u)) {
+        if (!notPrintTwiceMedium.includes(u)) {
+          notPrintTwiceMedium.push(u, "orange");
+          colorAna.push("You combined ORANGE with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
+        }
+      }
+
+      if (contrast[1].orange.includes(u)) {
+        count++;
+        if (!notPrintTwiceBad.includes(u)) {
+          notPrintTwiceBad.push(u, "orange");
+          colorAna.push("You combined ORANGE with " + u + ",  which only offers bad contrast.");
+        }
+      }
+    }
+
+    if (count >= 1) {
+      goodContrast.push(contrast[0].orange);
+      checkCommonColors.push("orange");
+      colorAna.push("Better colors to combine with ORANGE would be: " + contrast[0].orange + ".");
+      count = 0;
+    }
+  }
+
+  if (usedShades.includes("red")) {
+    count = 0;
+    for (let u of usedShades) {
+      if (contrast[2].red.includes(u)) {
+        if (!notPrintTwiceMedium.includes(u)) {
+          notPrintTwiceMedium.push(u, "red");
+          colorAna.push("You combined RED with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
+        }
+      }
+
+      if (contrast[1].red.includes(u)) {
+        count++;
+        if (!notPrintTwiceBad.includes(u)) {
+          notPrintTwiceBad.push(u, "red");
+          colorAna.push("You combined RED with " + u + ",  which only offers bad contrast.");
+        }
+      }
+    }
+
+    if (count >= 1) {
+      goodContrast.push(contrast[0].red);
+      checkCommonColors.push("red");
+      colorAna.push("Better colors to combine with RED would be: " + contrast[0].red + ".");
+      count = 0;
+    }
+  }
+
+  if (usedShades.includes("magenta")) {
+    count = 0;
+    for (let u of usedShades) {
+      if (contrast[2].magenta.includes(u)) {
+        if (!notPrintTwiceMedium.includes(u)) {
+          notPrintTwiceMedium.push(u, "magenta");
+          colorAna.push("You combined MAGENTA with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
+        }
+      }
+
+      if (contrast[1].magenta.includes(u)) {
+        count++;
+        if (!notPrintTwiceBad.includes(u)) {
+          notPrintTwiceBad.push(u, "magenta");
+          colorAna.push("You combined MAGENTA with " + u + ",  which only offers bad contrast.");
+        }
+      }
+    }
+
+    if (count >= 1) {
+      goodContrast.push(contrast[0].magenta);
+      checkCommonColors.push("magenta");
+      colorAna.push("Better colors to combine with MAGENTA would be: " + contrast[0].magenta + ".");
+      count = 0;
+    }
+  }
+
+  if (usedShades.includes("violett")) {
+    count = 0;
+    for (let u of usedShades) {
+      if (contrast[2].violett.includes(u)) {
+        if (!notPrintTwiceMedium.includes(u)) {
+          notPrintTwiceMedium.push(u, "violett");
+          colorAna.push("You combined VIOELTT with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
+        }
+      }
+
+      if (contrast[1].violett.includes(u)) {
+        count++;
+        if (!notPrintTwiceBad.includes(u)) {
+          notPrintTwiceBad.push(u, "violett");
+          colorAna.push("You combined VIOLETT with " + u + ",  which only offers bad contrast.");
+        }
+      }
+    }
+
+    if (count >= 1) {
+      goodContrast.push(contrast[0].violett);
+      checkCommonColors.push("violett");
+      colorAna.push("Better colors to combine with VIOLETT would be: " + contrast[0].violett + ".");
+      count = 0;
+    }
+  }
+
+  if (usedShades.includes("darkblue")) {
+    count = 0;
+    for (let u of usedShades) {
+      if (contrast[2].darkblue.includes(u)) {
+        if (!notPrintTwiceMedium.includes(u)) {
+          notPrintTwiceMedium.push(u, "darkblue");
+          colorAna.push(
+            "You combined DARKBLUE with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. "
+          );
+        }
+      }
+
+      if (contrast[1].darkblue.includes(u)) {
+        count++;
+        if (!notPrintTwiceBad.includes(u)) {
+          notPrintTwiceBad.push(u, "darkblue");
+          colorAna.push("You combined DARKBLUE with " + u + ",  which only offers bad contrast.");
+        }
+      }
+    }
+
+    if (count >= 1) {
+      goodContrast.push(contrast[0].darkblue);
+      checkCommonColors.push("darkblue");
+      colorAna.push("Better colors to combine with DARKBLUE would be: " + contrast[0].darkblue + ".");
+      count = 0;
+    }
+  }
+
+  if (usedShades.includes("blue")) {
+    count = 0;
+    for (let u of usedShades) {
+      if (contrast[2].blue.includes(u)) {
+        if (!notPrintTwiceMedium.includes(u)) {
+          notPrintTwiceMedium.push(u, "blue");
+          colorAna.push("You combined BLUE with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
+        }
+      }
+
+      if (contrast[1].blue.includes(u)) {
+        count++;
+        if (!notPrintTwiceBad.includes(u)) {
+          notPrintTwiceBad.push(u, "blue");
+          colorAna.push("You combined BLUE with " + u + ",  which only offers bad contrast.");
+        }
+      }
+    }
+
+    if (count >= 1) {
+      goodContrast.push(contrast[0].blue);
+      checkCommonColors.push("blue");
+      colorAna.push("Better colors to combine with BLUE would be: " + contrast[0].blue + ".");
+      count = 0;
+    }
+  }
+
+  if (usedShades.includes("cyan")) {
+    count = 0;
+    for (let u of usedShades) {
+      if (contrast[2].cyan.includes(u)) {
+        if (!notPrintTwiceMedium.includes(u)) {
+          notPrintTwiceMedium.push(u, "cyan");
+          colorAna.push("You combined CYAN with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
+        }
+      }
+
+      if (contrast[1].cyan.includes(u)) {
+        count++;
+        if (!notPrintTwiceBad.includes(u)) {
+          notPrintTwiceBad.push(u, "cyan");
+          colorAna.push("You combined CYAN with " + u + ",  which only offers bad contrast.");
+        }
+      }
+    }
+
+    if (count >= 1) {
+      goodContrast.push(contrast[0].cyan);
+      checkCommonColors.push("cyan");
+      colorAna.push("Better colors to combine with CYAN would be: " + contrast[0].cyan + ".");
+      count = 0;
+    }
+  }
+
+  if (usedShades.includes("green")) {
+    count = 0;
+    for (let u of usedShades) {
+      if (contrast[2].green.includes(u)) {
+        if (!notPrintTwiceMedium.includes(u)) {
+          notPrintTwiceMedium.push(u, "green");
+          colorAna.push("You combined GREEN with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
+        }
+      }
+
+      if (contrast[1].green.includes(u)) {
+        count++;
+        if (!notPrintTwiceBad.includes(u)) {
+          notPrintTwiceBad.push(u, "green");
+          colorAna.push("You combined GREEN with " + u + ",  which only offers bad contrast.");
+        }
+      }
+    }
+
+    if (count >= 1) {
+      goodContrast.push(contrast[0].green);
+      checkCommonColors.push("green");
+      colorAna.push("Better colors to combine with GREEN would be: " + contrast[0].green + ".");
+      count = 0;
+    }
+  }
+
+  if (usedShades.includes("lightgreen")) {
+    count = 0;
+    for (let u of usedShades) {
+      if (contrast[2].lightgreen.includes(u)) {
+        if (!notPrintTwiceMedium.includes(u)) {
+          notPrintTwiceMedium.push(u, "lightgreen");
+          colorAna.push(
+            "You combined LIGHTGREEN with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. "
+          );
+        }
+      }
+
+      if (contrast[1].lightgreen.includes(u)) {
+        count++;
+        if (!notPrintTwiceBad.includes(u)) {
+          notPrintTwiceBad.push(u, "lightgreen");
+          colorAna.push("You combined LIGHTGREEN with " + u + ",  which only offers bad contrast.");
+        }
+      }
+    }
+
+    if (count >= 1) {
+      goodContrast.push(contrast[0].lightgreen);
+      checkCommonColors.push("lightgreen");
+      colorAna.push("Better colors to combine with LIGHTGREEN would be: " + contrast[0].lightgreen + ".");
+      count = 0;
+    }
+  }
+
+  /////////////////////////////////////////// best color /////////////////////////////////////
+
+  let allGoodContrasts = [].concat.apply([], goodContrast);
+  let commonColors = notUnique(allGoodContrasts);
+
+  if (allGoodContrasts.length > 3) {
+    switch (true) {
+      case commonColors.length == 1:
+        colorAna.push("The best color to combine with all your used colors would be " + unique(commonColors) + ".");
+        break;
+
+      case commonColors.length > 1:
+        colorAna.push("The best colors to combine with all your used colors would be " + unique(commonColors) + ".");
+        break;
+
+      case commonColors.length == 0:
+        colorAna.push("Your used colors havn't one color with good contrast in common. You may should overthink your color conzept.");
+        break;
+    }
+  }
+
+  console.log(notPrintTwiceBad);
   return colorAna;
 };
 
@@ -100,7 +463,13 @@ filterBadColors = f => {
 
 unique = many => {
   return many.filter(function(value, index, self) {
-    return many.indexOf(value) === index;
+    return self.indexOf(value) === index;
+  });
+};
+
+notUnique = many => {
+  return many.filter(function(value, index, self) {
+    return self.indexOf(value) !== index;
   });
 };
 
