@@ -17,7 +17,6 @@ exports.postOutputPage = (req, res, next) => {
       .pipe(
         es
           .mapSync(function(line) {
-            //pause the readstream
             s.pause();
             lines.push(line);
             s.resume();
@@ -36,7 +35,6 @@ exports.postOutputPage = (req, res, next) => {
       }
     });
   } else {
-    // for direct input
     let input = req.body.directInput;
     lines = input.split("\n");
   }
