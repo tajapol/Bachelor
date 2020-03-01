@@ -73,7 +73,7 @@ exports.postOutputPage = (req, res, next) => {
   resultFontfamily[0].length == 0 ? resultFontfamily[0].push(fine) : resultFontfamily[0];
   resultFontsize[0].length == 0 ? resultFontsize[0].push(fine) : resultFontsize[0];
 
-  res.render("index", {
+  res.render("app", {
     pageTitle: "Output",
     output: true,
     input: lines,

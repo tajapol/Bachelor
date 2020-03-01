@@ -22,6 +22,17 @@ h2 {
   display: none;
 }
 
+.error > h2 {
+  display: inline;
+  font-size: 5rem;
+  color: $white;
+}
+
+.error > p {
+  font-size: 3.6rem;
+  color: $white;
+}
+
 h3,
 h5 {
   @include base-h3;
@@ -67,7 +78,7 @@ img {
   text-align: center;
   align-items: center;
   width: 96%;
-  background-color: $white-white;
+  background-color: $white;
 }
 
 button {
@@ -75,7 +86,7 @@ button {
   height: 45%;
   margin: 2% auto;
   background-color: $petrol;
-  color: $white-white;
+  color: $white;
   font-size: 1.5rem;
   border-radius: 2rem;
   border-color: $petrol;
@@ -143,7 +154,7 @@ input[type="file"] {
   width: 75%;
   padding: 0.8%;
   margin-left: -5%;
-  background-color: $white-white;
+  background-color: $white;
 }
 
 textarea {
@@ -165,7 +176,7 @@ textarea {
 .validation {
   width: 40%;
   padding: 1%;
-  background-color: $white-white;
+  background-color: $white;
   border-style: solid;
   border-color: $red;
 }
@@ -176,7 +187,7 @@ textarea {
 
 .outputContent {
   display: inline;
-  background-color: $white-white;
+  background-color: $white;
   max-height: 600px;
   overflow: scroll;
   margin: 2%;
@@ -204,4 +215,14 @@ textarea {
 
 .analyze {
   margin-bottom: -2%;
+}
+
+.error {
+  padding: 8%;
+  text-align: center;
+  width: 20%;
+  margin-top: 5%;
+  border-radius: 2rem;
+  background-color: $blass;
+  width: 30%;
 }

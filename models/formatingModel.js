@@ -1,4 +1,4 @@
-module.exports = class Formatting {
+module.exports = class Formating {
   constructor(v, f) {
     this.validation = v;
     this.toFormat = f;

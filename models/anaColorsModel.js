@@ -408,7 +408,6 @@ analyzeColors = dbData => {
     }
   }
 
-  console.log(notPrintTwiceBad);
   return colorAna;
 };
 

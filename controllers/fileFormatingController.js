@@ -1,8 +1,8 @@
 const fs = require("fs");
-const Formatting = require("../models/formattingModel");
-const formatting = new Formatting();
+const Formating = require("../models/formatingModel");
+const formating = new Formating();
 
-exports.doFormatting = (req, res, next) => {
+exports.doFormating = (req, res, next) => {
   let postcss = require("postcss");
   const toformatUpload = fs.readFileSync(req.file.path, "utf8");
 
@@ -15,29 +15,29 @@ exports.doFormatting = (req, res, next) => {
   ])
     .process(toformatUpload, { from: toformatUpload })
     .then(formatedUpload => {
-      formatting.saveFormatted(formatedUpload.css);
+      formating.saveFormatted(formatedUpload.css);
       res.locals.formatted = formatedUpload.css;
       res.locals.notFormatted = toformatUpload;
       next();
     })
     .catch(err => {
       console.error("no CSS");
-      formatting.validation = false;
+      formating.validation = false;
       next();
     });
 };
 
 exports.getValidation = (req, res, next) => {
-  if (formatting.validation == false) {
+  if (formating.validation == false) {
     fs.unlinkSync(req.file.path, err => {
       if (err) {
         throw new Error(err);
         return;
       }
     });
-    res.status(422).render("index", { pageTitle: "choose Upload", uploadChoosen: true, fileUpload: true, redirected: true });
+    res.status(422).render("app", { pageTitle: "choose Upload", uploadChoosen: true, fileUpload: true, redirected: true });
   } else {
     next();
   }
-  formatting.validation = true;
+  formating.validation = true;
 };

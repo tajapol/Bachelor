@@ -1,7 +1,7 @@
-const Formatting = require("../models/formattingModel");
-const formatting = new Formatting();
+const Formating = require("../models/formatingModel");
+const formating = new Formating();
 
-exports.doFormatting = (req, res, next) => {
+exports.doFormating = (req, res, next) => {
   const toformatInput = req.body.directInput;
   let postcss = require("postcss");
 
@@ -14,7 +14,7 @@ exports.doFormatting = (req, res, next) => {
   ])
     .process(toformatInput, { from: toformatInput })
     .then(formatedInput => {
-      formatting.saveFormatted(formatedInput.css);
+      formating.saveFormatted(formatedInput.css);
       res.locals.formatted = formatedInput.css;
       res.locals.notFormatted = toformatInput;
 
@@ -22,7 +22,7 @@ exports.doFormatting = (req, res, next) => {
     })
     .catch(err => {
       console.error("no CSS");
-      formatting.validation = false;
+      formating.validation = false;
       next();
     });
 };
@@ -30,8 +30,8 @@ exports.doFormatting = (req, res, next) => {
 exports.getValidation = (req, res, next) => {
   const directInput = req.body.directInput;
 
-  if (formatting.validation == false) {
-    res.status(422).render("index", {
+  if (formating.validation == false) {
+    res.status(422).render("app", {
       pageTitle: "choose Upload",
       uploadChoosen: true,
       inputUpload: true,
@@ -41,5 +41,5 @@ exports.getValidation = (req, res, next) => {
   } else {
     next();
   }
-  formatting.validation = true;
+  formating.validation = true;
 };

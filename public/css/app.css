@@ -19,6 +19,15 @@ h1,
 h2 {
   display: none; }
 
+.error > h2 {
+  display: inline;
+  font-size: 5rem;
+  color: white; }
+
+.error > p {
+  font-size: 3.6rem;
+  color: white; }
+
 h3,
 h5 {
   font-size: 2.5em;
@@ -181,3 +190,12 @@ textarea {
 
 .analyze {
   margin-bottom: -2%; }
+
+.error {
+  padding: 8%;
+  text-align: center;
+  width: 20%;
+  margin-top: 5%;
+  border-radius: 2rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  width: 30%; }

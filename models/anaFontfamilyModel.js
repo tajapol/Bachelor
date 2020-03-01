@@ -74,14 +74,10 @@ analyzeFontfamily = dbData => {
 
       case usedFontFamily.length > 1:
         if (usedFontFamily.includes("serif") && !usedFontFamily.includes("sans-serif")) {
-          fontAna.push(
-            notWebsafeDB + " You combine serif with " + usedFontFamily.filter(item => item !== "serif") + " ,but a sans-serif could be better."
-          );
+          fontAna.push(" You combine serif with " + usedFontFamily.filter(item => item !== "serif") + " ,but a sans-serif could be better.");
         }
         if (!usedFontFamily.includes("serif") && usedFontFamily.includes("sans-serif")) {
-          fontAna.push(
-            notWebsafeDB + " You combine sans-serif with " + usedFontFamily.filter(item => item !== "sans-serif") + " ,but a serif could be better."
-          );
+          fontAna.push(" You combine sans-serif with " + usedFontFamily.filter(item => item !== "sans-serif") + " ,but a serif could be better.");
         }
 
       default:
@@ -95,7 +91,7 @@ analyzeFontfamily = dbData => {
       case notWebsafeDB.length == 1:
         fontAna.push(
           notWebsafeDB +
-            "is not websafe and not in our database. You should only combine a serif font with a sans-serif font. If you want to use them anyway, you should check that out."
+            " is not websafe and not in our database. You should only combine a serif font with a sans-serif font. If you want to use them anyway, you should check that out."
         );
         break;
 

@@ -5,12 +5,12 @@ exports.getDirectInputPage = (req, res, next) => {
     req.session.sessionStarted = true;
   }
 
-  res.render("index", { pageTitle: "choose Upload", uploadChoosen: true, inputUpload: true });
+  res.render("app", { pageTitle: "choose Upload", uploadChoosen: true, inputUpload: true });
 };
 
 exports.postDirectInput = (req, res, next) => {
   if (!req.body.directInput) {
-    res.status(422).render("index", {
+    res.status(422).render("app", {
       pageTitle: "choose Upload",
       uploadChoosen: true,
       inputUpload: true,

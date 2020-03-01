@@ -9,12 +9,12 @@ exports.getFileUploadPage = (req, res, next) => {
   if (req.session.sessionStarted != true) {
     req.session.sessionStarted = true;
   }
-  res.render("index", { pageTitle: "choose Upload", uploadChoosen: true, fileUpload: true });
+  res.render("app", { pageTitle: "choose Upload", uploadChoosen: true, fileUpload: true });
 };
 
 exports.postUploadedFile = (req, res, next) => {
   if (!req.file) {
-    res.status(422).render("index", { pageTitle: "choose Upload", uploadChoosen: true, fileUpload: true, noFile: true });
+    res.status(422).render("app", { pageTitle: "choose Upload", uploadChoosen: true, fileUpload: true, noFile: true });
   } else {
     if (choosenFormat.includes("mobile-and-desktop")) {
       res.locals.choosenFormat = "both";
