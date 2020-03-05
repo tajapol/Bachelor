@@ -1,10 +1,10 @@
 const getDb = require("../util/database").getDb;
 
-module.exports = class Colors {
-  getColors() {
+module.exports = class Contrast {
+  getContrast() {
     const db = getDb();
     return db
-      .collection("colors")
+      .collection("contrasts")
       .find()
       .toArray()
       .then(colors => {

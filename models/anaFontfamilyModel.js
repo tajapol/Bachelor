@@ -11,14 +11,14 @@ module.exports = class Analyze {
 };
 
 analyzeFontfamily = dbData => {
-  const formatted = dbData.formatted;
+  const formated = dbData.formated;
 
-  let fontAna = [];
+  let fontfamilyAna = [];
 
   const fontsDB = dbData.fontsDB;
   const allFontNamesDb = fontNamesDB(fontsDB);
 
-  const extractedInputFonts = proofNotNULL(formatted.match(/font-family:+(["'`a-zA-Z- ])*/g));
+  const extractedInputFonts = proofNotNULL(formated.match(/font-family:+(["'`a-zA-Z- ])*/g));
 
   const inputFontNames = extractInputNames(extractedInputFonts);
   const usedFonts = unique(inputFontNames);
@@ -33,86 +33,75 @@ analyzeFontfamily = dbData => {
   //////////////////////////////////// rule 1: 1-2 font types are enough//////////////////////////////////
 
   if (usedFonts.length > 2) {
-    fontAna.push("You use more than 2 different fonts. In most cases this is not necessary.");
+    fontfamilyAna.push("You use more than 2 different fonts. In most cases this is not necessary.");
   }
 
   if (usedFontFamily.length > 2) {
-    fontAna.push("You use too many different font-families. (" + usedFontFamily + ")");
+    fontfamilyAna.push("You use too many different font-families. (" + usedFontFamily + ")");
   }
 
   //////////////////////////////////rule 2: use websafe fonts//////////////////////////////////
   if (existsInDB.length == 0) {
     if (usedFonts.length == 1) {
-      fontAna.push(usedFonts + " is not websafe.");
+      fontfamilyAna.push(usedFonts + " is not websafe.");
     }
     if (usedFonts.length > 1) {
-      fontAna.push(usedFonts + " are not websafe.");
+      fontfamilyAna.push(usedFonts + " are not websafe.");
     }
   } else {
     for (fontDb of fontsDB) {
       for (usedFont of usedFonts) {
         if (usedFont == fontDb.name && fontDb.websafe == false) {
-          fontAna.push(usedFont + " is not websafe.");
+          fontfamilyAna.push(usedFont + " is not websafe.");
         }
       }
+    }
+  }
+
+  if (usedFonts.length > 1) {
+    if (notWebsafeDB.length == 1) {
+      fontfamilyAna.push(
+        notWebsafeDB +
+          " is not websafe and not in our database. You should only combine a serif font with a sans-serif font. If you want to use them anyway, you should check that out."
+      );
+    }
+
+    if (notWebsafeDB.length > 1) {
+      fontfamilyAna.push(
+        notWebsafeDB +
+          " are not websafe and not in our database. You should only combine a serif font with a sans-serif font. If you want to use them anyway, you should check that out."
+      );
     }
   }
 
   //Webtypografie s84
   //////////////////////////////////// rule 3:combinate serif with sans-sarif //////////////////////////////////
   if (usedFonts.length > 1) {
-    switch (true) {
-      case usedFontFamily.length == 1:
-        fontAna.push(
-          "You use more than 1 font ( " +
-            existsInDB.filter(item => item !== usedFonts) +
-            " ), but all have the same font-family.  ( " +
-            usedFontFamily +
-            " ) You may should use two different font-families."
-        );
-        break;
-
-      case usedFontFamily.length > 1:
-        if (usedFontFamily.includes("serif") && !usedFontFamily.includes("sans-serif")) {
-          fontAna.push(" You combine serif with " + usedFontFamily.filter(item => item !== "serif") + " ,but a sans-serif could be better.");
-        }
-        if (!usedFontFamily.includes("serif") && usedFontFamily.includes("sans-serif")) {
-          fontAna.push(" You combine sans-serif with " + usedFontFamily.filter(item => item !== "sans-serif") + " ,but a serif could be better.");
-        }
-
-      default:
-        console.log("Fontfamilies are fine");
-        break;
+    if (usedFontFamily.length == 1) {
+      fontfamilyAna.push(
+        "You use more than 1 font ( " +
+          existsInDB.filter(item => item !== usedFonts) +
+          " ), but all have the same font-family.  ( " +
+          usedFontFamily +
+          " ) You may should use two different font-families."
+      );
     }
-  }
 
-  if (usedFonts.length > 1) {
-    switch (true) {
-      case notWebsafeDB.length == 1:
-        fontAna.push(
-          notWebsafeDB +
-            " is not websafe and not in our database. You should only combine a serif font with a sans-serif font. If you want to use them anyway, you should check that out."
-        );
-        break;
-
-      case notWebsafeDB.length > 1:
-        fontAna.push(
-          notWebsafeDB +
-            " are not websafe and not in our database. You should only combine a serif font with a sans-serif font. If you want to use them anyway, you should check that out."
-        );
-        break;
-
-      default:
-        console.log("All used fonts exist in the DB");
-        break;
+    if (usedFontFamily.length > 1) {
+      if (usedFontFamily.includes("serif") && !usedFontFamily.includes("sans-serif")) {
+        fontfamilyAna.push(" You combine serif with " + usedFontFamily.filter(item => item !== "serif") + " ,but a sans-serif could be better.");
+      }
+      if (!usedFontFamily.includes("serif") && usedFontFamily.includes("sans-serif")) {
+        fontfamilyAna.push(" You combine sans-serif with " + usedFontFamily.filter(item => item !== "sans-serif") + " ,but a serif could be better.");
+      }
     }
   }
 
   if (extractedInputFonts.length == 0) {
-    fontAna.push("You didn't use any fonts, that's why we can't analyze something.");
+    fontfamilyAna.push("You didn't use any fonts, that's why we can't analyze something.");
   }
 
-  return fontAna;
+  return fontfamilyAna;
 };
 
 fontNamesDB = fDb => {

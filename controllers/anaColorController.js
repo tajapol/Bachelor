@@ -1,5 +1,7 @@
 const Colors = require("../models/colorsModel");
 const c = new Colors();
+const Contrast = require("../models/contrastModel");
+const con = new Contrast();
 
 exports.getColorsDB = (req, res, next) => {
   c.getColors()
@@ -13,7 +15,8 @@ exports.getColorsDB = (req, res, next) => {
 };
 
 exports.getConrastDB = (req, res, next) => {
-  c.getContrast()
+  con
+    .getContrast()
     .then(contrast => {
       res.locals.contrastDB = contrast;
       next();

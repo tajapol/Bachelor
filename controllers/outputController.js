@@ -40,19 +40,19 @@ exports.postOutputPage = (req, res, next) => {
   }
 
   let dbColorData = {
-    formatted: res.locals.formatted,
+    formated: res.locals.formated,
     colorsDB: res.locals.colorsDB,
     contrastDB: res.locals.contrastDB
   };
 
   let dbFontsData = {
-    formatted: res.locals.formatted,
+    formated: res.locals.formated,
     fontsDB: res.locals.fontsDB
   };
 
   let data = {
-    formatted: res.locals.formatted,
-    notFormatted: res.locals.notFormatted,
+    formated: res.locals.formated,
+    notFormated: res.locals.notFormated,
     choosenFormat: res.locals.choosenFormat
   };
 

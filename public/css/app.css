@@ -50,7 +50,7 @@ p {
 .analyze {
   font-size: 1.1rem; }
 
-.formattedInput {
+.formatedInput {
   font-size: 0.9rem; }
 
 img {
@@ -175,7 +175,7 @@ textarea {
 .output div {
   width: 95%; }
 
-.formattedInput,
+.formatedInput,
 .outputContent {
   font-family: "Courier New", Courier, monospace;
   padding-bottom: 0.7%; }

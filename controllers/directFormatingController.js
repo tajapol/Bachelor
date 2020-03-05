@@ -14,9 +14,9 @@ exports.doFormating = (req, res, next) => {
   ])
     .process(toformatInput, { from: toformatInput })
     .then(formatedInput => {
-      formating.saveFormatted(formatedInput.css);
-      res.locals.formatted = formatedInput.css;
-      res.locals.notFormatted = toformatInput;
+      formating.saveFormated(formatedInput.css);
+      res.locals.formated = formatedInput.css;
+      res.locals.notFormated = toformatInput;
 
       next();
     })

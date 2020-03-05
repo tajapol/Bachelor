@@ -40,6 +40,7 @@
     });
 
     const fileButtons = Array.from(document.getElementsByClassName("file"));
+    console.log(window);
     if (window.location.href == "http://localhost:3001/choose-upload/mobile") {
       fileButtons.forEach(function(elem) {
         elem.addEventListener("click", () => {

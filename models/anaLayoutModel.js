@@ -11,16 +11,16 @@ module.exports = class Analyze {
 };
 
 analyzeLayout = data => {
-  const formatted = data.formatted;
+  const formated = data.formated;
   const choosenFormat = data.choosenFormat;
 
   let layoutAna = [];
 
-  const extractMeadiaQuery = formatted.match(/@media+([a-zA-Z0-9 -:(){}\r\n;])*/g);
+  const extractMeadiaQuery = formated.match(/@media+([a-zA-Z0-9 -:(){}\r\n;])*/g);
   const extractedMediaQueryTypes = mediaqueryType(proofNotNULL(extractMeadiaQuery));
 
-  const formattedNoMQs = formatted.replace(proofNotNULL(extractMeadiaQuery), "");
-  const extractedTagsDesktop = extractTags(formattedNoMQs);
+  const formatedNoMQs = formated.replace(proofNotNULL(extractMeadiaQuery), "");
+  const extractedTagsDesktop = extractTags(formatedNoMQs);
   const extractedTagsMobile = extractTags(proofStringNotNull(extractedMediaQueryTypes.mobile[0]));
 
   const extractedDivDisplayDesktop = extractDisplay(proofNotNULL(extractedTagsDesktop.div));
@@ -29,19 +29,17 @@ analyzeLayout = data => {
   const extractedFlexRowDesktop = extractFlexCondition(proofNotNULL(extractedDivDisplayDesktop.flex));
   const extractedFlexRowMobile = extractFlexCondition(proofNotNULL(extractedDivDisplayMobile.flex));
 
-  if (choosenFormat == "mobile" || (choosenFormat == "both" && extractedFlexRowDesktop == true)) {
-    switch (true) {
-      case extractedDivDisplayMobile.flex.length == 0:
-        layoutAna.push(
-          "You arrange the contents of your divs next to each other in your desktop layout, but you do not resolve this in your media queries. You should change that."
-        );
-        break;
+  if (choosenFormat == "mobile" || (choosenFormat == "both" && extractedFlexRowDesktop == true && extractedDivDisplayDesktop.length != 0)) {
+    if (extractedDivDisplayMobile.flex.length == 0) {
+      layoutAna.push(
+        "You arrange the contents of your divs next to each other in your desktop layout, but you do not resolve this in your media queries. You should change that."
+      );
+    }
 
-      case proofNotNULL(!extractedTagsMobile.div[0].includes("display: block")) && proofNotNULL(extractedFlexRowMobile) == true:
-        layoutAna.push(
-          "You arrange the contents of your divs next to each other in your desktop layout, but you do not resolve this in your media queries. You should change that."
-        );
-        break;
+    if (proofNotNULL(!extractedTagsMobile.div[0].includes("display: block")) && proofNotNULL(extractedFlexRowMobile) == true) {
+      layoutAna.push(
+        "You arrange the contents of your divs next to each other in your desktop layout, but you do not resolve this in your media queries. You should change that."
+      );
     }
   }
   return layoutAna;

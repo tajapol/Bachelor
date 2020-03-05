@@ -4,12 +4,12 @@ module.exports = class Formating {
     this.toFormat = f;
   }
 
-  saveFormatted(f) {
+  saveFormated(f) {
     const getDb = require("../util/database").getDb;
     const db = getDb();
     return db
-      .collection("formatted")
-      .insertOne({ formattedContent: f })
+      .collection("formated")
+      .insertOne({ formatedContent: f })
       .then(formatedUpload => {
         return formatedUpload;
       })
