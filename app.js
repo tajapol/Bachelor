@@ -34,9 +34,9 @@ const fileStorage = multer.diskStorage({
 });
 
 //configuration object (only css accepted)
-const fileFilter = (req, file, cb) => {
-  file.mimetype === "text/css" ? cb(null, true) : cb(null, false);
-};
+// const fileFilter = (req, file, cb) => {
+//   file.mimetype === "text/css" ? cb(null, true) : cb(null, false);
+// };
 
 //register templating engine
 app.engine(
@@ -69,7 +69,7 @@ app.use(morgan("combined", { stream: accesLogStream }));
 // parsing texts
 app.use(bodyParser.urlencoded({ extended: false }));
 // parsing ONE file
-app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single("file"));
+app.use(multer({ storage: fileStorage }).single("file"));
 
 app.use(session({ secret: "my secret", resave: false, saveUninitialized: false, store: store }));
 
