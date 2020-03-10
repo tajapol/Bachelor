@@ -62,6 +62,7 @@ const fileOutputRoute = require("./routes/file-output");
 // save logs in files
 const accesLogStream = fs.createWriteStream(path.join(__dirname, "access.log"), { flags: "a" });
 app.use(compression());
+app.use(helmet());
 app.use(morgan("combined", { stream: accesLogStream }));
 
 //installed middlewares
