@@ -23,10 +23,6 @@ const store = new MongoDBStore({
   collection: "sessions"
 });
 
-//read in file for https
-// const privateKey = fs.readFileSync("server.key");
-// const certificate = fs.readFileSync("server.cert");
-
 //configuration object (uploadedFile storage)
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {

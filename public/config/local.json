@@ -1,4 +1,0 @@
-{
-  "dbUrl": "mongodb+srv://tajapol:bachelor@pukki-122bn.mongodb.net/test?retryWrites=true&w=majority",
-  "mobile": "http://localhost:3001/choose-upload/mobile"
-}
