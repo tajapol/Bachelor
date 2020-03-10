@@ -34,9 +34,9 @@ const fileStorage = multer.diskStorage({
 });
 
 //configuration object (only css accepted)
-// const fileFilter = (req, file, cb) => {
-//   file.mimetype === "text/css" ? cb(null, true) : cb(null, false);
-// };
+const fileFilter = (req, file, cb) => {
+  file.mimetype === "text/css" ? cb(null, true) : cb(null, false);
+};
 
 //register templating engine
 app.engine(
@@ -74,7 +74,7 @@ app.use(multer({ storage: fileStorage }).single("file"));
 app.use(session({ secret: "my secret", resave: false, saveUninitialized: false, store: store }));
 
 //serve static files
-app.use(express.static(path.join(__dirname, "uploadedFiles")));
+app.use("/uploadedFiles", express.static(path.join(__dirname, "uploadedFiles")));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(express.static(path.join(__dirname, "js")));
