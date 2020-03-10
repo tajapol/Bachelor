@@ -1,0 +1,8 @@
+{
+  "env": {
+    "MONGO_USER": "tajapol",
+    "MONGO_PW": "bachelor",
+    "MONGO_DEFAULT_DB": "test?",
+    "PORT": "3001"
+  }
+}

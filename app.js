@@ -1,4 +1,6 @@
 const path = require("path");
+const fs = require("fs");
+const https = require("https");
 
 const express = require("express");
 const expressHbs = require("express-handlebars");
@@ -6,6 +8,9 @@ const session = require("express-session");
 
 const bodyParser = require("body-parser");
 const multer = require("multer");
+const helmet = require("helmet");
+const compression = require("compression");
+const morgan = require("morgan");
 
 const mongoConnect = require("./util/database").mongoConnect;
 const MongoDBStore = require("connect-mongodb-session")(session);
@@ -17,6 +22,10 @@ const store = new MongoDBStore({
   uri: "mongodb+srv://tajapol:bachelor@pukki-122bn.mongodb.net/test?retryWrites=true&w=majority",
   collection: "sessions"
 });
+
+//read in file for https
+const privateKey = fs.readFileSync("server.key");
+const certificate = fs.readFileSync("server.cert");
 
 //configuration object (uploadedFile storage)
 const fileStorage = multer.diskStorage({
@@ -54,6 +63,11 @@ const fileUploadRoute = require("./routes/file-upload");
 const directOutputRoute = require("./routes/direct-output");
 const fileOutputRoute = require("./routes/file-output");
 
+// save logs in files
+const accesLogStream = fs.createWriteStream(path.join(__dirname, "access.log"), { flags: "a" });
+app.use(compression());
+app.use(morgan("combined", { stream: accesLogStream }));
+
 //installed middlewares
 // parsing texts
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -79,5 +93,5 @@ app.use("/500", errorController.get500);
 app.use(errorController.get404);
 
 mongoConnect(() => {
-  app.listen(3001);
+  https.createServer({ key: privateKey, cert: certificate }, app).listen(process.env.PORT);
 });

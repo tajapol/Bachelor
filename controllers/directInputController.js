@@ -1,5 +1,10 @@
 let choosenFormat = "placeholder";
 
+exports.getChoosenFormat = (req, res, next) => {
+  choosenFormat = req.path;
+  next();
+};
+
 exports.getDirectInputPage = (req, res, next) => {
   if (req.session.sessionStarted != true) {
     req.session.sessionStarted = true;

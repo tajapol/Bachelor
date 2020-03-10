@@ -4,8 +4,8 @@ const chooseUploadController = require("../controllers/chooseUploadController");
 
 const router = express.Router();
 
-router.get("/mobile", chooseUploadController.getMobileFormat);
-router.get("/desktop", chooseUploadController.getDesktopFormat);
-router.get("/mobile-and-desktop", chooseUploadController.getMobileANdDesktopFormat);
+router.get("/mobile", chooseUploadController.getMobileUpload);
+router.get("/desktop", chooseUploadController.getDesktopUpload);
+router.get("/mobile-and-desktop", chooseUploadController.getMobileAndDesktopUpload);
 
 module.exports = router;

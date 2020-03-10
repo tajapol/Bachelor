@@ -8,11 +8,8 @@ const anaFontsController = require("../controllers/anaFontsController");
 const router = express.Router();
 
 router.post("/file-output", formatingController.doFormating, formatingController.getValidation);
-
 router.post("/file-output", anaColorController.getColorsDB, anaColorController.getConrastDB);
-
 router.post("/file-output", anaFontsController.getFontsDB);
-
 router.post("/file-output", outputController.postOutputPage);
 
 module.exports = router;

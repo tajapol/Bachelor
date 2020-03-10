@@ -1,15 +1,17 @@
 const mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
-const config = require("../public/config/local.json");
 
 let db;
 
 // connection and storing connection to db
 const mongoConnect = callback => {
-  MongoClient.connect(config.dbUrl, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-  })
+  MongoClient.connect(
+    `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PW}@pukki-122bn.mongodb.net/${process.env.MONGO_DEFAULT_DB}retryWrites=true&w=majority`,
+    {
+      useUnifiedTopology: true,
+      useNewUrlParser: true
+    }
+  )
 
     .then(client => {
       console.log("Connected!");

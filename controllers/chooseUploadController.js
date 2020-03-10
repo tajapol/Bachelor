@@ -1,18 +1,18 @@
-exports.getMobileFormat = (req, res, next) => {
+exports.getMobileUpload = (req, res, next) => {
   if (req.session.sessionStarted != true) {
     req.session.sessionStarted = true;
   }
   res.render("app", { pageTitle: "choose your upload", mobile: true, version: "mobile", uploadNotChoosen: true });
 };
 
-exports.getDesktopFormat = (req, res, next) => {
+exports.getDesktopUpload = (req, res, next) => {
   if (req.session.sessionStarted != true) {
     req.session.sessionStarted = true;
   }
   res.render("app", { pageTitle: "choose your upload", desktop: true, version: "desktop", uploadNotChoosen: true });
 };
 
-exports.getMobileANdDesktopFormat = (req, res, next) => {
+exports.getMobileAndDesktopUpload = (req, res, next) => {
   if (req.session.sessionStarted != true) {
     req.session.sessionStarted = true;
   }
