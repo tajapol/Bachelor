@@ -35,7 +35,7 @@ app.post("/upload", parser.array("images", 10), function(req, res) {
 const fileStorage = cloudinaryStorage({
   cloudinary: cloudinary,
   folder: "folder-name",
-  allowedFormats: ["text/css", "png"],
+  allowedFormats: ["text/css"],
   filename: (req, file, cb) => {
     cb(null, new Date().toISOString() + "-" + file.originalname);
   }
@@ -77,7 +77,7 @@ app.use(morgan("combined", { stream: accesLogStream }));
 // parsing texts
 app.use(bodyParser.urlencoded({ extended: false }));
 // parsing ONE file
-app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single("file"));
+app.use(multer({ storage: fileStorage }).single("file"));
 app.use(session({ secret: "my secret", resave: false, saveUninitialized: false, store: store }));
 
 //serve static files
