@@ -26,7 +26,7 @@ const store = new MongoDBStore({
 //configuration object (uploadedFile storage)
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploadedFiles");
+    cb(null, "public/uploadedFiles");
   },
   filename: (req, file, cb) => {
     cb(null, new Date().toISOString() + "-" + file.originalname);
@@ -69,7 +69,7 @@ app.use(morgan("combined", { stream: accesLogStream }));
 // parsing texts
 app.use(bodyParser.urlencoded({ extended: false }));
 // parsing ONE file
-app.use(multer({ storage: fileStorage }).single("file"));
+app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single("file"));
 
 app.use(session({ secret: "my secret", resave: false, saveUninitialized: false, store: store }));
 
