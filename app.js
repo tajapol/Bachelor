@@ -7,7 +7,6 @@ const session = require("express-session");
 
 const bodyParser = require("body-parser");
 const multer = require("multer");
-const multerS3 = require("multer-s3");
 const helmet = require("helmet");
 const compression = require("compression");
 const morgan = require("morgan");
@@ -24,9 +23,6 @@ const store = new MongoDBStore({
 });
 
 //configuration object (uploadedFile storage)
-var s3 = new aws.S3({
-  /* ... */
-});
 const fileStorage = multer({
   storage: multerS3({
     s3: s3,
