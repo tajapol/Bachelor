@@ -74,7 +74,7 @@ app.use(multer({ storage: fileStorage }).single("file"));
 app.use(session({ secret: "my secret", resave: false, saveUninitialized: false, store: store }));
 
 //serve static files
-app.use("/uploadedFiles", express.static(path.join(__dirname, "uploadedFiles")));
+
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(express.static(path.join(__dirname, "js")));
