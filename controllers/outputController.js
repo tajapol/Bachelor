@@ -12,7 +12,7 @@ exports.postOutputPage = (req, res, next) => {
   let lines = [];
   if (req.file != undefined) {
     const s = fs
-      .createReadStream(req.file.path)
+      .createReadStream(req.file)
       .pipe(es.split())
       .pipe(
         es
@@ -28,7 +28,7 @@ exports.postOutputPage = (req, res, next) => {
             console.log("Finish reading.");
           })
       );
-    fs.unlinkSync(req.file.path, err => {
+    fs.unlinkSync(req.file, err => {
       if (err) {
         throw new Error(err);
         return;
