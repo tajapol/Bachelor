@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const https = require("https");
 
 const express = require("express");
 const expressHbs = require("express-handlebars");
@@ -7,7 +8,7 @@ const session = require("express-session");
 
 const bodyParser = require("body-parser");
 const multer = require("multer");
-const multerS3 = require("multerS3");
+const helmet = require("helmet");
 const compression = require("compression");
 const morgan = require("morgan");
 
@@ -23,20 +24,13 @@ const store = new MongoDBStore({
 });
 
 //configuration object (uploadedFile storage)
-const s3 = new aws.S3({
-  /* ... */
-});
-const fileStorage = multer({
-  storage: multerS3({
-    s3: s3,
-    bucket: "some-bucket",
-    metadata: function(req, file, cb) {
-      cb(null, { fieldName: file.fieldname });
-    },
-    key: function(req, file, cb) {
-      cb(null, Date.now().toString());
-    }
-  })
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploadedFiles");
+  },
+  filename: (req, file, cb) => {
+    cb(null, new Date().toISOString() + "-" + file.originalname);
+  }
 });
 
 //configuration object (only css accepted)

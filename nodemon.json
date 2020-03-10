@@ -3,9 +3,6 @@
     "MONGO_USER": "tajapol",
     "MONGO_PW": "bachelor",
     "MONGO_DEFAULT_DB": "test?",
-    "PORT": "3001",
-    "CHOOSE_UPLOAD_MOBILE": "http://localhost:3001/choose-upload/mobile",
-    "CHOOSE_UPLOAD_DESKTOP": "http://localhost:3001/choose-upload/desktop",
-    "CHOOSE_UPLOAD_BOTH": "http://localhost:3001/choose-upload/mobile-and-desktop"
+    "PORT": "3001"
   }
 }
