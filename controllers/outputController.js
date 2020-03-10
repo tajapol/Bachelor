@@ -12,7 +12,7 @@ exports.postOutputPage = (req, res, next) => {
   let lines = [];
   if (req.file != undefined) {
     const s = fs
-      .createReadStream(req.file.path)
+      .createReadStream(req.file)
       .pipe(es.split())
       .pipe(
         es
