@@ -70,10 +70,11 @@ app.use(morgan("combined", { stream: accesLogStream }));
 app.use(bodyParser.urlencoded({ extended: false }));
 // parsing ONE file
 app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single("file"));
-app.use("/uploadedFiles", express.static(path.join(__dirname, "uploadedFiles")));
+
 app.use(session({ secret: "my secret", resave: false, saveUninitialized: false, store: store }));
 
 //serve static files
+app.use(express.static(path.join(__dirname, "uploadedFiles")));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(express.static(path.join(__dirname, "js")));
