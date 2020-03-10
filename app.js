@@ -7,11 +7,7 @@ const expressHbs = require("express-handlebars");
 const session = require("express-session");
 
 const bodyParser = require("body-parser");
-
 const multer = require("multer");
-const cloudinary = require("cloudinary");
-const cloudinaryStorage = require("multer-storage-cloudinary");
-
 const helmet = require("helmet");
 const compression = require("compression");
 const morgan = require("morgan");
@@ -27,15 +23,11 @@ const store = new MongoDBStore({
   collection: "sessions"
 });
 
-app.post("/upload", parser.array("images", 10), function(req, res) {
-  console.log(req.files);
-});
-
 //configuration object (uploadedFile storage)
-const fileStorage = cloudinaryStorage({
-  cloudinary: cloudinary,
-  folder: "folder-name",
-  allowedFormats: ["text/css"],
+const fileStorage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploadedFiles");
+  },
   filename: (req, file, cb) => {
     cb(null, new Date().toISOString() + "-" + file.originalname);
   }
@@ -77,7 +69,7 @@ app.use(morgan("combined", { stream: accesLogStream }));
 // parsing texts
 app.use(bodyParser.urlencoded({ extended: false }));
 // parsing ONE file
-app.use(multer({ storage: fileStorage }).single("file"));
+app.use(multer({ storage: fileStorage, fileFilter: fileFilter }).single("file"));
 app.use(session({ secret: "my secret", resave: false, saveUninitialized: false, store: store }));
 
 //serve static files
