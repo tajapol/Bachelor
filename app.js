@@ -35,7 +35,7 @@ const fileStorage = multer.diskStorage({
 
 //configuration object (only css accepted)
 const fileFilter = (req, file, cb) => {
-  file.mimetype === "jpg" ? cb(null, true) : cb(null, false);
+  file.mimetype === "image/jpg" ? cb(null, true) : cb(null, false);
 };
 
 //register templating engine
