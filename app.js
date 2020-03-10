@@ -24,8 +24,8 @@ const store = new MongoDBStore({
 });
 
 //read in file for https
-const privateKey = fs.readFileSync("server.key");
-const certificate = fs.readFileSync("server.cert");
+// const privateKey = fs.readFileSync("server.key");
+// const certificate = fs.readFileSync("server.cert");
 
 //configuration object (uploadedFile storage)
 const fileStorage = multer.diskStorage({
@@ -93,5 +93,5 @@ app.use("/500", errorController.get500);
 app.use(errorController.get404);
 
 mongoConnect(() => {
-  https.createServer({ key: privateKey, cert: certificate }, app).listen(process.env.PORT);
+  app.listen(process.env.PORT);
 });

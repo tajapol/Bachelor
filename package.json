@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Konzeption und Realisierung eines Software-Tools zur Unterstützung von Design-Entscheidungen in der Frontend-Entwicklung unter Verwendung moderner Webtechnologien",
   "main": "index.js",
+  "engines": {
+    "node": "10.15.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "MONGO_USER=tajapol MONGO_PW=bachelor MONGO_DEFAULT_DB=test? node app.js",
