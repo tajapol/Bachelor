@@ -4,7 +4,7 @@ const formating = new Formating();
 
 exports.doFormating = (req, res, next) => {
   let postcss = require("postcss");
-  const toformatUpload = fs.readFileSync(req.file, "utf8");
+  const toformatUpload = fs.readFileSync(req.file.path, "utf8");
 
   postcss([
     require("postcss-import")({
@@ -29,7 +29,7 @@ exports.doFormating = (req, res, next) => {
 
 exports.getValidation = (req, res, next) => {
   if (formating.validation == false) {
-    fs.unlinkSync(req.file, err => {
+    fs.unlinkSync(req.file.path, err => {
       if (err) {
         throw new Error(err);
         return;
