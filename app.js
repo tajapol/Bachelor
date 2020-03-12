@@ -1,6 +1,5 @@
 const path = require("path");
 const fs = require("fs");
-const https = require("https");
 
 const express = require("express");
 const expressHbs = require("express-handlebars");
@@ -35,7 +34,7 @@ const fileStorage = multer.diskStorage({
 
 //configuration object (only css accepted)
 const fileFilter = (req, file, cb) => {
-  file.mimetype === "image/jpg" ? cb(null, true) : cb(null, false);
+  file.mimetype === "text/css" ? cb(null, true) : cb(null, false);
 };
 
 //register templating engine

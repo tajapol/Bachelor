@@ -34,7 +34,7 @@ analyzeColors = dbData => {
   const badColors = unique(filterBadColors(formated));
   const usedShades = unique(extractInputShades(allColors, usedColors));
 
-  console.log(badColors);
+  console.log(usedRGB);
 
   if (extracedInputRGB.length == 0 && extractedInputHEX.length == 0 && checkColorUsed == null) {
     colorAna.push("You didn't use any colors, that's why we can't analyze something.");
@@ -61,6 +61,7 @@ analyzeColors = dbData => {
     count = 0;
     for (let u of usedShades) {
       if (contrast[2].yellow.includes(u)) {
+        count++;
         if (!notPrintTwiceMedium.includes(u)) {
           notPrintTwiceMedium.push(u, "yellow");
           colorAna.push("You combined YELLOW with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
@@ -88,6 +89,7 @@ analyzeColors = dbData => {
     count = 0;
     for (let u of usedShades) {
       if (contrast[2].darkyellow.includes(u)) {
+        count++;
         if (!notPrintTwiceMedium.includes(u)) {
           notPrintTwiceMedium.push(u, "darkyellow");
           colorAna.push(
@@ -117,6 +119,7 @@ analyzeColors = dbData => {
     count = 0;
     for (let u of usedShades) {
       if (contrast[2].lightorange.includes(u)) {
+        count++;
         if (!notPrintTwiceMedium.includes(u)) {
           notPrintTwiceMedium.push(u, "lightorange");
           colorAna.push(
@@ -146,6 +149,7 @@ analyzeColors = dbData => {
     count = 0;
     for (let u of usedShades) {
       if (contrast[2].orange.includes(u)) {
+        count++;
         if (!notPrintTwiceMedium.includes(u)) {
           notPrintTwiceMedium.push(u, "orange");
           colorAna.push("You combined ORANGE with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
@@ -173,6 +177,7 @@ analyzeColors = dbData => {
     count = 0;
     for (let u of usedShades) {
       if (contrast[2].red.includes(u)) {
+        count++;
         if (!notPrintTwiceMedium.includes(u)) {
           notPrintTwiceMedium.push(u, "red");
           colorAna.push("You combined RED with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
@@ -200,6 +205,7 @@ analyzeColors = dbData => {
     count = 0;
     for (let u of usedShades) {
       if (contrast[2].magenta.includes(u)) {
+        count++;
         if (!notPrintTwiceMedium.includes(u)) {
           notPrintTwiceMedium.push(u, "magenta");
           colorAna.push("You combined MAGENTA with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
@@ -227,6 +233,7 @@ analyzeColors = dbData => {
     count = 0;
     for (let u of usedShades) {
       if (contrast[2].violett.includes(u)) {
+        count++;
         if (!notPrintTwiceMedium.includes(u)) {
           notPrintTwiceMedium.push(u, "violett");
           colorAna.push("You combined VIOELTT with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
@@ -254,6 +261,7 @@ analyzeColors = dbData => {
     count = 0;
     for (let u of usedShades) {
       if (contrast[2].darkblue.includes(u)) {
+        count++;
         if (!notPrintTwiceMedium.includes(u)) {
           notPrintTwiceMedium.push(u, "darkblue");
           colorAna.push(
@@ -283,6 +291,7 @@ analyzeColors = dbData => {
     count = 0;
     for (let u of usedShades) {
       if (contrast[2].blue.includes(u)) {
+        count++;
         if (!notPrintTwiceMedium.includes(u)) {
           notPrintTwiceMedium.push(u, "blue");
           colorAna.push("You combined BLUE with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
@@ -310,6 +319,7 @@ analyzeColors = dbData => {
     count = 0;
     for (let u of usedShades) {
       if (contrast[2].cyan.includes(u)) {
+        count++;
         if (!notPrintTwiceMedium.includes(u)) {
           notPrintTwiceMedium.push(u, "cyan");
           colorAna.push("You combined CYAN with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
@@ -337,6 +347,7 @@ analyzeColors = dbData => {
     count = 0;
     for (let u of usedShades) {
       if (contrast[2].green.includes(u)) {
+        count++;
         if (!notPrintTwiceMedium.includes(u)) {
           notPrintTwiceMedium.push(u, "green");
           colorAna.push("You combined GREEN with " + u + ",  which only offers a medium contrast. That may be ok, but you should check it again. ");
@@ -364,6 +375,7 @@ analyzeColors = dbData => {
     count = 0;
     for (let u of usedShades) {
       if (contrast[2].lightgreen.includes(u)) {
+        count++;
         if (!notPrintTwiceMedium.includes(u)) {
           notPrintTwiceMedium.push(u, "lightgreen");
           colorAna.push(
@@ -392,22 +404,36 @@ analyzeColors = dbData => {
   /////////////////////////////////////////// best color /////////////////////////////////////
 
   let allGoodContrasts = [].concat.apply([], goodContrast);
-  let commonColors = notUnique(allGoodContrasts);
 
-  if (allGoodContrasts.length > 3) {
-    switch (true) {
-      case commonColors.length == 1:
-        colorAna.push("The best color to combine with all your used colors would be " + unique(commonColors) + ".");
-        break;
-
-      case commonColors.length > 1:
-        colorAna.push("The best colors to combine with all your used colors would be " + unique(commonColors) + ".");
-        break;
-
-      case commonColors.length == 0:
-        colorAna.push("Your used colors havn't one color with good contrast in common. You may should overthink your color conzept.");
-        break;
+  let counts = {};
+  let allInCommon = [];
+  allGoodContrasts.forEach(function(x) {
+    counts[x] = (counts[x] || 0) + 1;
+    if (counts[x] == usedShades.length) {
+      allInCommon.push(x);
     }
+  });
+
+  console.log(usedShades.length);
+
+  if (allInCommon.length == 1) {
+    colorAna.push(
+      "Your colors are pretty similiar. If you don't want to change that, the best color to combine with all your used ones would be " +
+        allInCommon +
+        "."
+    );
+  }
+
+  if (allInCommon.length > 1) {
+    colorAna.push(
+      "Your colors are pretty similiar. If you don't want to change that, the best colors to combine with all your used ones would be " +
+        allInCommon +
+        "."
+    );
+  }
+
+  if (allInCommon.length == 0) {
+    colorAna.push("Your used colors havn't one color with good contrast in common. You may should overthink your color conzept.");
   }
 
   return colorAna;
@@ -465,12 +491,6 @@ filterBadColors = f => {
 unique = many => {
   return many.filter(function(value, index, self) {
     return self.indexOf(value) === index;
-  });
-};
-
-notUnique = many => {
-  return many.filter(function(value, index, self) {
-    return self.indexOf(value) !== index;
   });
 };
 

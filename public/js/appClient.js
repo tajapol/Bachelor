@@ -42,7 +42,8 @@
     const fileButtons = Array.from(document.getElementsByClassName("file"));
     console.log(window);
     // if (window.location.href == "http://localhost:3001/choose-upload/mobile") {
-    if (window.location.href == "https://pukki.herokuapp.com/choose-upload/mobile") {
+    // if (window.location.href == "https://pukki.herokuapp.com/choose-upload/mobile") {
+    if (window.location.href == "http://localhost:3001/choose-upload/mobile") {
       fileButtons.forEach(function(elem) {
         elem.addEventListener("click", () => {
           window.location = "/mobile/file-upload";
@@ -50,7 +51,7 @@
       });
     }
 
-    if (window.location.href == "https://pukki.herokuapp.com/choose-upload/desktop") {
+    if (window.location.href == "http://localhost:3001/choose-upload/desktop") {
       fileButtons.forEach(function(elem) {
         elem.addEventListener("click", () => {
           window.location = "/desktop/file-upload";
@@ -58,7 +59,7 @@
       });
     }
 
-    if (window.location.href == "https://pukki.herokuapp.com/choose-upload/mobile-and-desktop") {
+    if (window.location.href == "http://localhost:3001/choose-upload/mobile-and-desktop") {
       fileButtons.forEach(function(elem) {
         elem.addEventListener("click", () => {
           window.location = "/mobile-and-desktop/file-upload";
@@ -67,7 +68,7 @@
     }
 
     const inputButtons = Array.from(document.getElementsByClassName("input"));
-    if (window.location.href == "https://pukki.herokuapp.com/choose-upload/mobile") {
+    if (window.location.href == "http://localhost:3001/choose-upload/mobile") {
       inputButtons.forEach(function(elem) {
         elem.addEventListener("click", () => {
           window.location = "/mobile/direct-input";
@@ -75,7 +76,7 @@
       });
     }
 
-    if (window.location.href == "https://pukki.herokuapp.com/choose-upload/desktop") {
+    if (window.location.href == "http://localhost:3001/choose-upload/desktop") {
       inputButtons.forEach(function(elem) {
         elem.addEventListener("click", () => {
           window.location = "/desktop/direct-input";
@@ -83,7 +84,7 @@
       });
     }
 
-    if (window.location.href == "https://pukki.herokuapp.com/choose-upload/mobile-and-desktop") {
+    if (window.location.href == "http://localhost:3001/choose-upload/mobile-and-desktop") {
       inputButtons.forEach(function(elem) {
         elem.addEventListener("click", () => {
           window.location = "/mobile-and-desktop/direct-input";
