@@ -30,22 +30,22 @@ h2 {
 
 h3,
 h5 {
-  font-size: 2.5em;
+  font-size: 2em;
   color: white;
   font-family: "Marion";
   font-weight: 200; }
 
 h4 {
-  font-size: 2.5em;
+  font-size: 2em;
   color: white;
   font-family: "Marion";
   font-weight: 200;
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #9f0505; }
 
 p {
   padding: 2%;
-  font-size: 1.3rem; }
+  font-size: 1rem; }
 
 .analyze {
   font-size: 1.1rem; }
@@ -80,7 +80,7 @@ button {
   margin: 2% auto;
   background-color: #034b5f;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1rem;
   border-radius: 2rem;
   border-color: #034b5f; }
 
@@ -119,7 +119,7 @@ div img {
 
 form {
   width: 60%;
-  height: 30rem;
+  height: 25rem;
   background-color: rgba(255, 255, 255, 0.4);
   border-radius: 2rem; }
 
@@ -151,9 +151,10 @@ textarea {
   font-size: 1rem; }
 
 .go {
-  height: 75px;
-  width: 75px;
-  border-radius: 49%; }
+  height: 40px;
+  width: 40px;
+  border-radius: 49%;
+  margin-top: -2%; }
 
 .validation {
   width: 40%;
@@ -163,12 +164,13 @@ textarea {
   border-color: #9f0505; }
 
 .output {
-  margin-top: -5%; }
+  margin-top: -5%;
+  width: 70%; }
 
 .outputContent {
   display: inline;
   background-color: white;
-  max-height: 600px;
+  max-height: 420px;
   overflow: scroll;
   margin: 2%; }
 
