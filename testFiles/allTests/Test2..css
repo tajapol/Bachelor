@@ -1,0 +1,68 @@
+/* komplementärTest */
+h1 {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(0, 0, 0, 1);
+  font-size: 3rem;
+}
+
+h2 {
+  /* magenta */
+  background-color: rgba(240, 1, 224, 1);
+  color: #ec40e1;
+  color: #e477dc;
+  font-family: fantasy;
+  font-size: 2rem;
+}
+
+h3 {
+  /* green */
+  color: #0aff4c;
+  color: rgba(91, 238, 86, 1);
+  background-color: rgb(180, 255, 178);
+  font-family: "Courier New", Courier, monospace;
+  font-size: 4px;
+}
+
+h4 {
+  /* yellow */
+  color: #f6f629;
+  color: #fff608;
+  color: #f5f589;
+  font-size: 0.5rem;
+}
+
+div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+a {
+  font-family: "Lucida Console";
+}
+
+@media screen and (max-width: 630px) {
+  h1 {
+    font-size: 2rem;
+    font-family: Helvetica, sans-serif;
+  }
+
+  h2 {
+    font-size: 10.3rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  h4 {
+    font-size: 10px;
+  }
+
+  div {
+    flex-direction: column-reverse;
+  }
+  img {
+    width: 100%;
+  }
+}

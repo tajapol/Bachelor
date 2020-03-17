@@ -34,9 +34,11 @@ analyzeLayout = data => {
       layoutAna.push(
         "You arrange the contents of your divs next to each other in your desktop layout, but you do not resolve this in your media queries. You should change that."
       );
-    }
-
-    if (proofNotNULL(!extractedTagsMobile.div[0].includes("display: block")) && proofNotNULL(extractedFlexRowMobile) == true) {
+    } else if (extractedDivDisplayMobile.div == null) {
+      layoutAna.push(
+        "You arrange the contents of your divs next to each other in your desktop layout, but you do not resolve this in your media queries. You should change that."
+      );
+    } else if (proofNotNULL(!extractedTagsMobile.div[0].includes("display: block")) && proofNotNULL(extractedFlexRowMobile) == true) {
       layoutAna.push(
         "You arrange the contents of your divs next to each other in your desktop layout, but you do not resolve this in your media queries. You should change that."
       );

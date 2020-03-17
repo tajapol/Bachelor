@@ -34,8 +34,6 @@ analyzeColors = dbData => {
   const badColors = unique(filterBadColors(formated));
   const usedShades = unique(extractInputShades(allColors, usedColors));
 
-  console.log(usedRGB);
-
   if (extracedInputRGB.length == 0 && extractedInputHEX.length == 0 && checkColorUsed == null) {
     colorAna.push("You didn't use any colors, that's why we can't analyze something.");
   }
@@ -413,8 +411,6 @@ analyzeColors = dbData => {
       allInCommon.push(x);
     }
   });
-
-  console.log(usedShades.length);
 
   if (allInCommon.length == 1) {
     colorAna.push(
