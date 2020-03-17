@@ -1,4 +1,3 @@
-/* komplementärTest */
 h1 {
   color: rgba(255, 255, 255, 1);
   background-color: rgba(0, 0, 0, 1);
@@ -9,8 +8,7 @@ h2 {
   /* magenta */
   background-color: rgba(240, 1, 224, 1);
   color: #ec40e1;
-  color: #e477dc;
-  font-family: fantasy;
+  color: pink;
   font-size: 2rem;
 }
 
@@ -19,7 +17,6 @@ h3 {
   color: #0aff4c;
   color: rgba(91, 238, 86, 1);
   background-color: rgb(180, 255, 178);
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: 4px;
 }
 
@@ -38,7 +35,7 @@ div {
 }
 
 a {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Geneva, Verdana, sans-serif;
 }
 
 @media screen and (max-width: 630px) {
@@ -49,6 +46,7 @@ a {
 
   h2 {
     font-size: 10.3rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
   h3 {

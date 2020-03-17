@@ -30,18 +30,16 @@ analyzeLayout = data => {
   const extractedFlexRowMobile = extractFlexCondition(proofNotNULL(extractedDivDisplayMobile.flex));
 
   if (choosenFormat == "mobile" || (choosenFormat == "both" && extractedFlexRowDesktop == true && extractedDivDisplayDesktop.length != 0)) {
-    if (extractedDivDisplayMobile.flex.length == 0) {
+    if (extractedDivDisplayMobile.flex.length == 0 && extractedTagsMobile.div == null) {
       layoutAna.push(
         "You arrange the contents of your divs next to each other in your desktop layout, but you do not resolve this in your media queries. You should change that."
       );
-    } else if (extractedDivDisplayMobile.div == null) {
-      layoutAna.push(
-        "You arrange the contents of your divs next to each other in your desktop layout, but you do not resolve this in your media queries. You should change that."
-      );
-    } else if (proofNotNULL(!extractedTagsMobile.div[0].includes("display: block")) && proofNotNULL(extractedFlexRowMobile) == true) {
-      layoutAna.push(
-        "You arrange the contents of your divs next to each other in your desktop layout, but you do not resolve this in your media queries. You should change that."
-      );
+    } else if (extractedDivDisplayMobile.div !== null) {
+      if (proofNotNULL(!extractedTagsMobile.div[0].includes("display: block")) && proofNotNULL(extractedFlexRowMobile) == true) {
+        layoutAna.push(
+          "You arrange the contents of your divs next to each other in your desktop layout, but you do not resolve this in your media queries. You should change that."
+        );
+      }
     }
   }
   return layoutAna;
